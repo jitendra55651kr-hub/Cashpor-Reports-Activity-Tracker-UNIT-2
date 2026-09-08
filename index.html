@@ -21,8 +21,8 @@
 
   <style>
     /* ==========================================================================
-       ROYAL 3D MASTER THEME GLOBALS
-       ========================================================================== */
+        ROYAL 3D MASTER THEME GLOBALS
+        ========================================================================== */
     :root {
       --gold-gradient: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #aa771c 100%);
       --royal-dark: #070b19;
@@ -62,8 +62,8 @@
     ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
 
     /* ==========================================================================
-       TOP NAVIGATION BAR
-       ========================================================================== */
+        TOP NAVIGATION BAR
+        ========================================================================== */
     .royal-navbar {
       position: sticky;
       top: 0;
@@ -167,8 +167,8 @@
     }
 
     /* ==========================================================================
-       SECTION: MASTER 3D PORTAL HUB
-       ========================================================================== */
+        SECTION: MASTER 3D PORTAL HUB
+        ========================================================================== */
     #masterPortalHub {
       max-width: 1720px;
       margin: 0 auto;
@@ -416,8 +416,8 @@
     }
 
     /* ==========================================================================
-       DASHBOARDS CONTAINER & HEADER WRAPPERS
-       ========================================================================== */
+        DASHBOARDS CONTAINER & HEADER WRAPPERS
+        ========================================================================== */
     .dashboard-view-container {
       display: none;
       max-width: 1840px;
@@ -505,8 +505,8 @@
   </header>
 
   <!-- =========================================================================
-       SECTION: MASTER 3D PORTAL HUB
-       ========================================================================= -->
+        SECTION: MASTER 3D PORTAL HUB
+        ========================================================================= -->
   <main id="masterPortalHub">
     <div class="portal-hero">
       <div class="portal-hero-badge">
@@ -616,7 +616,9 @@
         </div>
       </div>
 
-      <!-- CARD 4 (E-Clinic Daily Login Tracker moved up) -->
+      <!-- CARD 4 (Majestic Gold & Amber) has been removed as requested -->
+
+      <!-- E-Clinic Daily Login Tracker (Moved to Card 4 position) -->
       <div class="card-3d-wrapper">
         <div class="portal-card-3d theme-amethyst">
           <div>
@@ -652,8 +654,8 @@
   </main>
 
   <!-- =========================================================================
-       DASHBOARD 1: AGENT HOURLY REPORT - UNIT 2
-       ========================================================================= -->
+        DASHBOARD 1: AGENT HOURLY REPORT - UNIT 2
+        ========================================================================= -->
   <section id="dashboard1View" class="dashboard-view-container">
     <div class="view-control-bar">
       <div class="view-control-title">
@@ -777,8 +779,8 @@
   </section>
 
   <!-- =========================================================================
-       DASHBOARD 2: PRODUCTIVITY REPORT - UNIT 2
-       ========================================================================= -->
+        DASHBOARD 2: PRODUCTIVITY REPORT - UNIT 2
+        ========================================================================= -->
   <section id="dashboard2View" class="dashboard-view-container">
     <div class="view-control-bar">
       <div class="view-control-title">
@@ -914,8 +916,8 @@
   </section>
 
   <!-- =========================================================================
-       DASHBOARD 3: HOURLY KPI CONSULTATION UNIT II (100% INTACT & COMPLETE)
-       ========================================================================= -->
+        DASHBOARD 3: HOURLY KPI CONSULTATION UNIT II (100% INTACT & COMPLETE)
+        ========================================================================= -->
   <section id="dashboard3View" class="dashboard-view-container">
     <div class="view-control-bar">
       <div class="view-control-title">
@@ -1782,7 +1784,7 @@
         </div>
       </div>
 
-      <!-- MODAL 2: BREAK DETAILS MODAL (Exact screenshot matching!) -->
+      <!-- MODAL 2: BREAK DETAILS MODAL -->
       <div class="d3-modal-overlay" id="d3BreakModal" onclick="handleD3OverlayClick(event, 'd3BreakModal')">
         <div class="d3-modal-card">
           <div style="background: linear-gradient(90deg, #1e1b4b 0%, #312e81 100%); color: #ffffff; padding: 18px 28px; border-bottom: 3px solid #818cf8; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; flex-shrink: 0;">
@@ -1896,8 +1898,8 @@
   </section>
 
   <!-- =========================================================================
-       DASHBOARD 5: E-CLINIC DAILY LOGIN REPORT
-       ========================================================================= -->
+        DASHBOARD 5: E-CLINIC DAILY LOGIN REPORT
+        ========================================================================= -->
   <section id="dashboard5View" class="dashboard-view-container">
     <div class="view-control-bar">
       <div class="view-control-title">
@@ -1983,8 +1985,8 @@
   </section>
 
   <!-- =========================================================================
-       COMPLETE JAVASCRIPT ENGINE (All Dashboards Intact)
-       ========================================================================= -->
+        COMPLETE JAVASCRIPT ENGINE (All Dashboards Intact)
+        ========================================================================= -->
   <script>
     // Live Clock
     function updateRoyalClock() {
@@ -2035,8 +2037,8 @@
     }
 
     /* =========================================================================
-       DASHBOARD 1 ENGINE (Agent Hourly Report - Unit 2)
-       ========================================================================= */
+        DASHBOARD 1 ENGINE (Agent Hourly Report - Unit 2)
+        ========================================================================= */
     const D1_TEAMS = {
       "TEAM JITENDRA": [
         "Saurav Pal", "Md anas", "Renu Gupta", "Shivam verma", 
@@ -2387,8 +2389,8 @@
 
 
     /* =========================================================================
-       DASHBOARD 2 ENGINE (Productivity Report - Unit 2)
-       ========================================================================= */
+        DASHBOARD 2 ENGINE (Productivity Report - Unit 2)
+        ========================================================================= */
     const D2_TEAMS = {
       "TEAM JITENDRA": [
         "Saurav Pal", "Md anas", "Renu Gupta", "Shivam verma", 
@@ -2668,8 +2670,8 @@
 
 
     /* =========================================================================
-       DASHBOARD 3 ENGINE (Hourly KPI Consultation Unit II - 100% COMPLETE)
-       ========================================================================= */
+        DASHBOARD 3 ENGINE (Hourly KPI Consultation Unit II - 100% COMPLETE)
+        ========================================================================= */
     const D3_ROSTER = [
       {
         team: "TEAM JITENDRA",
@@ -2901,7 +2903,6 @@
       }));
     }
 
-    // Calculates and returns break statistics for a given list of agents
     function calculateD3TeamBreakList(agentList, teamName) {
       const breakStats = [];
 
@@ -3058,7 +3059,6 @@
           }
         });
 
-        // Team Sort Logic using per-team state
         const currentSort = d3TeamSortState[team.team] || { column: "tat", order: "asc" };
         const sortedMembers = [...team.members].sort((a, b) => {
           const tatA = parseFloat(a.tat) || 0;
@@ -3139,7 +3139,6 @@
           `;
         });
 
-        // Best & Slowest TAT badges on team banner
         const teamTatHtml = teamMin.tat !== 9999 ? `
           <div class="d3-team-tat-stats">
             <span class="d3-tat-pill-green">★ Best: ${teamMin.name} (${teamMin.tat}m)</span>
@@ -3147,7 +3146,6 @@
           </div>
         ` : '';
 
-        // Inline Team Break Table Generator
         const isInlineOpen = !!d3TeamInlineBreakOpen[team.team];
         const teamBreakStats = calculateD3TeamBreakList(team.members, team.team);
         let inlineBreakRows = "";
@@ -3181,7 +3179,6 @@
               <span class="d3-team-badge">${team.members.length} AGENTS</span>
             </div>
 
-            <!-- Center Break Toggle Button (Exact screenshot match!) -->
             <div>
               <button type="button" class="d3-btn-team-break-toggle ${isInlineOpen ? 'active-open' : ''}" onclick="toggleD3TeamBreakInline('${team.team}')" title="Toggle team break duration list">
                 <span>${isInlineOpen ? '✕ Hide Break' : '⏱ Break Stats'}</span>
@@ -3220,7 +3217,6 @@
             </table>
           </div>
 
-          <!-- Inline Expandable Team Break Panel (Exact screenshot match!) -->
           <div class="d3-team-inline-break-panel ${isInlineOpen ? 'active' : ''}">
             <div class="d3-team-inline-break-header">
               <span>${team.team} — AGENTS BREAK DURATION (&gt; 15 Mins)</span>
@@ -3995,8 +3991,8 @@
     renderD3();
 
     /* =========================================================================
-       DASHBOARD 5 ENGINE (E-Clinic Daily Login Dashboard)
-       ========================================================================= */
+        DASHBOARD 5 ENGINE (E-Clinic Daily Login Dashboard)
+        ========================================================================= */
     let d5GlobalData = [];
 
     document.getElementById('d5FileUpload').addEventListener('change', e => {
