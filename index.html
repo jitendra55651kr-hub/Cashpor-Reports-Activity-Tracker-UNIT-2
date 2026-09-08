@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>👑 ROYAL 3D MASTER DASHBOARD SUITE</title>
+  <title>👑 Data Visulals & Activity Tracker Cashpor Unit 2</title>
 
   <!-- Google Fonts: Royal & Ultra-Modern -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -225,7 +225,7 @@
       line-height: 1.6;
     }
 
-    /* 3D CARDS GRID - Adjusted to cleanly display 4 cards */
+    /* 3D CARDS GRID - Clean 4 cards grid layout */
     .portal-cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -241,11 +241,11 @@
       background: linear-gradient(145deg, #0b1528 0%, #101e38 100%);
       border: 2px solid rgba(255, 255, 255, 0.08);
       border-radius: 24px;
-      padding: 30px 26px;
+      padding: 36px 30px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 450px;
+      min-height: 320px;
       position: relative;
       overflow: hidden;
       box-shadow: 
@@ -285,7 +285,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .card-badge {
@@ -316,63 +316,25 @@
 
     .card-body h3 {
       font-family: 'Cinzel', serif;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 8px;
+      margin-bottom: 28px;
       letter-spacing: 0.5px;
-      line-height: 1.25;
-    }
-
-    .card-subtitle {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--card-accent);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .card-desc {
-      font-size: 13.5px;
-      color: #94a3b8;
-      line-height: 1.5;
-      margin-bottom: 22px;
-    }
-
-    .card-features-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 26px;
-    }
-
-    .card-features-list li {
-      font-size: 12.5px;
-      color: #cbd5e1;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-    }
-
-    .card-features-list li i {
-      color: var(--card-accent);
-      font-size: 12px;
+      line-height: 1.3;
     }
 
     .card-actions {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .btn-launch-card {
       background: linear-gradient(135deg, var(--card-accent) 0%, #1e293b 150%);
       color: #ffffff;
       border: none;
-      padding: 13px 20px;
+      padding: 14px 20px;
       border-radius: 12px;
       font-size: 14px;
       font-weight: 800;
@@ -393,25 +355,29 @@
     }
 
     .btn-upload-direct {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1.5px dashed var(--card-accent);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+      border: 2px solid var(--card-accent);
       color: var(--card-accent);
-      padding: 11px 18px;
+      padding: 13px 18px;
       border-radius: 12px;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 800;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       transition: all 0.25s ease;
+      box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.03), 0 4px 15px rgba(0,0,0,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .btn-upload-direct:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-style: solid;
-      transform: translateY(-1px);
+      background: var(--card-accent);
+      color: #070b19;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px var(--card-glow);
     }
 
     /* ==========================================================================
@@ -526,13 +492,6 @@
             </div>
             <div class="card-body">
               <h3>Agent Hourly Report</h3>
-              <div class="card-subtitle">Consultation & Dual Priority Sorting</div>
-              <p class="card-desc">Hourly breakdown of Book, Done, Video Call, and FDB metrics across all 5 operational teams with dual-column priority sorting and agent filters.</p>
-              <ul class="card-features-list">
-                <li><i class="fa-solid fa-check"></i> 5 Teams (Jitendra, Deepti, Ravi, Shivam, Ishant)</li>
-                <li><i class="fa-solid fa-check"></i> Dual Multi-Column Calling / Pharmacist Sorting</li>
-                <li><i class="fa-solid fa-check"></i> Interactive Agent Filter Modal with search</li>
-              </ul>
             </div>
           </div>
           <div class="card-actions">
@@ -542,7 +501,7 @@
             </button>
             <label class="btn-upload-direct">
               <i class="fa-solid fa-cloud-arrow-up"></i>
-              <span>Direct Upload & Open</span>
+              <span>Upload CSV, Excel, Others</span>
               <input type="file" accept=".xlsx, .xls, .csv" style="display:none;" onchange="handleDirectUpload(event, 'd1')">
             </label>
           </div>
@@ -559,13 +518,6 @@
             </div>
             <div class="card-body">
               <h3>Productivity Report</h3>
-              <div class="card-subtitle">Target vs Achievement & Weights</div>
-              <p class="card-desc">Weighted achievement scoring (Video 5x, Camp 4x, Conn FDB 3x, Conn IMM 5x), working days calendar, and agent/pharmacist averages.</p>
-              <ul class="card-features-list">
-                <li><i class="fa-solid fa-check"></i> Automated Working Days (excluding weekends)</li>
-                <li><i class="fa-solid fa-check"></i> Agent vs Pharmacist Separate Benchmarking</li>
-                <li><i class="fa-solid fa-check"></i> Top Performer 🏆 & Low Productivity 🔻 Badges</li>
-              </ul>
             </div>
           </div>
           <div class="card-actions">
@@ -575,7 +527,7 @@
             </button>
             <label class="btn-upload-direct">
               <i class="fa-solid fa-cloud-arrow-up"></i>
-              <span>Direct Upload & Open</span>
+              <span>Upload CSV, Excel, Others</span>
               <input type="file" accept=".xlsx, .xls, .csv" style="display:none;" onchange="handleDirectUpload(event, 'd2')">
             </label>
           </div>
@@ -592,13 +544,6 @@
             </div>
             <div class="card-body">
               <h3>Hourly KPI Consultation Unit II</h3>
-              <div class="card-subtitle">Slots, Break Stats & Interactive Modals</div>
-              <p class="card-desc">Complete hourly slots (7 AM - 6 PM), Turn-Around Time (TAT), Best/Slowest pills, inline team break stats toggle, and 5 interactive modals.</p>
-              <ul class="card-features-list">
-                <li><i class="fa-solid fa-check"></i> Inline Break Stats toggle button on team banner</li>
-                <li><i class="fa-solid fa-check"></i> Click Agent Name to view Full Break Timeline modal</li>
-                <li><i class="fa-solid fa-check"></i> Sparklines, Slot Drilldown, and Region Modals</li>
-              </ul>
             </div>
           </div>
           <div class="card-actions">
@@ -608,14 +553,14 @@
             </button>
             <label class="btn-upload-direct">
               <i class="fa-solid fa-cloud-arrow-up"></i>
-              <span>Direct Upload & Open</span>
+              <span>Upload CSV, Excel, Others</span>
               <input type="file" accept=".xlsx, .xls, .csv" style="display:none;" onchange="handleDirectUpload(event, 'd3')">
             </label>
           </div>
         </div>
       </div>
 
-      <!-- CARD 4 (Moved Up: E-Clinic Daily Login Tracker, formerly Card 5) -->
+      <!-- CARD 4 -->
       <div class="card-3d-wrapper">
         <div class="portal-card-3d theme-amethyst">
           <div>
@@ -625,13 +570,6 @@
             </div>
             <div class="card-body">
               <h3>E-Clinic Daily Login Tracker</h3>
-              <div class="card-subtitle">Login IDs, IP & Region Filter</div>
-              <p class="card-desc">Daily attendance, IP tracking, Consultation Count and Policy Count with multi-level filtering by Login Code and Branch Region.</p>
-              <ul class="card-features-list">
-                <li><i class="fa-solid fa-check"></i> Instant Login Code Prefix Extraction</li>
-                <li><i class="fa-solid fa-check"></i> Region-wise Clinic Filtering & Deduping</li>
-                <li><i class="fa-solid fa-check"></i> Consultation & Policy Productivity Totals</li>
-              </ul>
             </div>
           </div>
           <div class="card-actions">
@@ -641,7 +579,7 @@
             </button>
             <label class="btn-upload-direct">
               <i class="fa-solid fa-cloud-arrow-up"></i>
-              <span>Direct Upload & Open</span>
+              <span>Upload CSV, Excel, Others</span>
               <input type="file" accept=".xlsx, .xls, .csv" style="display:none;" onchange="handleDirectUpload(event, 'd5')">
             </label>
           </div>
@@ -4082,7 +4020,7 @@
 
       codeSelect.onchange = function() {
         const code = this.value;
-        document.getElementById('d5RegionSelect').value = '';
+        document.getElementById('d5RegionSelect').value = ** '';
         if (!code) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
         renderD5Table(d5GlobalData.filter(item => item.codePrefix === code));
       };
