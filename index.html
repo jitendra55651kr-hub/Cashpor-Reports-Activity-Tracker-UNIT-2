@@ -4204,382 +4204,149 @@
     renderD3();
 
 
-    /* =========================================================================
-       DASHBOARD 4 ENGINE (Cashpor Agent Activity Tracker - Analytics Pro - WHITE THEME)
-       ========================================================================= */
-    let d4RawData = [];
-    let d4HourlyChart = null;
-    let d4BreakChart = null;
+    <!-- =========================================================================
+       DASHBOARD 4: CASHPOR AGENT ACTIVITY TRACKER - ANALYTICS PRO (CLEAN WHITE THEME)
+       ========================================================================= -->
+  <section id="dashboard4View" class="dashboard-view-container" style="background-color: #e2e8f0; min-height: 100vh; padding-bottom: 48px;">
+    <div class="view-control-bar" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); border: none; border-bottom: 6px solid #0f172a; border-radius: 0 0 16px 16px; margin-bottom: 24px;">
+      <div class="view-control-title" style="display: flex; align-items: center; gap: 16px;">
+        <div style="background: #ffffff; border-radius: 50%; box-shadow: 4px 4px 10px rgba(0,0,0,0.3); overflow: hidden; height: 50px; width: 50px; border: 2px solid #slate-200; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAcSURBVBhXY2RgYPgPxAyA2ACIg2AAsxEQAwMDoAMATf4D9hS85WwAAAAASUVORK5YII=" alt="Logo" style="height: 32px; width: 32px; object-fit: contain;">
+        </div>
+        <div>
+          <h2 style="font-size: 24px; font-weight: 900; color: #ffffff; letter-spacing: 0.5px;">Analytics <span style="color: #fbbf24;">Pro</span></h2>
+          <p style="font-size: 11px; color: #cbd5e1; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Individual Deep Dive & SLA Analysis</p>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <div id="d4FiltersContainer" style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <select id="d4DateSelect" style="background-color: #ffffff; color: #1e293b; border: 2px solid #cbd5e1; border-bottom: 4px solid #94a3b8; border-radius: 10px; padding: 10px 14px; outline: none; cursor: pointer; font-weight: 800; font-size: 1rem; box-shadow: 4px 4px 10px rgba(0,0,0,0.05);"></select>
+          <select id="d4AgentSelect" style="background-color: #ffffff; color: #1e293b; border: 2px solid #cbd5e1; border-bottom: 4px solid #94a3b8; border-radius: 10px; padding: 10px 14px; outline: none; cursor: pointer; font-weight: 800; font-size: 1rem; box-shadow: 4px 4px 10px rgba(0,0,0,0.05);"></select>
+        </div>
+        <div>
+          <label for="d4FileInput" style="background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%); border-bottom: 4px solid #c2410c; color: #ffffff; padding: 10px 20px; border-radius: 10px; cursor: pointer; font-weight: 900; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            📁 Upload CSV
+          </label>
+          <input type="file" id="d4FileInput" accept=".csv" style="display:none;">
+        </div>
+        <button type="button" class="btn-back-hub" onclick="switchView('hub')" style="background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%); color: #ffffff; border: 1px solid #38bdf8; padding: 10px 18px; border-radius: 30px; font-size: 13px; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-arrow-left"></i> Hub
+        </button>
+      </div>
+    </div>
 
-    document.getElementById('d4FileInput').addEventListener('change', e => {
-      if (e.target.files[0]) handleD4FileDirect(e.target.files[0]);
-    });
-
-    function handleD4FileDirect(file) {
-      Papa.parse(file, {
-        header: false,
-        skipEmptyLines: true,
-        complete: function(results) {
-          let dataArray = results.data;
-          if (dataArray.length < 2) return;
-          let headers = dataArray[1];
-          let formatted = [];
-          for (let i = 2; i < dataArray.length; i++) {
-            let obj = {};
-            for (let j = 0; j < headers.length; j++) {
-              if (headers[j]) obj[headers[j].trim()] = dataArray[i][j] ? dataArray[i][j].trim() : '';
-            }
-            formatted.push(obj);
-          }
-          processD4Data(formatted);
+    <div class="d4-wrapper" style="max-width: 1400px; margin: 0 auto; padding: 0 24px;">
+      <style>
+        .d4-card-3d {
+          background: linear-gradient(145deg, #ffffff, #f1f5f9);
+          border-radius: 16px; padding: 24px; border: 1px solid #e2e8f0;
+          box-shadow: 8px 8px 16px #cbd5e1, -8px -8px 16px #ffffff;
+          border-bottom: 5px solid #cbd5e1; border-right: 2px solid #cbd5e1;
         }
-      });
-    }
-
-    function processD4Data(data) {
-      d4RawData = data.filter(r => r['Consult StartTime'] && !r['Consult StartTime'].includes('2050') && r['Med Agent']);
-      if (d4RawData.length === 0) return;
-
-      const dateSet = new Set();
-      d4RawData.forEach(r => { if (r['Date']) dateSet.add(r['Date']); });
-      const dateSelect = document.getElementById('d4DateSelect');
-      dateSelect.innerHTML = '<option value="All">📅 All Dates</option>';
-      Array.from(dateSet).sort().forEach(d => {
-        dateSelect.innerHTML += `<option value="${d}">📅 ${d}</option>`;
-      });
-
-      const agentMap = new Map();
-      d4RawData.forEach(r => {
-        const name = (r['Med Agent'] || 'Unknown').trim();
-        const code = (r['Med Agent Emp Code'] || 'NA').trim();
-        const key = name + '|||' + code;
-        if (!agentMap.has(key)) agentMap.set(key, `${name} (${code})`);
-      });
-
-      const agentSelect = document.getElementById('d4AgentSelect');
-      agentSelect.innerHTML = '';
-      Array.from(agentMap.entries()).sort((a,b) => a[1].localeCompare(b[1])).forEach(([k, v]) => {
-        agentSelect.innerHTML += `<option value="${k}">👤 ${v}</option>`;
-      });
-
-      dateSelect.onchange = updateD4Dashboard;
-      agentSelect.onchange = updateD4Dashboard;
-      updateD4Dashboard();
-    }
-
-    function updateD4Dashboard() {
-      const agentSel = document.getElementById('d4AgentSelect');
-      if (!agentSel.value) return;
-      const [agentName, agentCode] = agentSel.value.split('|||');
-      const selectedDate = document.getElementById('d4DateSelect').value;
-
-      document.getElementById('d4AgentNameDisplay').textContent = agentSel.options[agentSel.selectedIndex].text.replace('👤 ', '');
-
-      let list = d4RawData.filter(r => (r['Med Agent'] || '').trim() === agentName && (r['Med Agent Emp Code'] || '').trim() === agentCode);
-      if (selectedDate !== 'All') list = list.filter(r => r['Date'] === selectedDate);
-
-      let cp = 0, clinic = 0, call = 0;
-      let totalTat = 0, tatCount = 0;
-      let breaches = 0;
-      let prevEnd = null;
-      let breakLabels = [], breakData = [];
-      let slaDetails = [];
-      let regionCounts = {};
-
-      list.forEach(row => {
-        const type = (row['Type'] || '').toUpperCase();
-        if (type === 'CP') cp++;
-        else if (type === 'CLINIC') clinic++;
-        else if (type === 'CALL') call++;
-
-        const appt = row['App Time'] || row['Appt Time'] || row['Appointment Time'];
-        const cStart = row['Consult StartTime'];
-        const cEnd = row['Consult EndTime'];
-        const fbEnd = row['Immediate Feedback End Time'];
-
-        const d1 = parseD3SafeDate(appt);
-        const d2 = parseD3SafeDate(fbEnd);
-        let caseMins = (d1 && d2) ? Math.max(0, (d2 - d1) / 60000) : 0;
-        if (caseMins > 0) {
-          totalTat += caseMins;
-          tatCount++;
+        .d4-inner-3d {
+          background: #f8fafc;
+          box-shadow: inset 4px 4px 8px #cbd5e1, inset -4px -4px 8px #ffffff;
+          border-radius: 12px; border: 1px solid #e2e8f0;
         }
+      </style>
 
-        if (caseMins > 30) {
-          breaches++;
-          slaDetails.push({
-            emr: row['EMR #'] || '-',
-            type: type || 'Unknown',
-            total: formatHoursMins(caseMins),
-            agent: formatHoursMins(diffInMins(appt, cStart)),
-            doc: formatHoursMins(diffInMins(cStart, cEnd)),
-            pharm: formatHoursMins(diffInMins(cEnd, fbEnd))
-          });
-        }
+      <div id="d4DashboardContent">
+        <div class="d4-card-3d" style="display:inline-flex; align-items:center; gap:16px; margin-bottom:24px;">
+          <span style="font-size:32px; background:#f1f5f9; padding:12px 18px; border-radius:12px; border:1px solid #cbd5e1; box-shadow: inset 2px 2px 5px #cbd5e1;">👤</span>
+          <div>
+            <div style="font-size:11px; color:#64748b; font-weight:800; text-transform:uppercase; letter-spacing:1px;">Performance Report For</div>
+            <h2 id="d4AgentNameDisplay" style="font-size:26px; font-weight:900; color:#1e3a8a; margin-top:2px;">Select Agent</h2>
+          </div>
+        </div>
 
-        if (appt && prevEnd) {
-          const p = parseD3SafeDate(prevEnd);
-          const a = parseD3SafeDate(appt);
-          if (p && a) {
-            const gap = (a - p) / 60000;
-            if (gap > 15) {
-              breakLabels.push(`${formatAmPm(prevEnd)} to ${formatAmPm(appt)}`);
-              breakData.push(Math.round(gap));
-            }
-          }
-        }
-        if (cEnd || cStart || appt) prevEnd = cEnd || cStart || appt;
-
-        const reg = row['Region Name'] || 'Unknown';
-        if (!regionCounts[reg]) regionCounts[reg] = { cp: 0, clinic: 0, call: 0, total: 0 };
-        if (type === 'CP') regionCounts[reg].cp++;
-        else if (type === 'CLINIC') regionCounts[reg].clinic++;
-        else if (type === 'CALL') regionCounts[reg].call++;
-        regionCounts[reg].total++;
-      });
-
-      document.getElementById('d4TotalCases').innerText = list.length;
-      document.getElementById('d4CpCount').innerText = cp;
-      document.getElementById('d4ClinicCount').innerText = clinic;
-      if (call > 0) {
-        document.getElementById('d4CallDiv').classList.remove('hidden');
-        document.getElementById('d4CallCount').innerText = call;
-      } else {
-        document.getElementById('d4CallDiv').classList.add('hidden');
-      }
-
-      document.getElementById('d4SlaBreachTotal').innerText = breaches;
-      document.getElementById('d4AvgTat').innerText = tatCount > 0 ? formatHoursMins(totalTat / tatCount) : '0 min';
-
-      let firstCase = "N/A", lastCase = "N/A";
-      if(list.length > 0) {
-        let minDate = null, maxDate = null;
-        let firstStr = null, lastStr = null;
-        list.forEach(p => {
-          let apptStr = p['App Time'] || p['Appt Time'] || p['Appointment Time'];
-          let endStr = p['Consult EndTime'];
-          let dAppt = parseD3SafeDate(apptStr);
-          let dEnd = parseD3SafeDate(endStr);
-          if(dAppt && (!minDate || dAppt < minDate)) { minDate = dAppt; firstStr = apptStr; }
-          if(dEnd && (!maxDate || dEnd > maxDate)) { maxDate = dEnd; lastStr = endStr; }
-        });
-        firstCase = firstStr ? formatAmPm(firstStr) : "N/A";
-        lastCase = lastStr ? formatAmPm(lastStr) : "N/A";
-      }
-      document.getElementById('d4FirstLastTime').textContent = `${firstCase} - ${lastCase}`;
-
-      // Region table
-      let hasCallCases = call > 0;
-      const rHead = document.getElementById('d4RegionHead');
-      if (hasCallCases) {
-        rHead.innerHTML = `
-          <tr class="bg-slate-100 text-slate-600 uppercase text-xs font-black">
-            <th class="p-3 rounded-tl-lg">Region Name</th>
-            <th class="p-3 text-center">CP Cases</th>
-            <th class="p-3 text-center">Clinic Cases</th>
-            <th class="p-3 text-center">Call Cases</th>
-            <th class="p-3 text-center rounded-tr-lg">Total</th>
-          </tr>
-        `;
-      } else {
-        rHead.innerHTML = `
-          <tr class="bg-slate-100 text-slate-600 uppercase text-xs font-black">
-            <th class="p-3 rounded-tl-lg">Region Name</th>
-            <th class="p-3 text-center">CP Cases</th>
-            <th class="p-3 text-center">Clinic Cases</th>
-            <th class="p-3 text-center rounded-tr-lg">Total</th>
-          </tr>
-        `;
-      }
-
-      const rBody = document.getElementById('d4RegionBody');
-      let sortedRegions = Object.keys(regionCounts).sort((a,b) => regionCounts[b].total - regionCounts[a].total);
-      rBody.innerHTML = sortedRegions.map(r => {
-        let val = regionCounts[r];
-        if (hasCallCases) {
-          return `
-            <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
-              <td class="p-3 font-black text-slate-800">${r}</td>
-              <td class="p-3 text-center text-orange-600">${val.cp}</td>
-              <td class="p-3 text-center text-blue-600">${val.clinic}</td>
-              <td class="p-3 text-center text-green-600">${val.call}</td>
-              <td class="p-3 text-center font-black">${val.total}</td>
-            </tr>
-          `;
-        } else {
-          return `
-            <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
-              <td class="p-3 font-black text-slate-800">${r}</td>
-              <td class="p-3 text-center text-orange-600">${val.cp}</td>
-              <td class="p-3 text-center text-blue-600">${val.clinic}</td>
-              <td class="p-3 text-center font-black">${val.total}</td>
-            </tr>
-          `;
-        }
-      }).join('') || `<tr><td colspan="${hasCallCases ? 5 : 4}" class="p-4 text-center text-slate-500 italic">No region data available</td></tr>`;
-
-      // SLA List
-      const slaListDiv = document.getElementById('d4SlaList');
-      if (slaDetails.length > 0) {
-        slaListDiv.innerHTML = slaDetails.map(s => `
-          <li class="inner-3d p-5 mb-4 shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex justify-between items-center mb-4 border-b-2 border-slate-200 pb-3">
-              <div class="flex items-center gap-3">
-                <span class="font-extrabold text-slate-800 text-[16px]">EMR: <span class="text-[#1e3a8a]">${s.emr}</span></span>
-                <span class="bg-white text-slate-700 px-2 py-1 rounded-md text-[11px] font-black border border-slate-300 uppercase shadow-sm">${s.type}</span>
-              </div>
-              <span class="bg-red-100 text-red-700 border-2 border-red-200 px-4 py-1.5 rounded-lg text-[14px] font-black shadow-inner">Total: ${s.total}</span>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; margin-bottom:28px;">
+          <div class="d4-card-3d" style="border-left:10px solid #1e3a8a; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:16px; font-weight:900; color:#334155; text-transform:uppercase; margin-bottom:6px;">Total Cases</div>
+              <div id="d4TotalCases" style="font-size:48px; font-weight:900; color:#1e3a8a;">0</div>
             </div>
-            <div class="grid grid-cols-3 gap-4">
-              <div class="bg-white p-3 rounded-xl text-center border border-slate-200 shadow-[2px_2px_5px_rgba(0,0,0,0.05)]">
-                <div class="text-[12px] text-slate-500 uppercase font-black mb-1">Agent</div>
-                <div class="font-black text-slate-800 text-lg">${s.agent}</div>
-              </div>
-              <div class="bg-white p-3 rounded-xl text-center border border-slate-200 shadow-[2px_2px_5px_rgba(0,0,0,0.05)]">
-                <div class="text-[12px] text-slate-500 uppercase font-black mb-1">Doctor</div>
-                <div class="font-black text-slate-800 text-lg">${s.doc}</div>
-              </div>
-              <div class="bg-white p-3 rounded-xl text-center border border-slate-200 shadow-[2px_2px_5px_rgba(0,0,0,0.05)]">
-                <div class="text-[12px] text-slate-500 uppercase font-black mb-1">Pharm</div>
-                <div class="font-black text-slate-800 text-lg">${s.pharm}</div>
-              </div>
+            <div class="d4-inner-3d" style="text-align:right; padding:12px 16px;">
+              <div>CP: <span id="d4CpCount" style="color:#ea580c; font-size:18px; font-weight:900;">0</span></div>
+              <div style="margin-top:6px; border-top:1px solid #e2e8f0; paddingTop:6px;">Clinic: <span id="d4ClinicCount" style="color:#1e3a8a; font-size:18px; font-weight:900;">0</span></div>
+              <div id="d4CallDiv" style="margin-top:6px; border-top:1px solid #e2e8f0; paddingTop:6px; display:none;">Call: <span id="d4CallCount" style="color:#16a34a; font-size:18px; font-weight:900;">0</span></div>
             </div>
-          </li>
-        `).join('');
-      } else {
-        slaListDiv.innerHTML = `<li class="text-slate-600 font-extrabold italic p-6 text-center mt-6 inner-3d text-lg">All cases handled under 30 mins! 🚀</li>`;
-      }
+          </div>
 
-      // Break Chart
-      const bCanvas = document.getElementById('d4BreakChart');
-      if (d4BreakChart) d4BreakChart.destroy();
-      if (breakData.length > 0) {
-        document.getElementById('d4NoBreakMsg').classList.add('hidden');
-        bCanvas.classList.remove('hidden');
-        document.getElementById('d4BreakTimeTotal').textContent = formatHoursMins(breakData.reduce((a, b) => a + b, 0));
+          <div class="d4-card-3d" style="border-left:10px solid #f59e0b; display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <div style="font-size:16px; font-weight:900; color:#334155; text-transform:uppercase; margin-bottom:6px;">First & Last Case</div>
+              <div id="d4FirstLastTime" style="font-size:24px; font-weight:900; color:#1e293b; margin-top:8px; white-space:nowrap;">-</div>
+            </div>
+            <div class="d4-inner-3d" style="background:linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border:1px solid #fed7aa; padding:12px; border-radius:12px; color:#c2410c; font-size:24px; display:flex; flex-direction:column; align-items:center; gap:4px;">
+              <i class="fa-solid fa-clock" style="font-size:22px;"></i>
+              <span style="font-size:10px; font-weight:800; text-transform:uppercase;">Timeline</span>
+            </div>
+          </div>
+        </div>
 
-        d4BreakChart = new Chart(bCanvas, {
-          type: 'bar',
-          data: {
-            labels: breakLabels,
-            datasets: [{
-              label: 'Break Duration',
-              data: breakData,
-              backgroundColor: (context) => {
-                const chart = context.chart;
-                const {ctx, chartArea} = chart;
-                if (!chartArea) return '#eab308';
-                const gradient = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
-                gradient.addColorStop(0, '#b45309'); 
-                gradient.addColorStop(1, '#fbbf24'); 
-                return gradient;
-              },
-              borderRadius: 6,
-              barThickness: 24,
-              borderWidth: 1,
-              borderColor: '#d97706',
-              hoverBackgroundColor: '#fbbf24'
-            }]
-          },
-          options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            layout: { padding: { right: 80 } },
-            scales: {
-              x: { display: false, beginAtZero: true },
-              y: { 
-                grid: { display: false }, 
-                ticks: { color: '#334155', font: { weight: '800', size: 12 } } 
-              }
-            },
-            plugins: {
-              legend: { display: false },
-              datalabels: {
-                color: '#b45309',
-                anchor: 'end',
-                align: 'right',
-                font: { weight: '900', size: 14 },
-                formatter: (val) => formatHoursMins(val)
-              },
-              tooltip: {
-                backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                titleFont: {size: 14},
-                bodyFont: {size: 14, weight: 'bold'},
-                padding: 12,
-                callbacks: {
-                  label: function(context) {
-                    return ' ' + formatHoursMins(context.raw);
-                  }
-                }
-              }
-            }
-          }
-        });
-      } else {
-        bCanvas.classList.add('hidden');
-        document.getElementById('d4NoBreakMsg').classList.remove('hidden');
-        document.getElementById('d4BreakTimeTotal').textContent = '0 min';
-      }
+        <div class="d4-card-3d" style="margin-bottom:28px; border-left:10px solid #10b981;">
+          <h3 style="font-size:16px; font-weight:900; color:#1e293b; text-transform:uppercase; margin-bottom:14px;">Region-wise Breakdown</h3>
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse; text-align:left;">
+              <thead id="d4RegionHead">
+                <tr style="background:#f1f5f9; color:#475569; font-size:12px; text-transform:uppercase; font-weight:900;">
+                  <th style="padding:12px 16px;">Region Name</th>
+                  <th style="padding:12px 16px; text-align:center;">CP Cases</th>
+                  <th style="padding:12px 16px; text-align:center;">Clinic Cases</th>
+                  <th style="padding:12px 16px; text-align:center;">Total</th>
+                </tr>
+              </thead>
+              <tbody id="d4RegionBody" style="font-size:14px; font-weight:800; color:#334155;">
+                <tr><td colspan="4" style="padding:16px; text-align:center; color:#64748b; font-style:italic;">No data uploaded yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-      // Hourly Chart
-      const hourly = { 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0, 16:0, 17:0, 18:0 };
-      list.forEach(r => {
-        const d = parseD3SafeDate(r['Consult StartTime']);
-        if (d) {
-          const hr = d.getHours();
-          if (hourly[hr] !== undefined) hourly[hr]++;
-        }
-      });
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:24px; margin-bottom:28px;">
+          <!-- Break Chart Card -->
+          <div class="d4-card-3d" style="display:flex; flex-direction:column; height:480px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:3px solid #f1f5f9; padding-bottom:12px;">
+              <div>
+                <h3 style="font-size:17px; font-weight:900; color:#1e293b; text-transform:uppercase;">Total Break Time</h3>
+                <p style="font-size:12px; color:#64748b; font-weight:700; margin-top:2px;">Gaps &gt; 15 minutes</p>
+              </div>
+              <div id="d4BreakTimeTotal" style="font-size:26px; font-weight:900; color:#ea580c;">0 min</div>
+            </div>
+            <div style="flex:1; position:relative; padding:12px;" class="d4-inner-3d">
+              <canvas id="d4BreakChart"></canvas>
+              <div id="d4NoBreakMsg" style="display:none; position:absolute; inset:0; align-items:center; justify-content:center; color:#64748b; font-weight:800; font-style:italic;">No breaks over 15 mins! 🎉</div>
+            </div>
+          </div>
 
-      const hCanvas = document.getElementById('d4HourlyChart');
-      if (d4HourlyChart) d4HourlyChart.destroy();
-      d4HourlyChart = new Chart(hCanvas, {
-        type: 'bar',
-        data: {
-          labels: ['7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM', '1 PM', '2 PM', '3 PM', '4 PM', '5 PM', '6 PM'],
-          datasets: [{
-            label: 'Cases',
-            data: Object.values(hourly),
-            backgroundColor: (context) => {
-              const chart = context.chart;
-              const {ctx, chartArea} = chart;
-              if (!chartArea) return '#1e3a8a';
-              const gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-              gradient.addColorStop(0, '#0f172a'); 
-              gradient.addColorStop(1, '#3b82f6'); 
-              return gradient;
-            },
-            borderRadius: {topLeft: 8, topRight: 8, bottomLeft: 2, bottomRight: 2},
-            borderWidth: 1,
-            borderColor: '#1e40af',
-            hoverBackgroundColor: '#f59e0b'
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          layout: { padding: { top: 35 } },
-          scales: {
-            y: { beginAtZero: true, grid: { color: '#e2e8f0', borderDash: [5, 5] }, ticks: { color: '#64748b', font: {weight: '900', size: 14} } },
-            x: { grid: { display: false }, ticks: { color: '#334155', font: { weight: '900', size: 13 } } }
-          },
-          plugins: { 
-            legend: { display: false },
-            datalabels: {
-              color: '#1e3a8a',
-              anchor: 'end',
-              align: 'top',
-              offset: 4,
-              font: { weight: '900', size: 16 },
-              formatter: (value) => value > 0 ? value : ''
-            }
-          }
-        }
-      });
-    }
+          <!-- Longest EMRs Card -->
+          <div class="d4-card-3d" style="display:flex; flex-direction:column; height:480px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:3px solid #f1f5f9; padding-bottom:12px;">
+              <div>
+                <h3 style="font-size:17px; font-weight:900; color:#1e293b; text-transform:uppercase;">Longest EMRs (&gt; 30m)</h3>
+                <div style="font-size:12px; font-weight:800; margin-top:4px; background:#eff6ff; color:#1d4ed8; padding:4px 10px; border-radius:6px; display:inline-block; border:1px solid #bfdbfe;">Avg TAT (All): <span id="d4AvgTat">0 min</span></div>
+              </div>
+              <div id="d4SlaBreachTotal" style="font-size:32px; font-weight:900; color:#dc2626;">0</div>
+            </div>
+            <div id="d4SlaList" style="flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:10px; padding-right:4px;">
+              <div style="padding:24px; text-align:center; color:#64748b; font-weight:800; font-style:italic;">No SLA breaches recorded.</div>
+            </div>
+          </div>
+        </div>
 
-
+        <!-- Hourly Chart Card -->
+        <div class="d4-card-3d">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <h3 style="font-size:18px; font-weight:900; color:#1e293b; text-transform:uppercase;">Hourly Case Volume</h3>
+            <span style="background:#e2e8f0; padding:6px 14px; border-radius:20px; font-size:12px; font-weight:900; color:#334155;">7 AM - 6 PM</span>
+          </div>
+          <div style="height:350px; padding:12px;" class="d4-inner-3d">
+            <canvas id="d4HourlyChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
     /* =========================================================================
        DASHBOARD 5 ENGINE (E-Clinic Daily Login Dashboard)
        ========================================================================= */
