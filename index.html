@@ -3898,6 +3898,16 @@
        ========================================================================= */
     let d5GlobalData = [];
 
+    document.getElementById('d5FileUpload').addEventListener('change', e => {
+      if (e.target.files[0]) handleD5FileDirect(e.target.files[0]);
+    });
+
+    function extractD5Prefix(str) {
+      if (!str) return 'OTHER';
+      const match = str.match(/(?:EC|ec)?(\d{2,3}:)/i);
+      return match ? match[1] : 'OTHER';
+    }
+
     function handleD5FileDirect(file) {
       document.getElementById('d5FileName').textContent = file.name;
       document.getElementById('d5Loader').style.display = 'block';
@@ -3909,20 +3919,38 @@
 
       if (isExcel) {
         reader.onload = function(e) {
-          const data = new Uint8Array(e.target.result);
-          const workbook = XLSX.read(data, { type: 'array' });
-          const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-          const json = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
-          processD5Data(json);
+          try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const json = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+            processD5Data(json);
+          } catch (err) {
+            console.error(err);
+            alert("Dashboard 5 Error reading Excel file: " + err.message);
+            document.getElementById('d5Loader').style.display = 'none';
+          }
         };
         reader.readAsArrayBuffer(file);
       } else {
         reader.onload = function(e) {
-          Papa.parse(e.target.result, {
-            complete: function(results) {
-              processD5Data(results.data);
-            }
-          });
+          try {
+            Papa.parse(e.target.result, {
+              complete: function(results) {
+                const rows = results.data.map(r => Array.isArray(r) ? r : Object.values(r));
+                processD5Data(rows);
+              },
+              error: function(err) {
+                console.error(err);
+                alert("Dashboard 5 Error reading CSV file: " + err.message);
+                document.getElementById('d5Loader').style.display = 'none';
+              }
+            });
+          } catch (err) {
+            console.error(err);
+            alert("Dashboard 5 Error reading CSV file: " + err.message);
+            document.getElementById('d5Loader').style.display = 'none';
+          }
         };
         reader.readAsText(file);
       }
@@ -4005,7 +4033,7 @@
         const code = this.value;
         document.getElementById('d5RegionSelect').value = '';
         if (!code) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
-        renderD5Table(d5GlobalData.split ? d5GlobalData.filter(item => item.codePrefix === code) : []);
+        renderD5Table(d5GlobalData.filter(item => item.codePrefix === code));
       };
 
       regionSelect.onchange = function() {
