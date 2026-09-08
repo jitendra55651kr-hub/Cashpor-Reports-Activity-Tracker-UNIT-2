@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>👑 Data Visulals & Activity Tracker Cashpor Unit 2</title>
+  <title>👑 ROYAL 3D MASTER DASHBOARD SUITE</title>
 
   <!-- Google Fonts: Royal & Ultra-Modern -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -245,7 +245,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 320px;
+      min-height: 280px;
       position: relative;
       overflow: hidden;
       box-shadow: 
@@ -316,10 +316,10 @@
 
     .card-body h3 {
       font-family: 'Cinzel', serif;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       letter-spacing: 0.5px;
       line-height: 1.3;
     }
@@ -330,7 +330,7 @@
       gap: 12px;
     }
 
-    .btn-launch-card {
+    .btn-upload-direct {
       background: linear-gradient(135deg, var(--card-accent) 0%, #1e293b 150%);
       color: #ffffff;
       border: none;
@@ -346,38 +346,13 @@
       gap: 10px;
       transition: all 0.25s ease;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    }
-
-    .btn-launch-card:hover {
-      filter: brightness(1.15);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px var(--card-glow);
-    }
-
-    .btn-upload-direct {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
-      border: 2px solid var(--card-accent);
-      color: var(--card-accent);
-      padding: 13px 18px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 800;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: all 0.25s ease;
-      box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.03), 0 4px 15px rgba(0,0,0,0.3);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
     .btn-upload-direct:hover {
-      background: var(--card-accent);
-      color: #070b19;
+      filter: brightness(1.15);
       transform: translateY(-2px);
-      box-shadow: 0 6px 22px var(--card-glow);
+      box-shadow: 0 8px 25px var(--card-glow);
     }
 
     /* ==========================================================================
@@ -495,10 +470,6 @@
             </div>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn-launch-card" onclick="switchView('d1')">
-              <span>Launch Dashboard</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
             <label class="btn-upload-direct">
               <i class="fa-solid fa-cloud-arrow-up"></i>
               <span>Upload CSV, Excel, Others</span>
@@ -521,10 +492,6 @@
             </div>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn-launch-card" onclick="switchView('d2')">
-              <span>Launch Dashboard</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
             <label class="btn-upload-direct">
               <i class="fa-solid fa-cloud-arrow-up"></i>
               <span>Upload CSV, Excel, Others</span>
@@ -547,10 +514,6 @@
             </div>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn-launch-card" onclick="switchView('d3')">
-              <span>Launch Dashboard</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
             <label class="btn-upload-direct">
               <i class="fa-solid fa-cloud-arrow-up"></i>
               <span>Upload CSV, Excel, Others</span>
@@ -573,10 +536,6 @@
             </div>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn-launch-card" onclick="switchView('d5')">
-              <span>Launch Dashboard</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
             <label class="btn-upload-direct">
               <i class="fa-solid fa-cloud-arrow-up"></i>
               <span>Upload CSV, Excel, Others</span>
@@ -1921,7 +1880,7 @@
 
   <!-- =========================================================================
        COMPLETE JAVASCRIPT ENGINE
-       ========================================================================= -->
+       ========================================================================== -->
   <script>
     // Live Clock
     function updateRoyalClock() {
@@ -2028,10 +1987,6 @@
     }
     resetD1Sorts();
 
-    document.getElementById('d1FileInput').addEventListener('change', e => {
-      if (e.target.files[0]) handleD1FileDirect(e.target.files[0]);
-    });
-
     function cleanD1String(str) {
       if (!str) return '';
       return String(str).toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -2041,15 +1996,29 @@
       document.getElementById('d1FileName').innerText = file.name;
       document.getElementById('d1FileBadge').classList.add('active');
 
+      const fileName = file.name.toLowerCase();
+      const isExcel = fileName.endsWith('.xlsx') || fileName.endsWith('.xls');
       const reader = new FileReader();
-      reader.onload = function(evt) {
-        const data = new Uint8Array(evt.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-        const rawRows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
-        processD1Data(rawRows);
-      };
-      reader.readAsArrayBuffer(file);
+
+      if (isExcel) {
+        reader.onload = function(evt) {
+          const data = new Uint8Array(evt.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+          const rawRows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+          processD1Data(rawRows);
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        reader.onload = function(evt) {
+          Papa.parse(evt.target.result, {
+            complete: function(results) {
+              processD1Data(results.data);
+            }
+          });
+        };
+        reader.readAsText(file);
+      }
     }
 
     function processD1Data(rows) {
@@ -2358,10 +2327,6 @@
     let d2CurrentAgentSort = 'done';
     let d2CurrentPharmSort = 'imm_fdb';
 
-    document.getElementById('d2FileInput').addEventListener('change', e => {
-      if (e.target.files[0]) handleD2FileDirect(e.target.files[0]);
-    });
-
     function calculateD2WorkingDays(startDateStr, endDateStr) {
       if (!startDateStr || !endDateStr) return 1;
       let start = new Date(startDateStr);
@@ -2387,15 +2352,29 @@
 
     function handleD2FileDirect(file) {
       document.getElementById('d2FileName').innerText = file.name;
+      const fileName = file.name.toLowerCase();
+      const isExcel = fileName.endsWith('.xlsx') || fileName.endsWith('.xls');
       const reader = new FileReader();
-      reader.onload = function(evt) {
-        const data = new Uint8Array(evt.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-        const rawRows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
-        processD2Data(rawRows);
-      };
-      reader.readAsArrayBuffer(file);
+
+      if (isExcel) {
+        reader.onload = function(evt) {
+          const data = new Uint8Array(evt.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+          const rawRows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+          processD2Data(rawRows);
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        reader.onload = function(evt) {
+          Papa.parse(evt.target.result, {
+            complete: function(results) {
+              processD2Data(results.data);
+            }
+          });
+        };
+        reader.readAsText(file);
+      }
     }
 
     function processD2Data(rows) {
@@ -3919,30 +3898,34 @@
        ========================================================================= */
     let d5GlobalData = [];
 
-    document.getElementById('d5FileUpload').addEventListener('change', e => {
-      if (e.target.files[0]) handleD5FileDirect(e.target.files[0]);
-    });
-
-    function extractD5Prefix(str) {
-      if (!str) return 'OTHER';
-      const match = str.match(/(?:EC|ec)?(\d{2,3}:)/i);
-      return match ? match[1] : 'OTHER';
-    }
-
     function handleD5FileDirect(file) {
       document.getElementById('d5FileName').textContent = file.name;
       document.getElementById('d5Loader').style.display = 'block';
       document.getElementById('d5TableContainer').style.display = 'none';
 
+      const fileName = file.name.toLowerCase();
+      const isExcel = fileName.endsWith('.xlsx') || fileName.endsWith('.xls');
       const reader = new FileReader();
-      reader.onload = function(e) {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-        const json = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
-        processD5Data(json);
-      };
-      reader.readAsArrayBuffer(file);
+
+      if (isExcel) {
+        reader.onload = function(e) {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+          const json = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+          processD5Data(json);
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        reader.onload = function(e) {
+          Papa.parse(e.target.result, {
+            complete: function(results) {
+              processD5Data(results.data);
+            }
+          });
+        };
+        reader.readAsText(file);
+      }
     }
 
     function processD5Data(rows) {
@@ -4020,9 +4003,9 @@
 
       codeSelect.onchange = function() {
         const code = this.value;
-        document.getElementById('d5RegionSelect').value = ** '';
+        document.getElementById('d5RegionSelect').value = '';
         if (!code) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
-        renderD5Table(d5GlobalData.filter(item => item.codePrefix === code));
+        renderD5Table(d5GlobalData.split ? d5GlobalData.filter(item => item.codePrefix === code) : []);
       };
 
       regionSelect.onchange = function() {
@@ -4061,4 +4044,3 @@
   </script>
 </body>
 </html>
-```[cite: 1]
