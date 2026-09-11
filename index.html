@@ -150,26 +150,25 @@
       gap: 8px;
     }
 
-    /* Orange Gradient Return to Home Button */
     .btn-return-home {
       background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
       color: #ffffff;
       border: 1px solid #f97316;
       padding: 8px 16px;
       border-radius: 10px;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 800;
       cursor: pointer;
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       transition: all 0.2s ease;
       text-transform: uppercase;
     }
     .btn-return-home:hover {
+      opacity: 0.95;
       transform: translateY(-2px);
-      filter: brightness(1.05);
     }
 
     /* ==========================================================================
@@ -346,7 +345,7 @@
   <header class="royal-navbar">
     <div class="royal-brand" onclick="switchView('hub')">
       <div class="royal-logo-bubble">
-        <img src="data:image/png;base64,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" alt="M-Swasth Logo" class="h-full w-full object-cover">
+        <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gIoSUNDX1BST0ZJTEUAAQEAAAIYAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABZAAAABRnWFlaAAABeAAAABRiWFlaAAABjAAAABRyVFJDAAABoAAAAChnVFJDAAABoAAAAChiVFJDAAABoAAAACh3dHB0AAAByAAAABRjcHJ0AAAB3AAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAFgAAAAcAHMAUgBHAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z3BhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABYWVogAAAAAAAA9tYAAQAAAADTLW1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANv/bAEMAAwICAgICAwICAgMDAwMEBgQEBAQECAYGBQYJCAoKCQgJCQoMDwwKCw4LCQkNEQ0ODxAQERAKDBITEhATDxAQEP/bAEMBAwMDBAMECAQECBALCQsQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEP/AABEIBC4ELgMBIgACEQEDEQH/xAAeAAEAAgIDAQEBAAAAAAAAAAAAAQkHCAIFBgMECv/EAGsQAAEDAwIEAwQEBgkNCgsECwABAgMEBREGBwgSITETQVEJImFxFDJCgRUjUmKRoRYzcnaCkrGysxcYJDc4Q1NjdKK0wdMZJTQ2c3WDk6PRJ0RFVFZllcLD0vAmNUZkZoSFVVfhKEeUxPH/xAAcAQEAAgMBAQEAAAAAAAAAAAAABQYBAwQCBwj/xAA/EQEAAQMCAwUGBAQFAwUBAQAAAQIDBAUREiExBhNBUXEUIjJhgZEjM6GxFULB0SQ0Q1LhB3LwFhdigvE1U//aAAwDAQACEQMRAD8AtTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACMoBIIyOZPUMbxCQfkuV1ttopH110r6ajp4/rS1EqRxt+bndEMOay4zuG3RPiR3Lc6211REnWntKPr5F+CeCjm5+/CHui1Xc+CmZeKrtFHxTEM25T1JNG9Ze1K0HROWHQ22d8u7s9JrhPDRx/PCLI5fP0MI6t9pZv9fOaPTdo01pqN31Xx0rquZP4Urlb/mkpZ0LOu/yberlr1LHo/mWoqqImcnWXXUljsUKVN+vNvtsC5/G1lSyFvT4vVE/WUxap4puIXV7ZW33d7UyxzfXhorq36FH8uWBG9Ph2MU11xr7nI6W61UtbI5VcslTI6Vyr65cq/AkrXZe9V+bXEekb/wBnNVq1H8kbrpdS8XXDhpOZYLtvBpt0ido6Sq+lyLj0bCjvUxpe/aVcN9sav4Mdqi898LSWhY2/pmczBU5zL26IidkTshzz1Q7qezFin465lxzq93wphYxf/aqafYis0xszdaprvqy190hgRE+LWNfn7lPBXj2pe5dRlLJtlpmiVey1U89S5PvRWGlTF+y33pF+rGn1nfJDubRoTXeoOX8B6E1JX83nS2molb/GazB0xpGm0cq6f1/5avb8q70lsPdPaO8TlfzJSXXTdvjd2SCzo5zfvke7+Q8feOnniivKOSq3arqdHdvoNHS03L97Ys/rOhtXCxxJXlzPoOyGrEa77dTSJTt/7Vzf1nsLdwFcVt05V/qbU1CjvOtvVJLj7mvcv6j3Tb0i1zjhj6wb5t3rvP0eJqeJniGroljm3t1oir9pl2ez9TMIdFWbubrXeXxbtufq2r5vrI691P8/Qz7b/Zq8SFZyuqJtH0bHfWWS7SOc37mQqn6zvaH2Xm9SR81Tr/AEVBI7uzNTNj7/CQx7fpdj4Zp+kHc5U9d2ptRqjVNZGsdZqm91DE68s1ynkbn5OcqHXJXXF6/jayd/80rv+83Wi9lrug7Pjbq6Yb6eHb51z+nB+6P2VWslz4u8tpT05bNIv8sqHunW8CjpV+kk4N651holnzTjVq5vWb1rqqV2pMtfG2n57mS50mP0vW9pX8lV1n83mK0R7q8VdIqX+e92b3R0uuf7R7PZ9WqqqWjJq9U1N7+2iL3e0fV7Wk9vVq2mZmqM4iP090vE7cO9r11w5Y15d48+V9z67q9X08Kq54YI7j3q5qZznnlVP6H5+p/N2T/ABa8L2q5tT6m3xruK7xZ6i9Xm81V3uNfJzT1VVUTLJJpHzVyrzOcq5VVz0N2t096t6rJbHrfbLUtws76qWkoLzC3w6OtdEr80skKrhq4ajs+SrnL3N9L0WvXptxRERFf8WfDjjn1x/44O3Yd7H1S3Xbq36piOunf0n17s9J2x3Y1ftrqGq0pue19o1tqq1sT1rKehWKWnc5uY5IHImY5I29W8yfByqqoiqaJv2k3CPb6eodZpiv1Dqa8U0arPZaWiqYo6qRXeT001VLGkLWr7znOevl9F61/pG5d9t2N+NNp+fQ2tXU+m6rUNt1rQ2qSqp7tSTK1kkkMbvEjaqq1rnI5rc5XvjC/MvJ0e0tDpt9q06JvV0V3Iq8WfPfnjzhT9T1W1M3acq3XExMVRFfE7eL9Z7c6+rdbbZ0Wt77bI4bhdLTQz1NJJ4TIJ5oo2yOje1U9xqu5XNVPJcImC/LdbX3mprbq6e63SrnrquqkdNNNNIskk0j3K573vequc5yqrnKqqqqqqp2Wp9p1Y75S01Hq/Qmnb5SwZ8OlrKWtjhYrmu5XfRYZ443K1fJ7mqqKioiqiqny2b1nS7i2l8E2O6aXn5+Wpp61iT071+zK1H7Mifc9jHJ5InQ7M2rM7W5rpu9M7xMxz6qYqmdt46uC3Xmqr1xXTVG0T4T4p8Wn3D1rquPULNDam1jUXS+6pua0s1bUVk1fUy71t21V81k8tZ081k5Xuc7v3VcKrnK5XKvVVPXyT83Vf79d1vT1p26N2q296q53e/q6O1b1RkPj3KzUa0U6UvXm5HxxR7t3eXz53OV3mqqqu102d+N7uN/q2lR7gq5N9uG+p8S40+Uu8rPE6q74+V/x39/n9nZ0/C5Xb3O0V3J38Z8O3G06rV4O7G+3R7M6+bT1C20d4uNtt093t9mqpaS12yS4TxU9t8Wd0z2U8bniONEne96o1qIquVVRM9D4N1Z6e919r1Bf8AV19prhY44pLXeq6/S1FJcEdL9GzS1M0scz/Fk5V53Z8d6p3VT+g3d17qS16O1ncr9cZq64WeSpt8c08i5fLDQxR5evn9uVnN381X70M36kudfc7jV1tfVz1VVPK98080jnzTOz3c97uqquV6qrVVVVXqfGjT6aZ3rju5vPjHjMT/bL7XauV08W506x4/Ljw6+XzZ340uKjdu+zU+s91b5cK6Xl8Srul8q6maXkbuWPlnlk322U9XJ5dO6r37J3d1L1rqS7Xurrrre7rV11VUzeNUz1VS98s0n/Oc9yq5yr8VK9nE7xO95aWktd313qypt1JFFTQU02o618UUcTeyMa+XdG1re3RERMdl6nI6o3u11qiOjp9Y6ruddT0yokUM1dOyPZEjcL4cbnIxmeuUaiKvoqr2O/6tK6aKbc4j4O1H5rJ+G03JquTve2/4u60Bwvaq1DZrVqq76j07pW1V0jZqWsvV3e6eaBqKrnxx08czlby+TOd8bHKnN07qiqW+7N2a1ab0bS091vlfW1ddU1FdVzzTPkj5Z5HPDImvcvhsc12XI3w0XyfT5dFqu+2fUOqdQ3O+3a51NbX1sxqKqaoldJJK9U7uc9yq5yr8VRToYt0XqU6Zl27tETvjdz5vN1e3bM7tVqj9O+/4p8vLzZ2vXDVU197vNvvWntW6L09XWqqfM10dbUXN08u9152O8OiiZzOVcqqoiKv2Ubtu0lW22m4L412p1xrqZ7ZqW63h7qaSV6quGzVR0sUbFXw4+fM9URrnKrkVep9P+Y+v4KmtpINQX2npopHSxU01zmidG9/vsczxfKqquVRU65Xv6ncadWq5XTVf8AMuVzvjP9L53e6qZpru+9G8xHDh+v0a327Zq4U2q2a51Jrq63WvttY6st93ulxdVVNJM5UbyvM/C7Z2t5V+1E7Ljf8AT9j1Bb/9Y17W3zXGq77S3G6OltV2nu09fVR0cz5qia3VdTL4skX0fL48UjldHzyojfDVEr2nU9/q6N6aHV9+nppKqWujhp6xke9PJN4krk/wA3I6b3ne85zvq+b87s9e2y/XzTlzul4sd2udvqbjG2Grmt1VLBPUTR7jmyyNcjnt95/2u/mq6706K1734p+M8Y2/M9p1bUzXFEXdop7/B7N3T3M92u6V/ulwq73qS4Nqq+okrqx0t1mkrGzTqu/587lqaNfF8fwhu8T4qjU8M2s6PcaV9mptc60pKSpf4s9PS6hrYoHuzzuSNo6P+Wqb6e/F76d/E+vUqVv1p43fFf7r7r/f7tV6quVXVy/941lVJJUSy/Xed6q9y/tXqvX5p8yR7TqG//wDeHef6Zq//AHne/l0+6tG6c1TvExMT0nZp3/Wefdnb3Vq3q1TNVFcxFUd2eXw8PN0Nxt13vdVvVbJfr/drzW2SppJrbU3eqqKx9tWmqd7vGZNJJvT3W9y/K1vVz3J89lZqfUN+1tW6zsd2udfWVWp6qkpJJ611TXeLR0VMyjjk8XwfDf4WzGj5e97/E6Yd21ZqV0z1bvdzV2Xyq756Z6y5fF86Jz11T603VnO9qP6267683n6T8aP3W93p7vJ000xXVnTM7x4RPh5/B/9j7VvdZbrT61oNTX2iutLVRvSqt94npp6uN94ppfHla7w/Eia17N+Vzmrkcn4o77R11ut9t3tV2oK+spZaa7Xq4U9TT1D45IZ/Hne2SN7V7Ne1fJqptw001b6K5+PWfTdV676Z1b88eUv0p7t93lK2WbS2tL3SUsU0k7IqS9VcMQveveR0UbvDj8R35cjm5T5n0b0L6Wn9x271G32pbTf8AV+ptVvttPNHXVt0vFXUvpa10VfSyzS088jkljjkd4sfjNcnO9qeIqOVc4xS9p8u7n5aN3J35fF03y7+Xm58c+2XbL5Y+Xn10xM0789J47Nq4LdeLrbaO5WSvudvvtc45I86b3BvT3fX/AKe32n1hqTV+rdV6YudLqC+1tfb4nS90tNVyJ4tP9NmlTldu83vV6uYrt7u3yMduX4l7111v6b3e+0/T4e9m/uubnfn+33n/ALfc0wY2S00m/M5O/O/O8/nfv8/T92b8d4jfd3h1/95183313vDnvt3/D3vf6876u/O9/mzzd3j9vN+eU4Zf96+p/cVu9uT03t1zuzv3O/uTfXN93v8AfeL++q7r9/e9r3ud7ne3u6Yx/wA8x+Wcf+R978t4fn39X8e72efP9vP9v9n/AMr915/M7+s787/2+t/efW2vvfe8fuf53v972/uO/Ld8vdn4q5O3u07fM2d7q+eZp96c9m9nF9zL+/nfubnfr/AP61vdfXN7s3fPnvO1/aYv1c3Z3d31t3N/u83z59m9938c7vv93s5c8v3WvL67O+bvdvff6879//AL3d3m97d8ud9Xnf89m2bLz83Nn3Zt2fe2O32u/e789u9uV+/e78+fzvz5c7c/d2ebv3d7eX52e825Xv83z6b876u/O9/mzzd2tvdvvvvvzvq87/nsvT/l0vL81Xl/N88v5fPO8/m8z7zz+bzn73+Y+eW98uW/u9u8/73e979/e9vfzv7u3/Mv1ufK++2vzf95r79zv77732s+fv7b+fK35fLnvP28793393ez883d3Z9u92bvnN9ud3eXNn8r6vOfvubnv7u5re7nvfzfzvzvfzffnefvfdffnfe/fv8u/e9+/d5ufzPvefN9+e98ud93z8u95vzyvfvze7r7s3t/d/zfzbf+V+bf7/O77++73v53+73e35ub3e7n5uN2bvnZ+/wB3u7O3N33tz97n3b2Z+9m3uz87v3u7v8A3fv9z3e/3fN3fPn7/wA+e/zPf3fJ3d7f+77ub/e5t3u+d3t7t+72929vNzveb877vOzfe8/bznbfv7f8AJjvvzvN88u83bzvbzvO+/m8zfzv2r2O7u6n3e7s83zfd7M/z+b3Zvd3u9u7e3m7zdzb37v3u72ZvdnNz+Xz92ffuTvv5u97u/m+/d3c328+W5vfN/z8+83vzn3n7vfv3t3u9u73tufN9vN3d+Z/O93t/m4u/N3Z9+dnv807v3u78/wB3u7O3N8vN3d/Oztzt/O/u9udv5vdnf3b+c33e7O383O8+fO357fv93e/O783v7u3+bn9+dudvNzve/m7+b873fOzu3u7t3NzvN2fzm/7+fmz3ZvfzfOzu3u7vPzvbvd33O/u9nO7vze7zZre3O83M3Ozt3NnvfnzN3tzu3NzvLnznzvufzvO8vuf/8AH4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH//2Q==" alt="M-Swasth Logo" class="h-full w-full object-cover">
       </div>
       <div class="royal-title-group">
         <h1>CASHPOR UNIT - 2</h1>
@@ -496,11 +495,10 @@
         .d1-file-badge .file-dot { width: 7px; height: 7px; border-radius: 50%; background: #94a3b8; }
         .d1-file-badge.active .file-dot { background: #10b981; box-shadow: 0 0 8px #10b981; }
 
-        .d1-summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 30px; }
-        .d1-card { background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%); padding: 18px 16px; border-radius: 14px; border: 2px solid #1e3a8a; text-align: left; box-shadow: 6px 6px 12px #cbd5e1, -6px -6px 12px #ffffff; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
-        .d1-card h3 { font-size: 11px; color: #1e3a8a; text-transform: uppercase; font-weight: 900; letter-spacing: 0.8px; margin-bottom: 6px; }
-        .d1-card p { font-size: 28px; font-weight: 900; color: #1e3a8a; font-family: 'JetBrains Mono', monospace; line-height: 1.1; }
-        .d1-card-split { background: rgba(255, 255, 255, 0.25); border-radius: 8px; padding: 4px 8px; margin-top: 8px; font-size: 11px; font-weight: 900; color: #1e3a8a; display: flex; justify-content: space-between; border-top: 1px solid rgba(30, 58, 138, 0.2); }
+        .d1-summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 30px; }
+        .d1-card { background: linear-gradient(145deg, #ffffff, #f1f5f9); padding: 18px 12px; border-radius: 12px; border: 1px solid #cbd5e1; border-top: 5px solid #2563eb; text-align: center; box-shadow: 6px 6px 12px #cbd5e1, -6px -6px 12px #ffffff; }
+        .d1-card h3 { font-size: 12px; color: #475569; text-transform: uppercase; margin-bottom: 10px; font-weight: 800; letter-spacing: 0.8px; }
+        .d1-card p { font-size: 26px; font-weight: 900; color: #0f172a; }
 
         .d1-team-section { background: #ffffff; border-radius: 14px; border: 2px solid #cbd5e1; margin-bottom: 30px; overflow: hidden; box-shadow: 6px 6px 14px #cbd5e1; color: #0f172a; }
         .d1-team-header { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); padding: 16px 20px; font-size: 19px; font-weight: 900; color: #ffffff; letter-spacing: 1px; border-bottom: 3px solid #1e3a8a; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
@@ -535,7 +533,7 @@
           <label for="d1FileInput" class="d1-custom-file-upload">
             <i class="fa-solid fa-cloud-arrow-up"></i> Upload Excel / CSV File
           </label>
-          <input type="file" id="d1FileInput" accept=".csv, .xlsx, .xls" style="display:none;" onchange="handleDirectUpload(event, 'd1')">
+          <input type="file" id="d1FileInput" accept=".csv, .xlsx, .xls" style="display:none;">
           <div class="d1-file-badge" id="d1FileBadge">
             <span class="file-dot"></span>
             <span id="d1FileName">No file chosen</span>
@@ -545,14 +543,14 @@
 
       <div class="d1-summary-cards" id="d1SummaryCards">
         <div class="d1-card"><h3>Total Agents</h3><p id="d1TotAgents">0</p></div>
-        <div class="d1-card"><h3>Book Consultation</h3><p id="d1TotBooked">0</p><div class="d1-card-split"><span>CP: <strong id="d1BookedCp">0</strong></span><span>CLINIC: <strong id="d1BookedClinic">0</strong></span></div></div>
-        <div class="d1-card"><h3>Done Consultation</h3><p id="d1TotDone">0</p><div class="d1-card-split"><span>CP: <strong id="d1DoneCp">0</strong></span><span>CLINIC: <strong id="d1DoneClinic">0</strong></span></div></div>
-        <div class="d1-card"><h3>Clinic Video Call</h3><p id="d1TotVideoCall">0</p><div class="d1-card-split"><span>CP: <strong id="d1VideoCp">0</strong></span><span>CLINIC: <strong id="d1VideoClinic">0</strong></span></div></div>
-        <div class="d1-card"><h3>Chk Doc</h3><p id="d1TotChkDoc">0</p><div class="d1-card-split"><span>CP: <strong id="d1ChkCp">0</strong></span><span>CLINIC: <strong id="d1ChkClinic">0</strong></span></div></div>
-        <div class="d1-card"><h3>FDB</h3><p id="d1TotFdb">0</p><div class="d1-card-split"><span>CP: <strong id="d1FdbCp">0</strong></span><span>CLINIC: <strong id="d1FdbClinic">0</strong></span></div></div>
-        <div class="d1-card"><h3>Connected FDB</h3><p id="d1TotConnFdb">0</p><div class="d1-card-split"><span>CP: <strong id="d1ConnFdbCp">0</strong></span><span>CLINIC: <strong id="d1ConnFdbClinic">0</strong></span></div></div>
-        <div class="d1-card"><h3>IMM FDB</h3><p id="d1TotImmFdb">0</p><div class="d1-card-split"><span>CP: <strong id="d1ImmCp">0</strong></span><span>CLINIC: <strong id="d1ImmClinic">0</strong></span></div></div>
-        <div class="d1-card"><h3>Connected IMM FDB</h3><p id="d1TotConnImmFdb">0</p><div class="d1-card-split"><span>CP: <strong id="d1ConnImmCp">0</strong></span><span>CLINIC: <strong id="d1ConnImmClinic">0</strong></span></div></div>
+        <div class="d1-card"><h3>Book Consultation</h3><p id="d1TotBooked">0</p></div>
+        <div class="d1-card"><h3>Done Consultation</h3><p id="d1TotDone">0</p></div>
+        <div class="d1-card"><h3>Clinic Video Call</h3><p id="d1TotVideoCall">0</p></div>
+        <div class="d1-card"><h3>Chk Doc</h3><p id="d1TotChkDoc">0</p></div>
+        <div class="d1-card"><h3>FDB</h3><p id="d1TotFdb">0</p></div>
+        <div class="d1-card"><h3>Connected FDB</h3><p id="d1TotConnFdb">0</p></div>
+        <div class="d1-card"><h3>IMM FDB</h3><p id="d1TotImmFdb">0</p></div>
+        <div class="d1-card"><h3>Connected IMM FDB</h3><p id="d1TotConnImmFdb">0</p></div>
       </div>
 
       <div id="d1TeamsContainer"></div>
@@ -670,7 +668,7 @@
           <label for="d2FileInput" class="d2-upload-btn">
             📊 Upload Excel / CSV Data File
           </label>
-          <input type="file" id="d2FileInput" accept=".csv, .xlsx, .xls" style="display:none;" onchange="handleDirectUpload(event, 'd2')">
+          <input type="file" id="d2FileInput" accept=".csv, .xlsx, .xls" style="display:none;">
           <span style="font-size:13px; color:#475569; font-weight:600;" id="d2FileName">No file chosen</span>
         </div>
       </header>
@@ -1675,7 +1673,7 @@
           <div style="display:flex; align-items:center; gap:10px;">
             <label style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); color:#fff; padding:9px 16px; border-radius:8px; font-weight:800; font-size:13px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
               <i class="fa-solid fa-upload"></i> Choose File
-              <input type="file" id="d5FileUpload" accept=".xlsx, .xls, .csv" style="display:none;" onchange="handleDirectUpload(event, 'd5')">
+              <input type="file" id="d5FileUpload" accept=".xlsx, .xls, .csv" style="display:none;">
             </label>
             <span id="d5FileName" style="color:#64748b; font-size:13px; font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No file chosen</span>
           </div>
@@ -1727,39 +1725,30 @@
     // Live Clock
     function updateRoyalClock() {
       const now = new Date();
-      const clockEl = document.getElementById('royalLiveClock');
-      if (clockEl) {
-        clockEl.innerText = now.toLocaleTimeString('en-US', { hour12: true });
-      }
+      document.getElementById('royalLiveClock').innerText = now.toLocaleTimeString('en-US', { hour12: true });
     }
     setInterval(updateRoyalClock, 1000);
     updateRoyalClock();
 
     // View Navigation Controller
     function switchView(viewId) {
-      const hub = document.getElementById('masterPortalHub');
-      const d1 = document.getElementById('dashboard1View');
-      const d2 = document.getElementById('dashboard2View');
-      const d3 = document.getElementById('dashboard3View');
-      const d5 = document.getElementById('dashboard5View');
-
-      if(hub) hub.style.display = 'none';
-      if(d1) d1.classList.remove('active-view');
-      if(d2) d2.classList.remove('active-view');
-      if(d3) d3.classList.remove('active-view');
-      if(d5) d5.classList.remove('active-view');
+      document.getElementById('masterPortalHub').style.display = 'none';
+      document.getElementById('dashboard1View').classList.remove('active-view');
+      document.getElementById('dashboard2View').classList.remove('active-view');
+      document.getElementById('dashboard3View').classList.remove('active-view');
+      document.getElementById('dashboard5View').classList.remove('active-view');
 
       if (viewId === 'hub') {
-        if(hub) hub.style.display = 'block';
+        document.getElementById('masterPortalHub').style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else if (viewId === 'd1' && d1) {
-        d1.classList.add('active-view');
-      } else if (viewId === 'd2' && d2) {
-        d2.classList.add('active-view');
-      } else if (viewId === 'd3' && d3) {
-        d3.classList.add('active-view');
-      } else if (viewId === 'd5' && d5) {
-        d5.classList.add('active-view');
+      } else if (viewId === 'd1') {
+        document.getElementById('dashboard1View').classList.add('active-view');
+      } else if (viewId === 'd2') {
+        document.getElementById('dashboard2View').classList.add('active-view');
+      } else if (viewId === 'd3') {
+        document.getElementById('dashboard3View').classList.add('active-view');
+      } else if (viewId === 'd5') {
+        document.getElementById('dashboard5View').classList.add('active-view');
       }
     }
 
@@ -1844,10 +1833,8 @@
     }
 
     function handleD1FileDirect(file) {
-      const fileNameEl = document.getElementById('d1FileName');
-      const fileBadgeEl = document.getElementById('d1FileBadge');
-      if(fileNameEl) fileNameEl.innerText = file.name;
-      if(fileBadgeEl) fileBadgeEl.classList.add('active');
+      document.getElementById('d1FileName').innerText = file.name;
+      document.getElementById('d1FileBadge').classList.add('active');
 
       const fileName = file.name.toLowerCase();
       const isExcel = fileName.endsWith('.xlsx') || fileName.endsWith('.xls');
@@ -1950,20 +1937,10 @@
 
     function renderD1Dashboard() {
       const container = document.getElementById('d1TeamsContainer');
-      if(!container) return;
       container.innerHTML = '';
 
       let gTotAgents = 0, gTotBooked = 0, gTotDone = 0, gTotVideoCall = 0,
           gTotChk = 0, gTotFdb = 0, gTotConnFdb = 0, gTotImmFdb = 0, gTotConnImmFdb = 0;
-      
-      let cpBooked = 0, clinicBooked = 0;
-      let cpDone = 0, clinicDone = 0;
-      let cpVideo = 0, clinicVideo = 0;
-      let cpChk = 0, clinicChk = 0;
-      let cpFdb = 0, clinicFdb = 0;
-      let cpConnFdb = 0, clinicConnFdb = 0;
-      let cpImm = 0, clinicImm = 0;
-      let cpConnImm = 0, clinicConnImm = 0;
 
       Object.keys(D1_TEAMS).forEach(teamName => {
         const members = D1_TEAMS[teamName];
@@ -2046,15 +2023,6 @@
           gTotImmFdb += s.imm_fdb;
           gTotConnImmFdb += s.conn_imm_fdb;
 
-          cpBooked += Math.round(s.booked * 0.7); clinicBooked += (s.booked - Math.round(s.booked * 0.7));
-          cpDone += Math.round(s.done * 0.7); clinicDone += (s.done - Math.round(s.done * 0.7));
-          cpVideo += Math.round(s.videocall * 0.7); clinicVideo += (s.videocall - Math.round(s.videocall * 0.7));
-          cpChk += Math.round(s.chkdoc * 0.7); clinicChk += (s.chkdoc - Math.round(s.chkdoc * 0.7));
-          cpFdb += Math.round(s.fdb * 0.7); clinicFdb += (s.fdb - Math.round(s.fdb * 0.7));
-          cpConnFdb += Math.round(s.conn_fdb * 0.7); clinicConnFdb += (s.conn_fdb - Math.round(s.conn_fdb * 0.7));
-          cpImm += Math.round(s.imm_fdb * 0.7); clinicImm += (s.imm_fdb - Math.round(s.imm_fdb * 0.7));
-          cpConnImm += Math.round(s.conn_imm_fdb * 0.7); clinicConnImm += (s.conn_imm_fdb - Math.round(s.conn_imm_fdb * 0.7));
-
           const fmt = (val) => (!val || val === 0) ? '' : val;
           tableRows += `
             <tr>
@@ -2100,33 +2068,21 @@
         container.innerHTML += teamHtml;
       });
 
-      const setVal = (id, val) => { const el = document.getElementById(id); if(el) el.innerText = val; };
-      setVal('d1TotAgents', gTotAgents);
-      setVal('d1TotBooked', gTotBooked.toLocaleString());
-      setVal('d1TotDone', gTotDone.toLocaleString());
-      setVal('d1TotVideoCall', gTotVideoCall.toLocaleString());
-      setVal('d1TotChkDoc', gTotChk.toLocaleString());
-      setVal('d1TotFdb', gTotFdb.toLocaleString());
-      setVal('d1TotConnFdb', gTotConnFdb.toLocaleString());
-      setVal('d1TotImmFdb', gTotImmFdb.toLocaleString());
-      setVal('d1TotConnImmFdb', gTotConnImmFdb.toLocaleString());
-
-      setVal('d1BookedCp', cpBooked); setVal('d1BookedClinic', clinicBooked);
-      setVal('d1DoneCp', cpDone); setVal('d1DoneClinic', clinicDone);
-      setVal('d1VideoCp', cpVideo); setVal('d1VideoClinic', clinicVideo);
-      setVal('d1ChkCp', cpChk); setVal('d1ChkClinic', clinicChk);
-      setVal('d1FdbCp', cpFdb); setVal('d1FdbClinic', clinicFdb);
-      setVal('d1ConnFdbCp', cpConnFdb); setVal('d1ConnFdbClinic', clinicConnFdb);
-      setVal('d1ImmCp', cpImm); setVal('d1ImmClinic', clinicImm);
-      setVal('d1ConnImmCp', cpConnImm); setVal('d1ConnImmClinic', clinicConnImm);
+      document.getElementById('d1TotAgents').innerText = gTotAgents;
+      document.getElementById('d1TotBooked').innerText = gTotBooked.toLocaleString();
+      document.getElementById('d1TotDone').innerText = gTotDone.toLocaleString();
+      document.getElementById('d1TotVideoCall').innerText = gTotVideoCall.toLocaleString();
+      document.getElementById('d1TotChkDoc').innerText = gTotChk.toLocaleString();
+      document.getElementById('d1TotFdb').innerText = gTotFdb.toLocaleString();
+      document.getElementById('d1TotConnFdb').innerText = gTotConnFdb.toLocaleString();
+      document.getElementById('d1TotImmFdb').innerText = gTotImmFdb.toLocaleString();
+      document.getElementById('d1TotConnImmFdb').innerText = gTotConnImmFdb.toLocaleString();
     }
 
     function openD1FilterModal(teamName) {
       d1CurrentTeamForFilter = teamName;
-      const titleEl = document.getElementById('d1ModalTeamTitle');
-      if(titleEl) titleEl.innerText = `⚡ ${teamName}`;
+      document.getElementById('d1ModalTeamTitle').innerText = `⚡ ${teamName}`;
       const container = document.getElementById('d1FilterListBody');
-      if(!container) return;
       container.innerHTML = '';
       const members = D1_TEAMS[teamName] || [];
       members.forEach(agent => {
@@ -2138,15 +2094,12 @@
           </label>
         `;
       });
-      const searchEl = document.getElementById('d1TeamAgentSearch');
-      if(searchEl) searchEl.value = '';
-      const overlayEl = document.getElementById('d1FilterModalOverlay');
-      if(overlayEl) overlayEl.style.display = 'flex';
+      document.getElementById('d1TeamAgentSearch').value = '';
+      document.getElementById('d1FilterModalOverlay').style.display = 'flex';
     }
 
     function closeD1FilterModal() {
-      const overlayEl = document.getElementById('d1FilterModalOverlay');
-      if(overlayEl) overlayEl.style.display = 'none';
+      document.getElementById('d1FilterModalOverlay').style.display = 'none';
       d1CurrentTeamForFilter = null;
     }
 
@@ -2168,9 +2121,7 @@
     }
 
     function searchD1Agents() {
-      const searchInput = document.getElementById('d1TeamAgentSearch');
-      if(!searchInput) return;
-      const q = searchInput.value.toLowerCase().trim();
+      const q = document.getElementById('d1TeamAgentSearch').value.toLowerCase().trim();
       document.querySelectorAll('#d1FilterListBody label').forEach(lbl => {
         const name = lbl.getAttribute('data-name');
         lbl.style.display = name.includes(q) ? 'flex' : 'none';
@@ -2231,15 +2182,13 @@
       const sDate = document.getElementById('d2StartDate').value;
       const eDate = document.getElementById('d2EndDate').value;
       if (sDate && eDate) {
-        const daysEl = document.getElementById('d2WorkingDays');
-        if(daysEl) daysEl.value = calculateD2WorkingDays(sDate, eDate);
+        document.getElementById('d2WorkingDays').value = calculateD2WorkingDays(sDate, eDate);
         renderD2Dashboard(d2LatestMap);
       }
     }
 
     function handleD2FileDirect(file) {
-      const fileNameEl = document.getElementById('d2FileName');
-      if(fileNameEl) fileNameEl.innerText = file.name;
+      document.getElementById('d2FileName').innerText = file.name;
       const fileName = file.name.toLowerCase();
       const isExcel = fileName.endsWith('.xlsx') || fileName.endsWith('.xls');
       const reader = new FileReader();
@@ -2322,10 +2271,8 @@
 
     function renderD2Dashboard(agentStatsMap) {
       const container = document.getElementById('d2TeamsContainer');
-      if(!container) return;
       container.innerHTML = '';
-      const daysInput = document.getElementById('d2WorkingDays');
-      const workingDays = daysInput ? (parseFloat(daysInput.value) || 1) : 1;
+      const workingDays = parseFloat(document.getElementById('d2WorkingDays').value) || 1;
       const targetPerAgent = workingDays * 300;
 
       let gTotAgents = 0, gTotAchieved = 0;
@@ -2449,10 +2396,9 @@
       const grandTotalTarget = gTotAgents * targetPerAgent;
       const overallProdPct = grandTotalTarget > 0 ? ((gTotAchieved / grandTotalTarget) * 100) : 0;
 
-      const setVal = (id, val) => { const el = document.getElementById(id); if(el) el.innerText = val; };
-      setVal('d2TotAgents', gTotAgents);
-      setVal('d2DispWorkingDays', workingDays);
-      setVal('d2TotProd', overallProdPct.toFixed(1) + '%');
+      document.getElementById('d2TotAgents').innerText = gTotAgents;
+      document.getElementById('d2DispWorkingDays').innerText = workingDays;
+      document.getElementById('d2TotProd').innerText = overallProdPct.toFixed(1) + '%';
 
       const mapIds = {
         "TEAM JITENDRA": ["d2JitendraAgent", "d2JitendraPharm"],
@@ -2465,8 +2411,8 @@
       Object.keys(mapIds).forEach(t => {
         const ids = mapIds[t];
         const res = teamSplitResults[t] || { agentAvg: "0%", pharmAvg: "0%" };
-        setVal(ids[0], res.agentAvg);
-        setVal(ids[1], res.pharmAvg);
+        document.getElementById(ids[0]).innerText = res.agentAvg;
+        document.getElementById(ids[1]).innerText = res.pharmAvg;
       });
     }
 
@@ -3041,13 +2987,12 @@
 
       const overallAvgTat = overallTatCases > 0 ? (overallTatSum / overallTatCases).toFixed(1) : "0.0";
 
-      const setVal = (id, val) => { const el = document.getElementById(id); if(el) el.innerText = val; };
-      setVal("d3StatTotal", grandTotal.toLocaleString());
-      setVal("d3StatTat", `${overallAvgTat} m`);
-      setVal("d3StatAgents", `${activeAgentsCount} / ${D3_TOTAL_CAPACITY}`);
+      document.getElementById("d3StatTotal").innerText = grandTotal.toLocaleString();
+      document.getElementById("d3StatTat").innerText = `${overallAvgTat} m`;
+      document.getElementById("d3StatAgents").innerText = `${activeAgentsCount} / ${D3_TOTAL_CAPACITY}`;
        
-      setVal("d3StatLowestAgent", globalMinAgent.tat !== 9999 ? `${globalMinAgent.name} (${globalMinAgent.tat}m)` : "--");
-      setVal("d3StatHighestAgent", globalMaxAgent.tat !== -1 ? `${globalMaxAgent.name} (${globalMaxAgent.tat}m)` : "--");
+      document.getElementById("d3StatLowestAgent").innerText = globalMinAgent.tat !== 9999 ? `${globalMinAgent.name} (${globalMinAgent.tat}m)` : "--";
+      document.getElementById("d3StatHighestAgent").innerText = globalMaxAgent.tat !== -1 ? `${globalMaxAgent.name} (${globalMaxAgent.tat}m)` : "--";
 
       renderD3AllBreakAgents();
     }
@@ -3232,10 +3177,10 @@
             casesToShow = casesToShow.concat(d3AgentCaseStore[agentName][s]);
           }
         });
-        if(titleText) titleText.innerText = `${agentName.toUpperCase()} — COMPLETE CASE LOGS`;
+        titleText.innerText = `${agentName.toUpperCase()} — COMPLETE CASE LOGS`;
       } else {
         casesToShow = d3AgentCaseStore[agentName][slot] || [];
-        if(titleText) titleText.innerText = `${agentName.toUpperCase()} — HOURLY SLOT [ ${slot} ]`;
+        titleText.innerText = `${agentName.toUpperCase()} — HOURLY SLOT [ ${slot} ]`;
       }
 
       const regionCounts = {};
@@ -3258,47 +3203,42 @@
         .map(([reg, count]) => `${reg} (${count})`)
         .join(', ');
 
-      if(detailsBar) {
-        detailsBar.innerHTML = `
-          <div class="d3-drill-info-chip">Agent: <strong>${agentName}</strong></div>
-          <div class="d3-drill-info-chip">Shift: <strong>${agentShift}</strong></div>
-          <div class="d3-drill-info-chip">Cases: <strong>${casesToShow.length}</strong></div>
-          <div class="d3-drill-info-chip">Average TAT: <strong>${avgTat}</strong></div>
-          <div class="d3-drill-info-chip">Top Regions: <strong>${sortedRegions || 'None'}</strong></div>
-        `;
+      detailsBar.innerHTML = `
+        <div class="d3-drill-info-chip">Agent: <strong>${agentName}</strong></div>
+        <div class="d3-drill-info-chip">Shift: <strong>${agentShift}</strong></div>
+        <div class="d3-drill-info-chip">Cases: <strong>${casesToShow.length}</strong></div>
+        <div class="d3-drill-info-chip">Average TAT: <strong>${avgTat}</strong></div>
+        <div class="d3-drill-info-chip">Top Regions: <strong>${sortedRegions || 'None'}</strong></div>
+      `;
+
+      tbody.innerHTML = "";
+      if (casesToShow.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" style="padding: 24px; color: #64748b; font-size: 16px; font-weight: 800;">No consult records found for this selection.</td></tr>`;
+      } else {
+        casesToShow.forEach((c, idx) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="color: #64748b; font-weight: 900;">${idx + 1}</td>
+            <td style="font-weight:900; color:#0284c7;">${c.emr || '-'}</td>
+            <td style="color:#070e1c; font-weight:900;">${c.doctor || '-'}</td>
+            <td style="color:#1e293b; font-weight:800;">${c.medAgent || '-'}</td>
+            <td><span class="d3-region-pill">${c.region || '-'}</span></td>
+            <td style="color:#334155; font-weight:800;">${c.branch || '-'}</td>
+            <td><span style="background:#e2e8f0; padding:3px 8px; border-radius:5px; font-weight:900;">${c.type || '-'}</span></td>
+            <td style="color:#059669; font-weight:900; font-size:17px;">${c.tat && c.tat !== '-' ? c.tat + ' m' : '-'}</td>
+            <td>${formatD3DateTimeBold(c.apptTime)}</td>
+            <td>${formatD3DateTimeBold(c.feedbackEndTime)}</td>
+          `;
+          tbody.appendChild(tr);
+        });
       }
 
-      if(tbody) {
-        tbody.innerHTML = "";
-        if (casesToShow.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="10" style="padding: 24px; color: #64748b; font-size: 16px; font-weight: 800;">No consult records found for this selection.</td></tr>`;
-        } else {
-          casesToShow.forEach((c, idx) => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-              <td style="color: #64748b; font-weight: 900;">${idx + 1}</td>
-              <td style="font-weight:900; color:#0284c7;">${c.emr || '-'}</td>
-              <td style="color:#070e1c; font-weight:900;">${c.doctor || '-'}</td>
-              <td style="color:#1e293b; font-weight:800;">${c.medAgent || '-'}</td>
-              <td><span class="d3-region-pill">${c.region || '-'}</span></td>
-              <td style="color:#334155; font-weight:800;">${c.branch || '-'}</td>
-              <td><span style="background:#e2e8f0; padding:3px 8px; border-radius:5px; font-weight:900;">${c.type || '-'}</span></td>
-              <td style="color:#059669; font-weight:900; font-size:17px;">${c.tat && c.tat !== '-' ? c.tat + ' m' : '-'}</td>
-              <td>${formatD3DateTimeBold(c.apptTime)}</td>
-              <td>${formatD3DateTimeBold(c.feedbackEndTime)}</td>
-            `;
-            tbody.appendChild(tr);
-          });
-        }
-      }
-
-      if(modal) modal.classList.add("active");
+      modal.classList.add("active");
       document.body.style.overflow = "hidden";
     }
 
     function closeD3Drilldown() {
-      const modal = document.getElementById("d3DrilldownModal");
-      if(modal) modal.classList.remove("active");
+      document.getElementById("d3DrilldownModal").classList.remove("active");
       document.body.style.overflow = "auto";
     }
 
@@ -3314,44 +3254,42 @@
         return;
       }
 
-      if(titleText) titleText.innerHTML = `${agentName.toUpperCase()} — BREAK SCHEDULE (${breaks.length} SESSIONS)`;
-      if(tbody) {
-        tbody.innerHTML = "";
-        breaks.forEach((b, idx) => {
-          const hours = Math.floor(b.durationMins / 60);
-          const mins = b.durationMins % 60;
-          const durFormatted = hours > 0 ? `${hours}h ${mins}m` : `${mins} mins`;
+      titleText.innerHTML = `${agentName.toUpperCase()} — BREAK SCHEDULE (${breaks.length} SESSIONS)`;
+      tbody.innerHTML = "";
 
-          const tr = document.createElement("tr");
-          let contextHtml = `
-            <span>Case ${b.prevEmr || '-'} (${b.prevDoc || '-'})</span> ➔ 
-            <span style="font-weight: 900; color: #0284c7;">Case ${b.nextEmr || '-'} (${b.nextDoc || '-'})</span>
+      breaks.forEach((b, idx) => {
+        const hours = Math.floor(b.durationMins / 60);
+        const mins = b.durationMins % 60;
+        const durFormatted = hours > 0 ? `${hours}h ${mins}m` : `${mins} mins`;
+
+        const tr = document.createElement("tr");
+        let contextHtml = `
+          <span>Case ${b.prevEmr || '-'} (${b.prevDoc || '-'})</span> ➔ 
+          <span style="font-weight: 900; color: #0284c7;">Case ${b.nextEmr || '-'} (${b.nextDoc || '-'})</span>
+        `;
+        if (b.type === 'SHIFT_END_GAP') {
+          contextHtml = `
+            <span>Last Case ${b.prevEmr || '-'}</span> ➔ 
+            <span style="font-weight: 900; color: #e11d48;">[SHIFT LOGOFF GAP / IDLE TILL SHIFT END]</span>
           `;
-          if (b.type === 'SHIFT_END_GAP') {
-            contextHtml = `
-              <span>Last Case ${b.prevEmr || '-'}</span> ➔ 
-              <span style="font-weight: 900; color: #e11d48;">[SHIFT LOGOFF GAP / IDLE TILL SHIFT END]</span>
-            `;
-          }
+        }
 
-          tr.innerHTML = `
-            <td><span class="d3-rank-badge" style="background:#fee2e2; color:#b91c1c; border:1px solid #f87171;">#${idx + 1}</span></td>
-            <td>${formatD3DateTimeBold(b.startTime)}</td>
-            <td>${formatD3DateTimeBold(b.endTime)}</td>
-            <td><span class="d3-break-time-badge">${durFormatted}</span></td>
-            <td style="font-size: 14.5px; color: #334155;">${contextHtml}</td>
-          `;
-          tbody.appendChild(tr);
-        });
-      }
+        tr.innerHTML = `
+          <td><span class="d3-rank-badge" style="background:#fee2e2; color:#b91c1c; border:1px solid #f87171;">#${idx + 1}</span></td>
+          <td>${formatD3DateTimeBold(b.startTime)}</td>
+          <td>${formatD3DateTimeBold(b.endTime)}</td>
+          <td><span class="d3-break-time-badge">${durFormatted}</span></td>
+          <td style="font-size: 14.5px; color: #334155;">${contextHtml}</td>
+        `;
+        tbody.appendChild(tr);
+      });
 
-      if(modal) modal.classList.add("active");
+      modal.classList.add("active");
       document.body.style.overflow = "hidden";
     }
 
     function closeD3BreakDetail() {
-      const modal = document.getElementById("d3BreakModal");
-      if(modal) modal.classList.remove("active");
+      document.getElementById("d3BreakModal").classList.remove("active");
       document.body.style.overflow = "auto";
     }
 
@@ -3366,39 +3304,34 @@
       const entries = Object.entries(regMap).sort((a, b) => b[1] - a[1]);
       let totalCases = entries.reduce((sum, item) => sum + item[1], 0);
 
-      if(title) title.innerHTML = `${agentName.toUpperCase()} — REGIONS SUMMARY`;
-      if(detailsBar) {
-        detailsBar.innerHTML = `
-          <div class="d3-drill-info-chip">Agent: <strong>${agentName}</strong></div>
-          <div class="d3-drill-info-chip">Unique Regions: <strong>${entries.length}</strong></div>
-          <div class="d3-drill-info-chip">Total Region Cases: <strong>${totalCases}</strong></div>
-        `;
+      title.innerHTML = `${agentName.toUpperCase()} — REGIONS SUMMARY`;
+      detailsBar.innerHTML = `
+        <div class="d3-drill-info-chip">Agent: <strong>${agentName}</strong></div>
+        <div class="d3-drill-info-chip">Unique Regions: <strong>${entries.length}</strong></div>
+        <div class="d3-drill-info-chip">Total Region Cases: <strong>${totalCases}</strong></div>
+      `;
+
+      tbody.innerHTML = "";
+      if (entries.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3" style="padding: 24px; color: #64748b; font-size: 16px; font-weight: 800;">No region records available for this agent.</td></tr>`;
+      } else {
+        entries.forEach(([regionName, count], idx) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: center; color: #64748b; font-weight: 900;">${idx + 1}</td>
+            <td style="text-align: left; padding-left: 24px; font-weight: 800; color: #0f172a;">${regionName}</td>
+            <td style="text-align: right; padding-right: 28px; font-weight: 900; color: #0284c7; font-size: 17px;">${count}</td>
+          `;
+          tbody.appendChild(tr);
+        });
       }
 
-      if(tbody) {
-        tbody.innerHTML = "";
-        if (entries.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="3" style="padding: 24px; color: #64748b; font-size: 16px; font-weight: 800;">No region records available for this agent.</td></tr>`;
-        } else {
-          entries.forEach(([regionName, count], idx) => {
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-              <td style="text-align: center; color: #64748b; font-weight: 900;">${idx + 1}</td>
-              <td style="text-align: left; padding-left: 24px; font-weight: 800; color: #0f172a;">${regionName}</td>
-              <td style="text-align: right; padding-right: 28px; font-weight: 900; color: #0284c7; font-size: 17px;">${count}</td>
-            `;
-            tbody.appendChild(tr);
-          });
-        }
-      }
-
-      if(modal) modal.classList.add("active");
+      modal.classList.add("active");
       document.body.style.overflow = "hidden";
     }
 
     function closeD3RegionModal() {
-      const modal = document.getElementById("d3RegionModal");
-      if(modal) modal.classList.remove("active");
+      document.getElementById("d3RegionModal").classList.remove("active");
       document.body.style.overflow = "auto";
     }
 
@@ -3437,58 +3370,53 @@
 
       if (isLowest) {
         sorted = [...activeAgents].sort((a, b) => a.tat - b.tat).slice(0, 5);
-        if(header) { header.style.background = "linear-gradient(90deg, #064e3b 0%, #065f46 100%)"; header.style.borderBottom = "3px solid #10b981"; }
-        if(tatTh) tatTh.style.backgroundColor = "#047857";
-        if(title) title.innerHTML = `★ TOP 5 LOWEST TAT (BEST EFFICIENCY)`;
-        if(detailsBar) {
-          detailsBar.innerHTML = `
-            <div class="d3-drill-info-chip">Category: <strong style="color:#6ee7b7;">Fastest Turnaround Time</strong></div>
-            <div class="d3-drill-info-chip">Qualified Agents: <strong>${activeAgents.length}</strong></div>
-            <div class="d3-drill-info-chip">Top Rank: <strong>${sorted[0].name} (${sorted[0].tat.toFixed(1)}m)</strong></div>
-          `;
-        }
+        header.style.background = "linear-gradient(90deg, #064e3b 0%, #065f46 100%)";
+        header.style.borderBottom = "3px solid #10b981";
+        tatTh.style.backgroundColor = "#047857";
+        title.innerHTML = `★ TOP 5 LOWEST TAT (BEST EFFICIENCY)`;
+        detailsBar.innerHTML = `
+          <div class="d3-drill-info-chip">Category: <strong style="color:#6ee7b7;">Fastest Turnaround Time</strong></div>
+          <div class="d3-drill-info-chip">Qualified Agents: <strong>${activeAgents.length}</strong></div>
+          <div class="d3-drill-info-chip">Top Rank: <strong>${sorted[0].name} (${sorted[0].tat.toFixed(1)}m)</strong></div>
+        `;
       } else {
         sorted = [...activeAgents].sort((a, b) => b.tat - a.tat).slice(0, 5);
-        if(header) { header.style.background = "linear-gradient(90deg, #881337 0%, #9f1239 100%)"; header.style.borderBottom = "3px solid #f43f5e"; }
-        if(tatTh) tatTh.style.backgroundColor = "#9f1239";
-        if(title) title.innerHTML = `⚠ TOP 5 HIGHEST TAT (SLOWEST / NEEDS ATTENTION)`;
-        if(detailsBar) {
-          detailsBar.innerHTML = `
-            <div class="d3-drill-info-chip">Category: <strong style="color:#fda4af;">Highest Turnaround Time</strong></div>
-            <div class="d3-drill-info-chip">Qualified Agents: <strong>${activeAgents.length}</strong></div>
-            <div class="d3-drill-info-chip">Peak Slowest: <strong>${sorted[0].name} (${sorted[0].tat.toFixed(1)}m)</strong></div>
-          `;
-        }
+        header.style.background = "linear-gradient(90deg, #881337 0%, #9f1239 100%)";
+        header.style.borderBottom = "3px solid #f43f5e";
+        tatTh.style.backgroundColor = "#9f1239";
+        title.innerHTML = `⚠ TOP 5 HIGHEST TAT (SLOWEST / NEEDS ATTENTION)`;
+        detailsBar.innerHTML = `
+          <div class="d3-drill-info-chip">Category: <strong style="color:#fda4af;">Highest Turnaround Time</strong></div>
+          <div class="d3-drill-info-chip">Qualified Agents: <strong>${activeAgents.length}</strong></div>
+          <div class="d3-drill-info-chip">Peak Slowest: <strong>${sorted[0].name} (${sorted[0].tat.toFixed(1)}m)</strong></div>
+        `;
       }
 
-      if(tbody) {
-        tbody.innerHTML = "";
-        sorted.forEach((agent, idx) => {
-          const tr = document.createElement("tr");
-          const rankClass = isLowest ? "d3-rank-1" : "d3-rank-3";
-          const pillColor = isLowest ? "background:#dcfce7; color:#15803d; border:1px solid #86efac;" : "background:#ffe4e6; color:#b91c1c; border:1px solid #fca5a5;";
+      tbody.innerHTML = "";
+      sorted.forEach((agent, idx) => {
+        const tr = document.createElement("tr");
+        const rankClass = isLowest ? "d3-rank-1" : "d3-rank-3";
+        const pillColor = isLowest ? "background:#dcfce7; color:#15803d; border:1px solid #86efac;" : "background:#ffe4e6; color:#b91c1c; border:1px solid #fca5a5;";
 
-          tr.innerHTML = `
-            <td style="text-align: center;"><span class="d3-rank-badge ${rankClass}">#${idx + 1}</span></td>
-            <td class="d3-col-agent-name" style="text-align: left; padding-left: 20px;" title="Click to view all cases for ${agent.name}" onclick="closeD3TatRankingModal(); openD3Drilldown('${agent.name.replace(/'/g, "\\'")}', 'ALL');">
-              ${agent.name}
-            </td>
-            <td style="font-weight: 800; color: #334155;">${agent.team}</td>
-            <td><span class="d3-shift-pill">${agent.shift}</span></td>
-            <td style="font-weight: 900; color: #0f172a;">${agent.total}</td>
-            <td><span style="${pillColor} padding:4px 14px; border-radius:6px; font-weight:900; font-size:17px;">${agent.tat.toFixed(1)} m</span></td>
-          `;
-          tbody.appendChild(tr);
-        });
-      }
+        tr.innerHTML = `
+          <td style="text-align: center;"><span class="d3-rank-badge ${rankClass}">#${idx + 1}</span></td>
+          <td class="d3-col-agent-name" style="text-align: left; padding-left: 20px;" title="Click to view all cases for ${agent.name}" onclick="closeD3TatRankingModal(); openD3Drilldown('${agent.name.replace(/'/g, "\\'")}', 'ALL');">
+            ${agent.name}
+          </td>
+          <td style="font-weight: 800; color: #334155;">${agent.team}</td>
+          <td><span class="d3-shift-pill">${agent.shift}</span></td>
+          <td style="font-weight: 900; color: #0f172a;">${agent.total}</td>
+          <td><span style="${pillColor} padding:4px 14px; border-radius:6px; font-weight:900; font-size:17px;">${agent.tat.toFixed(1)} m</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
 
-      if(modal) modal.classList.add("active");
+      modal.classList.add("active");
       document.body.style.overflow = "hidden";
     }
 
     function closeD3TatRankingModal() {
-      const modal = document.getElementById("d3TatRankingModal");
-      if(modal) modal.classList.remove("active");
+      document.getElementById("d3TatRankingModal").classList.remove("active");
       document.body.style.overflow = "auto";
     }
 
@@ -3515,8 +3443,7 @@
     }
 
     function closeD3TeamFilterModal() {
-      const modal = document.getElementById("d3TeamFilterModal");
-      if(modal) modal.classList.remove("active");
+      document.getElementById("d3TeamFilterModal").classList.remove("active");
       document.body.style.overflow = "auto";
     }
 
@@ -3590,12 +3517,9 @@
       return arr.map(s => s.replace(/^"|"$/g, ''));
     }
 
-    const d3Uploader = document.getElementById("d3CsvUploader");
-    if(d3Uploader) {
-      d3Uploader.addEventListener("change", function(e) {
-        if (e.target.files[0]) handleD3FileDirect(e.target.files[0]);
-      });
-    }
+    document.getElementById("d3CsvUploader").addEventListener("change", function(e) {
+      if (e.target.files[0]) handleD3FileDirect(e.target.files[0]);
+    });
 
     function handleD3FileDirect(file) {
       const fileName = file.name.toLowerCase();
@@ -3810,12 +3734,9 @@
         ========================================================================= */
     let d5GlobalData = [];
 
-    const d5FileEl = document.getElementById('d5FileUpload');
-    if(d5FileEl) {
-      d5FileEl.addEventListener('change', e => {
-        if (e.target.files[0]) handleD5FileDirect(e.target.files[0]);
-      });
-    }
+    document.getElementById('d5FileUpload').addEventListener('change', e => {
+      if (e.target.files[0]) handleD5FileDirect(e.target.files[0]);
+    });
 
     function extractD5Prefix(str) {
       if (!str) return 'OTHER';
@@ -3824,12 +3745,9 @@
     }
 
     function handleD5FileDirect(file) {
-      const fileNameEl = document.getElementById('d5FileName');
-      const loaderEl = document.getElementById('d5Loader');
-      if(fileNameEl) fileNameEl.textContent = file.name;
-      if(loaderEl) loaderEl.style.display = 'block';
-      const containerEl = document.getElementById('d5TableContainer');
-      if(containerEl) containerEl.style.display = 'none';
+      document.getElementById('d5FileName').textContent = file.name;
+      document.getElementById('d5Loader').style.display = 'block';
+      document.getElementById('d5TableContainer').style.display = 'none';
 
       const fileName = file.name.toLowerCase();
       const isExcel = fileName.endsWith('.xlsx') || fileName.endsWith('.xls');
@@ -3846,8 +3764,7 @@
           } catch (err) {
             console.error(err);
             alert("Dashboard 5 Error reading Excel file: " + err.message);
-            const lEl = document.getElementById('d5Loader');
-            if(lEl) lEl.style.display = 'none';
+            document.getElementById('d5Loader').style.display = 'none';
           }
         };
         reader.readAsArrayBuffer(file);
@@ -3862,15 +3779,13 @@
               error: function(err) {
                 console.error(err);
                 alert("Dashboard 5 Error reading CSV file: " + err.message);
-                const lEl = document.getElementById('d5Loader');
-                if(lEl) lEl.style.display = 'none';
+                document.getElementById('d5Loader').style.display = 'none';
               }
             });
           } catch (err) {
             console.error(err);
             alert("Dashboard 5 Error reading CSV file: " + err.message);
-            const lEl = document.getElementById('d5Loader');
-            if(lEl) lEl.style.display = 'none';
+            document.getElementById('d5Loader').style.display = 'none';
           }
         };
         reader.readAsText(file);
@@ -3888,8 +3803,7 @@
 
       if (headerRowIndex === -1) {
         alert("Dashboard 5: Could not find 'Clinic Name' column.");
-        const lEl = document.getElementById('d5Loader');
-        if(lEl) lEl.style.display = 'none';
+        document.getElementById('d5Loader').style.display = 'none';
         return;
       }
 
@@ -3938,45 +3852,39 @@
       }
 
       const codeSelect = document.getElementById('d5CodeSelect');
-      if(codeSelect) {
-        codeSelect.innerHTML = '<option value="">-- Select Login Code --</option>';
-        Array.from(codesSet).sort((a,b) => parseInt(a) - parseInt(b)).forEach(c => {
-          codeSelect.innerHTML += `<option value="${c}">${c}</option>`;
-        });
-        codeSelect.disabled = false;
-        codeSelect.onchange = function() {
-          const code = this.value;
-          const regEl = document.getElementById('d5RegionSelect');
-          if(regEl) regEl.value = '';
-          if (!code) { const tc = document.getElementById('d5TableContainer'); if(tc) tc.style.display = 'none'; return; }
-          renderD5Table(d5GlobalData.filter(item => item.codePrefix === code));
-        };
-      }
+      codeSelect.innerHTML = '<option value="">-- Select Login Code --</option>';
+      Array.from(codesSet).sort((a,b) => parseInt(a) - parseInt(b)).forEach(c => {
+        codeSelect.innerHTML += `<option value="${c}">${c}</option>`;
+      });
+      codeSelect.disabled = false;
 
       const regionSelect = document.getElementById('d5RegionSelect');
-      if(regionSelect) {
-        regionSelect.innerHTML = '<option value="">-- Select Region --</option>';
-        Array.from(regionsSet).sort().forEach(r => {
-          regionSelect.innerHTML += `<option value="${r}">${r}</option>`;
-        });
-        regionSelect.disabled = false;
-        regionSelect.onchange = function() {
-          const reg = this.value;
-          const cdEl = document.getElementById('d5CodeSelect');
-          if(cdEl) cdEl.value = '';
-          if (!reg) { const tc = document.getElementById('d5TableContainer'); if(tc) tc.style.display = 'none'; return; }
-          renderD5Table(d5GlobalData.filter(item => item.region === reg));
-        };
-      }
+      regionSelect.innerHTML = '<option value="">-- Select Region --</option>';
+      Array.from(regionsSet).sort().forEach(r => {
+        regionSelect.innerHTML += `<option value="${r}">${r}</option>`;
+      });
+      regionSelect.disabled = false;
 
-      const lEl = document.getElementById('d5Loader');
-      if(lEl) lEl.style.display = 'none';
+      codeSelect.onchange = function() {
+        const code = this.value;
+        document.getElementById('d5RegionSelect').value = '';
+        if (!code) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
+        renderD5Table(d5GlobalData.filter(item => item.codePrefix === code));
+      };
+
+      regionSelect.onchange = function() {
+        const reg = this.value;
+        document.getElementById('d5CodeSelect').value = '';
+        if (!reg) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
+        renderD5Table(d5GlobalData.filter(item => item.region === reg));
+      };
+
+      document.getElementById('d5Loader').style.display = 'none';
       renderD5Table(d5GlobalData);
     }
 
     function renderD5Table(list) {
       const tbody = document.getElementById('d5TableBody');
-      if(!tbody) return;
       tbody.innerHTML = '';
       if (!list || list.length === 0) {
         tbody.innerHTML = `<tr><td colspan="7" style="padding:20px; text-align:center; color:#ef4444;">No matching records found.</td></tr>`;
@@ -3995,8 +3903,7 @@
           `;
         });
       }
-      const containerEl = document.getElementById('d5TableContainer');
-      if(containerEl) containerEl.style.display = 'block';
+      document.getElementById('d5TableContainer').style.display = 'block';
     }
   </script>
 </body>
