@@ -99,7 +99,7 @@
 
     .royal-logo-bubble {
       background: #ffffff;
-      border-radius: 10px;
+      border-radius: 8px;
       box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
       overflow: hidden;
       height: 44px;
@@ -109,7 +109,7 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      padding: 3px;
+      padding: 4px;
     }
 
     .nav-actions {
@@ -327,7 +327,7 @@
   <header class="royal-navbar">
     <div class="royal-brand" onclick="switchView('hub')">
       <div class="royal-logo-bubble">
-        <img src="https://i.ibb.co/3ykB8c9/m-swasth-logo.png" alt="M-Swasth Logo" class="h-full w-full object-contain" onerror="this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADhCAMAAACJ0ePIAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAF9JREFUeNrtwQENAAAAwqD3T20PBxQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgNcBEaIAAXH79u0AAAAASUVORK5CYII='">
+        <img src="https://m-swasth.in/wp-content/uploads/2022/02/m-swasth-new-logo.png" alt="M-Swasth Logo" class="h-full w-full object-contain">
       </div>
     </div>
     <div class="nav-actions">
@@ -1599,8 +1599,8 @@
           </div>
           <div style="padding: 18px 28px; background: #f1f5f9; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;">
             <div style="display:flex; gap: 14px;">
-              <button type="button" style="background: transparent; border: none; color: #0284c7; font-weight: 900; font-size: 13.5px; cursor: pointer; text-navigation: underline;" onclick="selectD3AllTeams(true)">Select All</button>
-              <button type="button" style="background: transparent; border: none; color: #0284c7; font-weight: 900; font-size: 13.5px; cursor: pointer; text-navigation: underline;" onclick="selectD3AllTeams(false)">Clear All</button>
+              <button type="button" style="background: transparent; border: none; color: #0284c7; font-weight: 900; font-size: 13.5px; cursor: pointer; text-decoration: underline;" onclick="selectD3AllTeams(true)">Select All</button>
+              <button type="button" style="background: transparent; border: none; color: #0284c7; font-weight: 900; font-size: 13.5px; cursor: pointer; text-decoration: underline;" onclick="selectD3AllTeams(false)">Clear All</button>
             </div>
             <button type="button" style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%); color: #ffffff; border: none; padding: 10px 24px; border-radius: 8px; font-weight: 900; font-size: 15px; cursor: pointer; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);" onclick="applyD3TeamFilters()">Apply Filter</button>
           </div>
@@ -3817,7 +3817,7 @@
         if (codePrefix !== 'OTHER') codesSet.add(codePrefix);
 
         const parts = clinicName.split(' ');
-        const region = parts.length > 1 ? parts[parts.logo_idx = parts.length - 1].toUpperCase() : 'UNKNOWN';
+        const region = parts.length > 1 ? parts[parts.length - 1].toUpperCase() : 'UNKNOWN';
         regionsSet.add(region);
 
         d5GlobalData.push({
@@ -3873,6 +3873,7 @@
           tbody.innerHTML += `
             <tr>
               <td style="text-align:left; padding-left:16px; font-weight:900;">${item.clinicName}</td>
+              image = item.loginId
               <td>${item.loginId}</td>
               <td>${item.loginTime}</td>
               <td>${item.logoutTime}</td>
