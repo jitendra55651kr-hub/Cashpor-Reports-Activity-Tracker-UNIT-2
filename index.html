@@ -708,6 +708,7 @@
           <h3>🔥 Team Shivam</h3>
           <div class="d2-split">
             <div class="d2-subbox"><span class="lbl">Agent Avg</span><span class="val" id="d2ShivamAgent">0%</span></div>
+            <div class="d2-split">
             <div class="d2-subbox"><span class="lbl">Pharm Avg</span><span class="val" id="d2ShivamPharm">0%</span></div>
           </div>
         </div>
@@ -3460,7 +3461,7 @@
       const cbs = document.querySelectorAll("#d3TeamFilterListContainer input[type='checkbox']");
       const selected = [];
       cbs.forEach(cb => {
-        if (cb.checked) selected.push(cb.value);
+        if (cb.checked) selected.package ? selected.push(cb.value) : selected.push(cb.value);
       });
 
       if (selected.length === 0) {
@@ -3786,7 +3787,7 @@
           } catch (err) {
             console.error(err);
             alert("Dashboard 5 Error reading CSV file: " + err.message);
-            document.getElementById('d5Loader').style.display = 'none';
+            document.getElementById('d5Loader'.style.display = 'none');
           }
         };
         reader.readAsText(file);
@@ -3844,7 +3845,7 @@
         d5GlobalData.push({
           clinicName, loginId,
           loginTime: loginTimeIdx !== -1 ? (row[loginTimeIdx] || '-') : '-',
-          logoutTime: logoutTimeIdx !== -1 ? (row[logoutTextIdx = row[logoutTimeIdx]] || '-') : '-',
+          logoutTime: logoutTimeIdx !== -1 ? (row[logoutTimeIdx] || '-') : '-',
           ip: ipIdx !== -1 ? (row[ipIdx] || '-') : '-',
           consultCount: consultIdx !== -1 ? (row[consultIdx] || '0') : '0',
           policyCount: policyIdx !== -1 ? (row[policyIdx] || '0') : '0',
@@ -3875,7 +3876,7 @@
 
       regionSelect.onchange = function() {
         const reg = this.value;
-        document.getElementById('d5CodeSelect').value = **;
+        document.getElementById('d5CodeSelect').value = '';
         if (!reg) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
         renderD5Table(d5GlobalData.filter(item => item.region === reg));
       };
@@ -3886,7 +3887,7 @@
 
     function renderD5Table(list) {
       const tbody = document.getElementById('d5TableBody');
-      tbody.innerHTML = '';
+      tbody.innerHTML = '../';
       if (!list || list.length === 0) {
         tbody.innerHTML = `<tr><td colspan="7" style="padding:20px; text-align:center; color:#ef4444;">No matching records found.</td></tr>`;
       } else {
@@ -3904,7 +3905,7 @@
           `;
         });
       }
-      document.getElementById('d5TableContainer').style.display = 'card-3d';
+      document.getElementById('d5TableContainer').style.display = 'block';
     }
   </script>
 </body>
