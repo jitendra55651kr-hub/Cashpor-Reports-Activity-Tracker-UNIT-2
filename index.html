@@ -708,7 +708,6 @@
           <h3>🔥 Team Shivam</h3>
           <div class="d2-split">
             <div class="d2-subbox"><span class="lbl">Agent Avg</span><span class="val" id="d2ShivamAgent">0%</span></div>
-            <div class="d2-split">
             <div class="d2-subbox"><span class="lbl">Pharm Avg</span><span class="val" id="d2ShivamPharm">0%</span></div>
           </div>
         </div>
@@ -1649,53 +1648,54 @@
     <div class="d5-wrapper">
       <style>
         .d5-control-card {
-          background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 12px;
-          padding: 14px 18px; box-shadow: 6px 6px 12px #cbd5e1, -6px -6px 12px #ffffff;
+          background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); border: 1.5px solid #1e3a8a; border-radius: 12px;
+          padding: 14px 18px; box-shadow: 6px 6px 12px #cbd5e1, -6px -6px 12px #ffffff; color: #ffffff;
         }
-        .d5-label { display: flex; align-items: center; gap: 8px; font-weight: 800; color: #0f172a; font-size: 1rem; margin-bottom: 8px; }
+        .d5-label { display: flex; align-items: center; gap: 8px; font-weight: 800; color: #ffffff; font-size: 1rem; margin-bottom: 8px; }
         .d5-select {
-          width: 100%; padding: 10px 12px; font-size: 1rem; font-weight: 800; border: 2px solid #cbd5e1;
-          border-radius: 8px; background: #ffffff; color: #0f172a; outline: none; cursor: pointer;
+          width: 100%; padding: 10px 12px; font-size: 1rem; font-weight: 800; border: 2px solid rgba(255, 255, 255, 0.2);
+          border-radius: 8px; background: rgba(255, 255, 255, 0.1); color: #ffffff; outline: none; cursor: pointer;
         }
+        .d5-select option { background: #0f172a; color: #ffffff; }
         .d5-table { width: 100%; border-collapse: collapse; text-align: center; }
         .d5-table th {
-          position: sticky; top: 0; z-index: 10; background-color: #0f172a; color: #ffffff;
-          padding: 12px 10px; font-weight: 900; font-size: 14px; border-bottom: 3.5px solid #1e3a8a;
-          border-right: 1.5px solid #cbd5e1; white-space: nowrap;
+          position: sticky; top: 0; z-index: 10; background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%); color: #0f172a;
+          padding: 12px 10px; font-weight: 900; font-size: 14px; border-bottom: 3.5px solid #c2410c;
+          border-right: 1.5px solid rgba(0,0,0,0.1); white-space: nowrap; text-transform: uppercase;
         }
-        .d5-table td { padding: 11px 12px; font-size: 14px; font-weight: 800; color: #020617; border-bottom: 1.5px solid #cbd5e1; border-right: 1.5px solid #cbd5e1; white-space: nowrap; }
+        .d5-table td { padding: 11px 12px; font-size: 14px; font-weight: 800; color: #0f172a; border-bottom: 1.5px solid #cbd5e1; border-right: 1.5px solid #cbd5e1; white-space: nowrap; }
         .d5-table tr:nth-child(even) { background-color: #f8fafc; }
-        .d5-table tr:hover { background-color: #f1f5f9; }
+        .d5-table tr:hover { background-color: #e0f2fe; }
       </style>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:16px; margin-bottom:20px;">
         <div class="d5-control-card">
-          <label class="d5-label"><i class="fa-solid fa-file-excel text-purple-600"></i> 1. Upload Report</label>
+          <label class="d5-label"><i class="fa-solid fa-file-excel text-amber-400"></i> 1. Upload Report</label>
           <div style="display:flex; align-items:center; gap:10px;">
-            <label style="background:linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); color:#fff; padding:9px 16px; border-radius:8px; font-weight:800; font-size:13px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+            <label style="background:linear-gradient(135deg, #ea580c 0%, #f59e0b 100%); color:#fff; padding:9px 16px; border-radius:8px; font-weight:800; font-size:13px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; box-shadow:0 4px 6px rgba(0,0,0,0.1);">
               <i class="fa-solid fa-upload"></i> Choose File
               <input type="file" id="d5FileUpload" accept=".xlsx, .xls, .csv" style="display:none;">
             </label>
-            <span id="d5FileName" style="color:#64748b; font-size:13px; font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No file chosen</span>
+            <span id="d5FileName" style="color:#cbd5e1; font-size:13px; font-weight:700; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No file chosen</span>
           </div>
         </div>
 
         <div class="d5-control-card">
-          <label class="d5-label"><i class="fa-solid fa-filter text-purple-600"></i> 2. Filter by Login Code</label>
+          <label class="d5-label"><i class="fa-solid fa-filter text-amber-400"></i> 2. Filter by Login Code</label>
           <select id="d5CodeSelect" class="d5-select" disabled>
             <option value="">-- Upload file first --</option>
           </select>
         </div>
 
         <div class="d5-control-card">
-          <label class="d5-label"><i class="fa-solid fa-location-crosshairs text-purple-600"></i> 3. Filter by Region</label>
+          <label class="d5-label"><i class="fa-solid fa-location-crosshairs text-amber-400"></i> 3. Filter by Region</label>
           <select id="d5RegionSelect" class="d5-select" disabled>
             <option value="">-- Upload file first --</option>
           </select>
         </div>
       </div>
 
-      <div id="d5Loader" style="display:none; text-align:center; padding:20px; font-weight:800; color:#a855f7; font-size:16px;">
+      <div id="d5Loader" style="display:none; text-align:center; padding:20px; font-weight:800; color:#38bdf8; font-size:16px;">
         <i class="fa-solid fa-spinner fa-spin"></i> Processing file... Please wait.
       </div>
 
@@ -1708,8 +1708,8 @@
               <th>Login Time</th>
               <th>Logout Time</th>
               <th>IP Address</th>
-              <th style="color:#38bdf8;">Consultation Count</th>
-              <th style="color:#38bdf8;">Policy Count</th>
+              <th>Consultation Count</th>
+              <th>Policy Count</th>
             </tr>
           </thead>
           <tbody id="d5TableBody"></tbody>
@@ -3461,7 +3461,7 @@
       const cbs = document.querySelectorAll("#d3TeamFilterListContainer input[type='checkbox']");
       const selected = [];
       cbs.forEach(cb => {
-        if (cb.checked) selected.package ? selected.push(cb.value) : selected.push(cb.value);
+        if (cb.checked) selected.push(cb.value);
       });
 
       if (selected.length === 0) {
@@ -3654,6 +3654,7 @@
               const query = m.toLowerCase().trim();
               return (empCode !== "" && empCode !== "na" && empCode === query) || 
                      medAgent === query || 
+                     medAgent.instances?.() ||
                      medAgent.includes(query);
             });
           });
@@ -3787,7 +3788,7 @@
           } catch (err) {
             console.error(err);
             alert("Dashboard 5 Error reading CSV file: " + err.message);
-            document.getElementById('d5Loader'.style.display = 'none');
+            document.getElementById('d5Loader').style.display = 'none';
           }
         };
         reader.readAsText(file);
@@ -3887,7 +3888,7 @@
 
     function renderD5Table(list) {
       const tbody = document.getElementById('d5TableBody');
-      tbody.innerHTML = '../';
+      tbody.innerHTML = '';
       if (!list || list.length === 0) {
         tbody.innerHTML = `<tr><td colspan="7" style="padding:20px; text-align:center; color:#ef4444;">No matching records found.</td></tr>`;
       } else {
