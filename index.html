@@ -365,7 +365,7 @@
 
   <!-- =========================================================================
         SECTION: MASTER 3D PORTAL HUB
-        ========================================================================= -->
+        ======================================================================== -->
   <main id="masterPortalHub">
     <div class="portal-hero">
       <h2 style="font-family: 'Cinzel', serif; font-size: 52px; font-weight: 900; color: #1e3a8a; text-transform: uppercase; letter-spacing: 3px;" class="text-3d">
@@ -466,7 +466,7 @@
 
   <!-- =========================================================================
         DASHBOARD 1: AGENT HOURLY REPORT - UNIT 2
-        ========================================================================= -->
+        ======================================================================== -->
   <section id="dashboard1View" class="dashboard-view-container">
     <div class="d1-wrapper">
       <style>
@@ -582,7 +582,7 @@
 
   <!-- =========================================================================
         DASHBOARD 2: PRODUCTIVITY REPORT - UNIT 2
-        ========================================================================= -->
+        ======================================================================== -->
   <section id="dashboard2View" class="dashboard-view-container">
     <div class="view-control-bar">
       <div class="view-control-title">
@@ -726,7 +726,7 @@
 
   <!-- =========================================================================
         DASHBOARD 3: HOURLY KPI CONSULTATION UNIT II
-        ========================================================================= -->
+        ======================================================================== -->
   <section id="dashboard3View" class="dashboard-view-container">
     <div class="view-control-bar">
       <div class="view-control-title">
@@ -740,30 +740,65 @@
 
     <div class="d3-wrapper">
       <style>
-        .d3-header {
+        .d3-top-bar {
           text-align: center; margin-bottom: 25px; padding: 26px 20px;
           background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
           border-radius: 16px; border: 1px solid #1e3a8a;
           box-shadow: 8px 8px 16px #cbd5e1, -8px -8px 16px #ffffff;
           color: #ffffff;
         }
-        .d3-h1 { color: #ffffff; font-size: 32px; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
-        .d3-upload-container {
-          display: inline-flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap;
-          background: rgba(255, 255, 255, 0.1); padding: 8px 18px 8px 10px; border-radius: 50px;
-          border: 1px solid rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px);
+        .d3-header-center-content {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+          margin-bottom: 16px;
         }
-        .d3-custom-file-upload {
-          background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%); color: #ffffff; padding: 11px 24px;
-          border-radius: 40px; cursor: pointer; font-weight: 800; text-transform: uppercase; font-size: 13px;
-          letter-spacing: 1px; border: 1px solid #f97316; display: inline-flex; align-items: center; gap: 10px;
+        .d3-luxury-watch-white {
+          width: 52px;
+          height: 52px;
+          background: #ffffff;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: inset 2px 2px 5px #cbd5e1, 0 0 0 3px #1e3a8a;
+          flex-shrink: 0;
+        }
+        .d3-luxury-watch-white svg {
+          width: 44px;
+          height: 44px;
+        }
+        .d3-main-heading {
+          font-size: 32px;
+          font-weight: 900;
+          color: #ffffff;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          margin-bottom: 0;
+        }
+        .d3-btn-file-upload {
+          background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
+          border-bottom: 4px solid #c2410c;
+          color: #ffffff;
+          padding: 11px 24px;
+          font-size: 13px;
+          font-weight: 800;
+          letter-spacing: 1px;
+          border-radius: 40px;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          border: 1px solid #f97316;
           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          transition: all 0.1s;
+          text-transform: uppercase;
         }
-        .d3-file-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #cbd5e1; font-weight: 600; background: rgba(255,255,255,0.1); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
-        .d3-file-badge.active { color: #38bdf8; border-color: #38bdf8; }
-        .d3-file-badge .file-dot { width: 7px; height: 7px; border-radius: 50%; background: #94a3b8; }
-        .d3-file-badge.active .file-dot { background: #10b981; box-shadow: 0 0 8px #10b981; }
-
+        .d3-btn-file-upload:active {
+          border-bottom: 0px solid #c2410c;
+          transform: translateY(4px);
+        }
         .d3-kpi-board {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -1349,17 +1384,31 @@
         }
       </style>
 
-      <header class="d3-header">
-        <h1 class="d3-h1">HOURLY KPI CONSULTATION UNIT II</h1>
-        <div class="d3-upload-container">
-          <label for="d3CsvUploader" class="d3-custom-file-upload">
-            <i class="fa-solid fa-cloud-arrow-up"></i> Upload File (CSV / Excel)
-          </label>
-          <input type="file" id="d3CsvUploader" accept=".csv, .xlsx, .xls" style="display:none;">
-          <div class="d3-file-badge" id="d3FileBadge">
-            <span class="file-dot"></span>
-            <span id="d3FileName">No file chosen</span>
+      <!-- D3 Top Bar with Watch & Upload -->
+      <header class="d3-top-bar">
+        <div class="d3-header-center-content">
+          <div class="d3-luxury-watch-white" title="Live Operations Clock">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="46" stroke="#0f1e36" stroke-width="3.5" fill="#ffffff" />
+              <line x1="50" y1="9" x2="50" y2="16" stroke="#0f1e36" stroke-width="3" stroke-linecap="round" />
+              <line x1="50" y1="84" x2="50" y2="91" stroke="#0f1e36" stroke-width="3" stroke-linecap="round" />
+              <line x1="9" y1="50" x2="16" y2="50" stroke="#0f1e36" stroke-width="3" stroke-linecap="round" />
+              <line x1="84" y1="50" x2="91" y2="50" stroke="#0f1e36" stroke-width="3" stroke-linecap="round" />
+              <line x1="50" y1="50" x2="68" y2="38" stroke="#0f1e36" stroke-width="4" stroke-linecap="round" />
+              <line x1="50" y1="50" x2="50" y2="18" stroke="#1e3a8a" stroke-width="3" stroke-linecap="round" />
+              <circle cx="50" cy="50" r="4.5" fill="#0f1e36" />
+            </svg>
           </div>
+          <h1 class="d3-main-heading">HOURLY KPI CONSULTATION UNIT II</h1>
+        </div>
+        <div>
+          <label class="d3-btn-file-upload">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width:20px; height:20px; color:#ffffff;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+            </svg>
+            <span>Upload File (CSV / Excel)</span>
+            <input type="file" id="d3CsvUploader" accept=".csv, .xlsx, .xls" style="display: none;">
+          </label>
         </div>
       </header>
 
@@ -1584,7 +1633,7 @@
 
   <!-- =========================================================================
         DASHBOARD 5: E-CLINIC DAILY LOGIN REPORT
-        ========================================================================= -->
+        ======================================================================== -->
   <section id="dashboard5View" class="dashboard-view-container">
     <div class="view-control-bar">
       <div class="view-control-title">
@@ -1723,7 +1772,7 @@
 
     /* =========================================================================
         DASHBOARD 1 ENGINE (Agent Hourly Report - Unit 2)
-        ========================================================================= */
+        ======================================================================== */
     const D1_TEAMS = {
       "TEAM JITENDRA": [
         "Saurav Pal", "Md anas", "Renu Gupta", "Shivam verma", 
@@ -2084,7 +2133,7 @@
 
     /* =========================================================================
         DASHBOARD 2 ENGINE (Productivity Report - Unit 2)
-        ========================================================================= */
+        ======================================================================== */
     const D2_TEAMS = {
       "TEAM JITENDRA": [
         "Saurav Pal", "Md anas", "Renu Gupta", "Shivam verma", 
@@ -2225,7 +2274,7 @@
       const container = document.getElementById('d2TeamsContainer');
       container.innerHTML = '';
       const workingDays = parseFloat(document.getElementById('d2WorkingDays').value) || 1;
-      const targetPerAgent = 300;
+      const targetPerAgent = workingDays * 300;
 
       let gTotAgents = 0, gTotAchieved = 0;
       const teamSplitResults = {};
@@ -2373,7 +2422,7 @@
 
     /* =========================================================================
         DASHBOARD 3 ENGINE (Hourly KPI Consultation Unit II)
-        ========================================================================= */
+        ======================================================================== */
     const D3_ROSTER = [
       {
         team: "TEAM JITENDRA",
@@ -2453,4 +2502,1410 @@
       renderD3();
     }
 
-    function toggleD3Sorry, something went wrong. Please try your request again.
+    function toggleD3BreakSort() {
+      d3BreakSortOrder = d3BreakSortOrder === "desc" ? "asc" : "desc";
+      const arrowBadge = document.getElementById("d3BreakSortArrowBadge");
+      const btn = document.getElementById("d3BtnSortBreakDuration");
+      if (arrowBadge) arrowBadge.innerText = d3BreakSortOrder === "desc" ? "↓" : "↑";
+      if (btn) btn.classList.add("active-sort");
+      renderD3AllBreakAgents();
+    }
+
+    function toggleD3TeamSort(teamName, column) {
+      if (!d3TeamSortState[teamName]) {
+        d3TeamSortState[teamName] = { column: column, order: "desc" };
+      } else if (d3TeamSortState[teamName].column === column) {
+        d3TeamSortState[teamName].order = d3TeamSortState[teamName].order === "desc" ? "asc" : "desc";
+      } else {
+        d3TeamSortState[teamName].column = column;
+        d3TeamSortState[teamName].order = "desc";
+      }
+      renderD3();
+    }
+
+    function parseD3SafeDate(val) {
+      if (!val || val === '-' || val === 'NA' || val === 'NaN') return null;
+      if (val instanceof Date) return isNaN(val.getTime()) ? null : val;
+      
+      let str = String(val).trim();
+      if (str.includes("2050") || str.length < 4) return null;
+
+      let d = new Date(str);
+      if (!isNaN(d.getTime())) return d;
+
+      d = new Date(str.replace(' ', 'T'));
+      if (!isNaN(d.getTime())) return d;
+
+      try {
+        const parts = str.split(' ');
+        const datePart = parts[0];
+        const timePart = parts[1] || "00:00:00";
+        
+        const dParts = datePart.split(/[\/\-]/);
+        const tParts = timePart.split(':');
+
+        if (dParts.length === 3) {
+          let y, m, day;
+          if (dParts[0].length === 4) {
+            y = parseInt(dParts[0], 10);
+            m = parseInt(dParts[1], 10);
+            day = parseInt(dParts[2], 10);
+          } else {
+            m = parseInt(dParts[0], 10);
+            day = parseInt(dParts[1], 10);
+            y = parseInt(dParts[2], 10);
+            if (y < 100) y += 2000;
+          }
+
+          let hr = parseInt(tParts[0] || 0, 10);
+          const min = parseInt(tParts[1] || 0, 10);
+          const sec = parseInt(tParts[2] || 0, 10);
+
+          if (str.toLowerCase().includes('pm') && hr < 12) hr += 12;
+          if (str.toLowerCase().includes('am') && hr === 12) hr = 0;
+
+          const customDate = new Date(y, m - 1, day, hr, min, sec);
+          if (!isNaN(customDate.getTime())) return customDate;
+        }
+      } catch (e) {}
+
+      return null;
+    }
+
+    function parseD3ShiftEndTime(datePrefix, shiftStr) {
+      if (!shiftStr || !shiftStr.includes('-')) return null;
+      try {
+        const endPart = shiftStr.split('-')[1].trim();
+        const match = endPart.match(/(\d+):(\d+)\s*(AM|PM)/i);
+        if (!match) return null;
+        let hours = parseInt(match[1], 10);
+        const mins = parseInt(match[2], 10);
+        const ampm = match[3].toUpperCase();
+
+        if (ampm === "PM" && hours < 12) hours += 12;
+        if (ampm === "AM" && hours === 12) hours = 0;
+
+        const hStr = String(hours).padStart(2, '0');
+        const mStr = String(mins).padStart(2, '0');
+        return `${datePrefix} ${hStr}:${mStr}:00`;
+      } catch (err) {
+        return null;
+      }
+    }
+
+    function parseD3DifferenceInMinutes(startStr, endStr) {
+      const s = parseD3SafeDate(startStr);
+      const e = parseD3SafeDate(endStr);
+      if (!s || !e) return null;
+      const diffMs = e.getTime() - s.getTime();
+      const diffMins = diffMs / (1000 * 60);
+      return (diffMins >= 0 && diffMins <= 360) ? diffMins : null;
+    }
+
+    function getD3HourSlot(timeStr) {
+      if (!timeStr) return null;
+      const str = String(timeStr).trim();
+      const match = str.match(/(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)?/i);
+      if (!match) return null;
+
+      let hour = parseInt(match[1], 10);
+      const ampm = match[3] ? match[3].toUpperCase() : null;
+      if (ampm === "PM" && hour < 12) hour += 12;
+      if (ampm === "AM" && hour === 12) hour = 0;
+
+      if (hour === 7) return "7-8";
+      if (hour === 8) return "8-9";
+      if (hour === 9) return "9-10";
+      if (hour === 10) return "10-11";
+      if (hour === 11) return "11-12";
+      if (hour === 12) return "12-1";
+      if (hour === 13) return "1-2";
+      if (hour === 14) return "2-3";
+      if (hour === 15) return "3-4";
+      if (hour === 16) return "4-5";
+      if (hour === 17) return "5-6";
+      return null;
+    }
+
+    function buildD3EmptyState() {
+      d3AgentCaseStore = {};
+      d3AgentBreakStore = {};
+      d3AgentRegionMapStore = {};
+      return D3_ROSTER.map(team => ({
+        team: team.team,
+        members: team.members.map(m => {
+          const hours = {};
+          D3_SLOTS.forEach(s => hours[s] = 0);
+          return {
+            name: m.name,
+            shift: m.shift || "--",
+            region: "",
+            hours: hours,
+            total: 0,
+            tat: "0.0",
+            tatSum: 0,
+            tatCount: 0
+          };
+        })
+      }));
+    }
+
+    function calculateD3TeamBreakList(agentList, teamName) {
+      const breakStats = [];
+
+      agentList.forEach(agent => {
+        const store = d3AgentCaseStore[agent.name];
+        if (!store) return;
+
+        let allCases = [];
+        D3_SLOTS.forEach(s => {
+          if (store[s] && store[s].length > 0) {
+            allCases = allCases.concat(store[s]);
+          }
+        });
+
+        if (allCases.length < 1) return;
+
+        const validCases = allCases.filter(c => c.apptTime && c.apptTime !== '-');
+        if (validCases.length === 0) return;
+
+        validCases.sort((a, b) => {
+          const dateA = parseD3SafeDate(a.apptTime);
+          const dateB = parseD3SafeDate(b.apptTime);
+          const timeA = dateA ? dateA.getTime() : 0;
+          const timeB = dateB ? dateB.getTime() : 0;
+          return timeA - timeB;
+        });
+
+        let totalBreakMins = 0;
+        const breakList = [];
+
+        for (let i = 0; i < validCases.length - 1; i++) {
+          const currentEndStr = validCases[i].consultEndTime && validCases[i].consultEndTime !== '-'
+            ? validCases[i].consultEndTime
+            : (validCases[i].feedbackEndTime && validCases[i].feedbackEndTime !== '-' 
+               ? validCases[i].feedbackEndTime 
+               : validCases[i].apptTime);
+
+          const nextStartStr = validCases[i + 1].apptTime;
+          const curEnd = parseD3SafeDate(currentEndStr);
+          const nxtStart = parseD3SafeDate(nextStartStr);
+
+          if (curEnd && nxtStart) {
+            const gapMins = (nxtStart.getTime() - curEnd.getTime()) / (1000 * 60);
+            if (gapMins > 15 && gapMins <= 480) {
+              totalBreakMins += gapMins;
+              breakList.push({
+                startTime: currentEndStr,
+                endTime: nextStartStr,
+                durationMins: Math.round(gapMins),
+                prevEmr: validCases[i].emr,
+                nextEmr: validCases[i + 1].emr,
+                prevDoc: validCases[i].doctor,
+                nextDoc: validCases[i + 1].doctor,
+                type: 'INTER_CASE_BREAK'
+              });
+            }
+          }
+        }
+
+        const lastCase = validCases[validCases.length - 1];
+        const lastEndStr = lastCase.consultEndTime && lastCase.consultEndTime !== '-'
+          ? lastCase.consultEndTime
+          : (lastCase.feedbackEndTime && lastCase.feedbackEndTime !== '-' ? lastCase.feedbackEndTime : lastCase.apptTime);
+
+        const datePart = (String(lastEndStr).split(' ')[0] || "").trim();
+        const scheduledShiftEndStr = parseD3ShiftEndTime(datePart, agent.shift);
+
+        if (scheduledShiftEndStr) {
+          const lastCaseEndDate = parseD3SafeDate(lastEndStr);
+          const shiftEndDate = parseD3SafeDate(scheduledShiftEndStr);
+
+          if (lastCaseEndDate && shiftEndDate) {
+            const remainingGapMins = (shiftEndDate.getTime() - lastCaseEndDate.getTime()) / (1000 * 60);
+            if (remainingGapMins > 15 && remainingGapMins <= 480) {
+              totalBreakMins += remainingGapMins;
+              breakList.push({
+                startTime: lastEndStr,
+                endTime: scheduledShiftEndStr,
+                durationMins: Math.round(remainingGapMins),
+                prevEmr: lastCase.emr,
+                nextEmr: "SHIFT END",
+                prevDoc: lastCase.doctor,
+                nextDoc: "Scheduled End",
+                type: 'SHIFT_END_GAP'
+              });
+            }
+          }
+        }
+
+        if (totalBreakMins > 0) {
+          d3AgentBreakStore[agent.name] = breakList;
+          breakStats.push({
+            name: agent.name,
+            team: teamName,
+            shift: agent.shift || "--",
+            totalCases: allCases.length,
+            totalBreakMins: Math.round(totalBreakMins),
+            breakCount: breakList.length
+          });
+        }
+      });
+
+      breakStats.sort((a, b) => b.totalBreakMins - a.totalBreakMins);
+      return breakStats;
+    }
+
+    function renderD3() {
+      const hook = document.getElementById("d3DashboardHook");
+      if (!hook) return;
+      hook.innerHTML = "";
+
+      let grandTotal = 0;
+      let overallTatSum = 0;
+      let overallTatCases = 0;
+      let activeAgentsCount = 0;
+      let maxIndividualTotal = 1;
+
+      let globalMinAgent = { name: "--", tat: 9999 };
+      let globalMaxAgent = { name: "--", tat: -1 };
+
+      d3CurrentDataset.forEach(team => {
+        team.members.forEach(member => {
+          if (member.total > maxIndividualTotal) maxIndividualTotal = member.total;
+          if (member.total > 0) activeAgentsCount++;
+          if (member.tatCount > 0) {
+            overallTatSum += member.tatSum;
+            overallTatCases += member.tatCount;
+          }
+
+          const tatNum = parseFloat(member.tat) || 0;
+          if (tatNum > 0) {
+            if (tatNum < globalMinAgent.tat) globalMinAgent = { name: member.name, tat: tatNum };
+            if (tatNum > globalMaxAgent.tat) globalMaxAgent = { name: member.name, tat: tatNum };
+          }
+        });
+      });
+
+      d3CurrentDataset.forEach(team => {
+        const teamBox = document.createElement("div");
+        teamBox.className = "d3-team-panel";
+
+        let teamMin = { name: "--", tat: 9999 };
+        let teamMax = { name: "--", tat: -1 };
+
+        team.members.forEach(m => {
+          const t = parseFloat(m.tat) || 0;
+          if (t > 0) {
+            if (t < teamMin.tat) teamMin = { name: m.name, tat: t };
+            if (t > teamMax.tat) teamMax = { name: m.name, tat: t };
+          }
+        });
+
+        const currentSort = d3TeamSortState[team.team] || { column: "tat", order: "asc" };
+        const sortedMembers = [...team.members].sort((a, b) => {
+          const tatA = parseFloat(a.tat) || 0;
+          const tatB = parseFloat(b.tat) || 0;
+          const totA = a.total || 0;
+          const totB = b.total || 0;
+
+          if (currentSort.column === "total") {
+            if (totA === totB) return 0;
+            return currentSort.order === "desc" ? totB - totA : totA - totB;
+          } else {
+            if (tatA === 0 && tatB === 0) return 0;
+            if (tatA === 0) return 1;
+            if (tatB === 0) return -1;
+            return currentSort.order === "desc" ? tatB - tatA : tatA - tatB;
+          }
+        });
+
+        const isTotalActive = currentSort.column === "total";
+        const isTatActive = currentSort.column === "tat";
+        const totalArrow = isTotalActive ? (currentSort.order === "desc" ? "↓" : "↑") : "⇅";
+        const tatArrow = isTatActive ? (currentSort.order === "desc" ? "↓" : "↑") : "⇅";
+
+        let rowsHtml = "";
+        sortedMembers.forEach(member => {
+          grandTotal += member.total;
+
+          const slotCells = D3_SLOTS.map(s => {
+            const val = member.hours[s] || 0;
+            if (val > 0) {
+              return `<td class="d3-cell-val-active" title="Click to view cases in slot ${s}" onclick="openD3Drilldown('${member.name.replace(/'/g, "\\'")}', '${s}')">${val}</td>`;
+            } else {
+              return `<td></td>`;
+            }
+          }).join('');
+
+          const percent = maxIndividualTotal > 0 ? Math.min(100, Math.round((member.total / maxIndividualTotal) * 100)) : 0;
+          const displayTotal = member.total > 0 ? member.total : "";
+          const memberTatVal = parseFloat(member.tat) || 0;
+           
+          let arrowHtml = "";
+          if (memberTatVal > 0) {
+            if (memberTatVal === teamMin.tat) {
+              arrowHtml = `<span class="d3-badge-arrow-green" title="Lowest TAT in Team (Best Performance)">↑</span>`;
+            } else if (memberTatVal === teamMax.tat) {
+              arrowHtml = `<span class="d3-badge-arrow-red" title="Highest TAT in Team (Needs Improvement)">↓</span>`;
+            }
+          }
+
+          const displayTat = member.total > 0 && member.tat ? `
+            <div class="d3-tat-cell-flex">
+              ${arrowHtml}
+              <span>${member.tat}m</span>
+            </div>
+          ` : "";
+
+          const displayRegion = member.region ? `<span class="d3-region-pill" title="Click to see all region-wise cases done by ${member.name}" onclick="openD3RegionModal('${member.name.replace(/'/g, "\\'")}')">${member.region}</span>` : "";
+
+          rowsHtml += `
+            <tr>
+              <td class="d3-col-agent-name" title="Click to view all cases for ${member.name}" onclick="openD3Drilldown('${member.name.replace(/'/g, "\\'")}', 'ALL')">
+                ${member.name}
+              </td>
+              <td class="d3-col-shift-tag"><span class="d3-shift-pill">${member.shift}</span></td>
+              <td class="d3-col-region-tag">${displayRegion}</td>
+              ${slotCells}
+              <td class="d3-col-total-summary" title="Click to view all ${member.total} cases" onclick="openD3Drilldown('${member.name.replace(/'/g, "\\'")}', 'ALL')">
+                <div class="d3-spark-wrap">
+                  <span>${displayTotal}</span>
+                  ${member.total > 0 ? `
+                    <div class="d3-spark-bar-bg">
+                      <div class="d3-spark-bar-fill" style="width: ${percent}%;"></div>
+                    </div>` : ''}
+                </div>
+              </td>
+              <td class="d3-col-tat-summary">${displayTat}</td>
+            </tr>
+          `;
+        });
+
+        const teamTatHtml = teamMin.tat !== 9999 ? `
+          <div class="d3-team-tat-stats">
+            <span class="d3-tat-pill-green">★ Best: ${teamMin.name} (${teamMin.tat}m)</span>
+            <span class="d3-tat-pill-red">⚠ Slowest: ${teamMax.name} (${teamMax.tat}m)</span>
+          </div>
+        ` : '';
+
+        const isInlineOpen = !!d3TeamInlineBreakOpen[team.team];
+        const teamBreakStats = calculateD3TeamBreakList(team.members, team.team);
+        let inlineBreakRows = "";
+
+        if (teamBreakStats.length === 0) {
+          inlineBreakRows = `<tr><td colspan="6" style="padding: 16px; color: #64748b; font-weight: 700;">No break intervals exceeding 15 minutes detected for this team.</td></tr>`;
+        } else {
+          teamBreakStats.forEach((item, index) => {
+            const rankClass = index === 0 ? "d3-rank-1" : index === 1 ? "d3-rank-2" : index === 2 ? "d3-rank-3" : "";
+            const hoursPart = Math.floor(item.totalBreakMins / 60);
+            const minsPart = item.totalBreakMins % 60;
+            const formattedTotal = hoursPart > 0 ? `${hoursPart}h ${minsPart}m` : `${minsPart}m`;
+
+            inlineBreakRows += `
+              <tr>
+                <td style="width: 70px;"><span class="d3-rank-badge ${rankClass}">#${index + 1}</span></td>
+                <td class="d3-col-agent-name" style="text-align: center; color: #4338ca;" title="Click to view detailed timeline" onclick="openD3BreakDetail('${item.name.replace(/'/g, "\\'")}')">${item.name}</td>
+                <td><span class="d3-shift-pill">${item.shift}</span></td>
+                <td style="font-weight: 900;">${item.totalCases}</td>
+                <td><span class="d3-break-time-badge">${formattedTotal}</span></td>
+                <td style="font-weight: 900; color: #b91c1c;">${item.breakCount} sessions</td>
+              </tr>
+            `;
+          });
+        }
+
+        teamBox.innerHTML = `
+          <div class="d3-team-title-banner">
+            <div class="d3-team-left-cluster">
+              <span>${team.team}</span>
+              <span class="d3-team-badge">${team.members.length} AGENTS</span>
+            </div>
+            <div>
+              <button type="button" class="d3-btn-team-break-toggle ${isInlineOpen ? 'active-open' : ''}" onclick="toggleD3TeamBreakInline('${team.team}')" title="Toggle team break duration list">
+                <span>${isInlineOpen ? '✕ Hide Break' : '⏱ Break Stats'}</span>
+              </button>
+            </div>
+            ${teamTatHtml}
+          </div>
+
+          <div class="d3-table-container">
+            <table class="d3-table">
+              <thead>
+                <tr>
+                  <th style="min-width: 220px;">AGENT NAME</th>
+                  <th style="min-width: 140px;">SHIFT</th>
+                  <th style="min-width: 200px;">KEY REGIONS (TOP 3)</th>
+                  <th>7-8</th><th>8-9</th><th>9-10</th><th>10-11</th><th>11-12</th><th>12-1</th>
+                  <th>1-2</th><th>2-3</th><th>3-4</th><th>4-5</th><th>5-6</th>
+                  <th class="d3-th-sortable" style="background-color: #0f172a !important; min-width: 145px;">
+                    <button type="button" class="d3-btn-sort-filter ${isTotalActive ? 'active-sort' : ''}" onclick="toggleD3TeamSort('${team.team}', 'total')" title="Filter Total Cases">
+                      <span>TOTAL</span>
+                      <span class="d3-sort-icon-badge">${totalArrow}</span>
+                    </button>
+                  </th>
+                  <th class="d3-th-sortable" style="background-color: #0f172a !important; min-width: 145px;">
+                    <button type="button" class="d3-btn-sort-filter ${isTatActive ? 'active-sort' : ''}" onclick="toggleD3TeamSort('${team.team}', 'tat')" title="Filter Avg TAT">
+                      <span>AVG TAT</span>
+                      <span class="d3-sort-icon-badge">${tatArrow}</span>
+                    </button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rowsHtml}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d3-team-inline-break-panel ${isInlineOpen ? 'active' : ''}">
+            <div class="d3-team-inline-break-header">
+              <span>${team.team} — AGENTS BREAK DURATION (&gt; 15 Mins)</span>
+              <span style="font-size: 13px; font-weight: 800; color: #cbd5e1;">Click agent name for breakdown</span>
+            </div>
+            <div class="d3-table-container">
+              <table class="d3-table d3-team-inline-break-table">
+                <thead>
+                  <tr>
+                    <th>RANK</th>
+                    <th>AGENT NAME</th>
+                    <th>SHIFT</th>
+                    <th>TOTAL CASES</th>
+                    <th style="background-color: #991b1b !important;">TOTAL BREAK TIME</th>
+                    <th>BREAK SESSIONS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${inlineBreakRows}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+
+        hook.appendChild(teamBox);
+      });
+
+      const overallAvgTat = overallTatCases > 0 ? (overallTatSum / overallTatCases).toFixed(1) : "0.0";
+
+      document.getElementById("d3StatTotal").innerText = grandTotal.toLocaleString();
+      document.getElementById("d3StatTat").innerText = `${overallAvgTat} m`;
+      document.getElementById("d3StatAgents").innerText = `${activeAgentsCount} / ${D3_TOTAL_CAPACITY}`;
+       
+      document.getElementById("d3StatLowestAgent").innerText = globalMinAgent.tat !== 9999 ? `${globalMinAgent.name} (${globalMinAgent.tat}m)` : "--";
+      document.getElementById("d3StatHighestAgent").innerText = globalMaxAgent.tat !== -1 ? `${globalMaxAgent.name} (${globalMaxAgent.tat}m)` : "--";
+
+      renderD3AllBreakAgents();
+    }
+
+    function renderD3AllBreakAgents() {
+      const tbody = document.getElementById("d3BreakTableBody");
+      if (!tbody) return;
+
+      const breakStats = [];
+
+      D3_ROSTER.forEach(team => {
+        team.members.forEach(agent => {
+          const store = d3AgentCaseStore[agent.name];
+          if (!store) return;
+
+          let allCases = [];
+          D3_SLOTS.forEach(s => {
+            if (store[s] && store[s].length > 0) {
+              allCases = allCases.concat(store[s]);
+            }
+          });
+
+          if (allCases.length < 1) return;
+
+          const validCases = allCases.filter(c => c.apptTime && c.apptTime !== '-');
+          if (validCases.length === 0) return;
+
+          validCases.sort((a, b) => {
+            const dateA = parseD3SafeDate(a.apptTime);
+            const dateB = parseD3SafeDate(b.apptTime);
+            const timeA = dateA ? dateA.getTime() : 0;
+            const timeB = dateB ? dateB.getTime() : 0;
+            return timeA - timeB;
+          });
+
+          let totalBreakMins = 0;
+          const breakList = [];
+
+          for (let i = 0; i < validCases.length - 1; i++) {
+            const currentEndStr = validCases[i].consultEndTime && validCases[i].consultEndTime !== '-'
+              ? validCases[i].consultEndTime
+              : (validCases[i].feedbackEndTime && validCases[i].feedbackEndTime !== '-' 
+                 ? validCases[i].feedbackEndTime 
+                 : validCases[i].apptTime);
+
+            const nextStartStr = validCases[i + 1].apptTime;
+            const curEnd = parseD3SafeDate(currentEndStr);
+            const nxtStart = parseD3SafeDate(nextStartStr);
+
+            if (curEnd && nxtStart) {
+              const gapMins = (nxtStart.getTime() - curEnd.getTime()) / (1000 * 60);
+              if (gapMins > 15 && gapMins <= 480) {
+                totalBreakMins += gapMins;
+                breakList.push({
+                  startTime: currentEndStr,
+                  endTime: nextStartStr,
+                  durationMins: Math.round(gapMins),
+                  prevEmr: validCases[i].emr,
+                  nextEmr: validCases[i + 1].emr,
+                  prevDoc: validCases[i].doctor,
+                  nextDoc: validCases[i + 1].doctor,
+                  type: 'INTER_CASE_BREAK'
+                });
+              }
+            }
+          }
+
+          const lastCase = validCases[validCases.length - 1];
+          const lastEndStr = lastCase.consultEndTime && lastCase.consultEndTime !== '-'
+            ? lastCase.consultEndTime
+            : (lastCase.feedbackEndTime && lastCase.feedbackEndTime !== '-' ? lastCase.feedbackEndTime : lastCase.apptTime);
+
+          const datePart = (String(lastEndStr).split(' ')[0] || "").trim();
+          const scheduledShiftEndStr = parseD3ShiftEndTime(datePart, agent.shift);
+
+          if (scheduledShiftEndStr) {
+            const lastCaseEndDate = parseD3SafeDate(lastEndStr);
+            const shiftEndDate = parseD3SafeDate(scheduledShiftEndStr);
+
+            if (lastCaseEndDate && shiftEndDate) {
+              const remainingGapMins = (shiftEndDate.getTime() - lastCaseEndDate.getTime()) / (1000 * 60);
+              if (remainingGapMins > 15 && remainingGapMins <= 480) {
+                totalBreakMins += remainingGapMins;
+                breakList.push({
+                  startTime: lastEndStr,
+                  endTime: scheduledShiftEndStr,
+                  durationMins: Math.round(remainingGapMins),
+                  prevEmr: lastCase.emr,
+                  nextEmr: "SHIFT END",
+                  prevDoc: lastCase.doctor,
+                  nextDoc: "Scheduled End",
+                  type: 'SHIFT_END_GAP'
+                });
+              }
+            }
+          }
+
+          if (totalBreakMins > 0) {
+            d3AgentBreakStore[agent.name] = breakList;
+            breakStats.push({
+              name: agent.name,
+              team: team.team,
+              shift: agent.shift || "--",
+              totalCases: allCases.length,
+              totalBreakMins: Math.round(totalBreakMins),
+              breakCount: breakList.length
+            });
+          }
+        });
+      });
+
+      const filteredStats = breakStats.filter(item => d3SelectedBreakTeams.includes(item.team));
+
+      filteredStats.sort((a, b) => {
+        return d3BreakSortOrder === "desc" 
+          ? b.totalBreakMins - a.totalBreakMins 
+          : a.totalBreakMins - b.totalBreakMins;
+      });
+
+      const teamBadge = document.getElementById("d3TeamFilterBadge");
+      const btnTeamFilter = document.getElementById("d3BtnTeamFilterBreak");
+      if (teamBadge && btnTeamFilter) {
+        if (d3SelectedBreakTeams.length === D3_ROSTER.length) {
+          teamBadge.innerText = "ALL";
+          btnTeamFilter.classList.remove("active-sort");
+        } else {
+          teamBadge.innerText = `${d3SelectedBreakTeams.length} TEAMS`;
+          btnTeamFilter.classList.add("active-sort");
+        }
+      }
+
+      if (filteredStats.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="padding: 24px; color: #64748b; font-weight: 700;">No break intervals exceeding 15 minutes found for the selected filter.</td></tr>`;
+        return;
+      }
+
+      let html = "";
+      filteredStats.forEach((item, index) => {
+        const rankClass = index === 0 ? "d3-rank-1" : index === 1 ? "d3-rank-2" : index === 2 ? "d3-rank-3" : "";
+        const hoursPart = Math.floor(item.totalBreakMins / 60);
+        const minsPart = item.totalBreakMins % 60;
+        const formattedTotal = hoursPart > 0 ? `${hoursPart}h ${minsPart}m` : `${minsPart}m`;
+
+        html += `
+          <tr>
+            <td><span class="d3-rank-badge ${rankClass}">#${index + 1}</span></td>
+            <td class="d3-col-agent-name" style="text-align: center; color: #4338ca;" title="Click to open popup break breakdown" onclick="openD3BreakDetail('${item.name.replace(/'/g, "\\'")}')">${item.name}</td>
+            <td style="color: #4338ca; font-weight: 900;">${item.team}</td>
+            <td><span class="d3-shift-pill">${item.shift}</span></td>
+            <td style="font-weight: 900;">${item.totalCases}</td>
+            <td><span class="d3-break-time-badge">${formattedTotal}</span></td>
+            <td style="font-weight: 900; color: #b91c1c;">${item.breakCount} sessions</td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+    }
+
+    // MODAL 1: AGENT CASE DRILLDOWN
+    function openD3Drilldown(agentName, slot) {
+      const modal = document.getElementById("d3DrilldownModal");
+      const titleText = document.getElementById("d3DrillTitleText");
+      const detailsBar = document.getElementById("d3DrillAgentDetailsBar");
+      const tbody = document.getElementById("d3DrillTableBody");
+
+      if (!d3AgentCaseStore[agentName]) {
+        alert(`No records found for agent: ${agentName}.`);
+        return;
+      }
+
+      let agentShift = "--";
+      D3_ROSTER.forEach(t => {
+        const found = t.members.find(m => m.name === agentName);
+        if (found) agentShift = found.shift || "--";
+      });
+
+      let casesToShow = [];
+      if (slot === 'ALL') {
+        D3_SLOTS.forEach(s => {
+          if (d3AgentCaseStore[agentName][s]) {
+            casesToShow = casesToShow.concat(d3AgentCaseStore[agentName][s]);
+          }
+        });
+        titleText.innerText = `${agentName.toUpperCase()} — COMPLETE CASE LOGS`;
+      } else {
+        casesToShow = d3AgentCaseStore[agentName][slot] || [];
+        titleText.innerText = `${agentName.toUpperCase()} — HOURLY SLOT [ ${slot} ]`;
+      }
+
+      const regionCounts = {};
+      let tatSum = 0, tatCount = 0;
+
+      casesToShow.forEach(c => {
+        if (c.region && c.region !== '-') {
+          regionCounts[c.region] = (regionCounts[c.region] || 0) + 1;
+        }
+        const parsedTat = parseFloat(c.tat);
+        if (!isNaN(parsedTat)) {
+          tatSum += parsedTat;
+          tatCount++;
+        }
+      });
+
+      const avgTat = tatCount > 0 ? (tatSum / tatCount).toFixed(1) + ' m' : '--';
+      const sortedRegions = Object.entries(regionCounts)
+        .sort((a, b) => b[1] - a[1])
+        .map(([reg, count]) => `${reg} (${count})`)
+        .join(', ');
+
+      detailsBar.innerHTML = `
+        <div class="d3-drill-info-chip">Agent: <strong>${agentName}</strong></div>
+        <div class="d3-drill-info-chip">Shift: <strong>${agentShift}</strong></div>
+        <div class="d3-drill-info-chip">Cases: <strong>${casesToShow.length}</strong></div>
+        <div class="d3-drill-info-chip">Average TAT: <strong>${avgTat}</strong></div>
+        <div class="d3-drill-info-chip">Top Regions: <strong>${sortedRegions || 'None'}</strong></div>
+      `;
+
+      tbody.innerHTML = "";
+      if (casesToShow.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" style="padding: 24px; color: #64748b; font-size: 16px; font-weight: 800;">No consult records found for this selection.</td></tr>`;
+      } else {
+        casesToShow.forEach((c, idx) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="color: #64748b; font-weight: 900;">${idx + 1}</td>
+            <td style="font-weight:900; color:#0284c7;">${c.emr || '-'}</td>
+            <td style="color:#070e1c; font-weight:900;">${c.doctor || '-'}</td>
+            <td style="color:#1e293b; font-weight:800;">${c.medAgent || '-'}</td>
+            <td><span class="d3-region-pill">${c.region || '-'}</span></td>
+            <td style="color:#334155; font-weight:800;">${c.branch || '-'}</td>
+            <td><span style="background:#e2e8f0; padding:3px 8px; border-radius:5px; font-weight:900;">${c.type || '-'}</span></td>
+            <td style="color:#059669; font-weight:900; font-size:17px;">${c.tat && c.tat !== '-' ? c.tat + ' m' : '-'}</td>
+            <td>${formatD3DateTimeBold(c.apptTime)}</td>
+            <td>${formatD3DateTimeBold(c.feedbackEndTime)}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeD3Drilldown() {
+      document.getElementById("d3DrilldownModal").classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    // MODAL 2: BREAK DETAILS
+    function openD3BreakDetail(agentName) {
+      const modal = document.getElementById("d3BreakModal");
+      const titleText = document.getElementById("d3BreakDetailTitleText");
+      const tbody = document.getElementById("d3BreakDetailTableBody");
+
+      const breaks = d3AgentBreakStore[agentName] || [];
+      if (breaks.length === 0) {
+        alert(`No break intervals exceeding 15 minutes found for ${agentName}.`);
+        return;
+      }
+
+      titleText.innerHTML = `${agentName.toUpperCase()} — BREAK SCHEDULE (${breaks.length} SESSIONS)`;
+      tbody.innerHTML = "";
+
+      breaks.forEach((b, idx) => {
+        const hours = Math.floor(b.durationMins / 60);
+        const mins = b.durationMins % 60;
+        const durFormatted = hours > 0 ? `${hours}h ${mins}m` : `${mins} mins`;
+
+        const tr = document.createElement("tr");
+        let contextHtml = `
+          <span>Case ${b.prevEmr || '-'} (${b.prevDoc || '-'})</span> ➔ 
+          <span style="font-weight: 900; color: #0284c7;">Case ${b.nextEmr || '-'} (${b.nextDoc || '-'})</span>
+        `;
+        if (b.type === 'SHIFT_END_GAP') {
+          contextHtml = `
+            <span>Last Case ${b.prevEmr || '-'}</span> ➔ 
+            <span style="font-weight: 900; color: #e11d48;">[SHIFT LOGOFF GAP / IDLE TILL SHIFT END]</span>
+          `;
+        }
+
+        tr.innerHTML = `
+          <td><span class="d3-rank-badge" style="background:#fee2e2; color:#b91c1c; border:1px solid #f87171;">#${idx + 1}</span></td>
+          <td>${formatD3DateTimeBold(b.startTime)}</td>
+          <td>${formatD3DateTimeBold(b.endTime)}</td>
+          <td><span class="d3-break-time-badge">${durFormatted}</span></td>
+          <td style="font-size: 14.5px; color: #334155;">${contextHtml}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeD3BreakDetail() {
+      document.getElementById("d3BreakModal").classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    // MODAL 3: REGION BREAKDOWN
+    function openD3RegionModal(agentName) {
+      const modal = document.getElementById("d3RegionModal");
+      const title = document.getElementById("d3RegionModalTitle");
+      const detailsBar = document.getElementById("d3RegionDetailsBar");
+      const tbody = document.getElementById("d3RegionTableBody");
+
+      const regMap = d3AgentRegionMapStore[agentName] || {};
+      const entries = Object.entries(regMap).sort((a, b) => b[1] - a[1]);
+      let totalCases = entries.reduce((sum, item) => sum + item[1], 0);
+
+      title.innerHTML = `${agentName.toUpperCase()} — REGIONS SUMMARY`;
+      detailsBar.innerHTML = `
+        <div class="d3-drill-info-chip">Agent: <strong>${agentName}</strong></div>
+        <div class="d3-drill-info-chip">Unique Regions: <strong>${entries.length}</strong></div>
+        <div class="d3-drill-info-chip">Total Region Cases: <strong>${totalCases}</strong></div>
+      `;
+
+      tbody.innerHTML = "";
+      if (entries.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3" style="padding: 24px; color: #64748b; font-size: 16px; font-weight: 800;">No region records available for this agent.</td></tr>`;
+      } else {
+        entries.forEach(([regionName, count], idx) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td style="text-align: center; color: #64748b; font-weight: 900;">${idx + 1}</td>
+            <td style="text-align: left; padding-left: 24px; font-weight: 800; color: #0f172a;">${regionName}</td>
+            <td style="text-align: right; padding-right: 28px; font-weight: 900; color: #0284c7; font-size: 17px;">${count}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeD3RegionModal() {
+      document.getElementById("d3RegionModal").classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    // MODAL 4: TOP 5 TAT RANKING
+    function openD3TatRankingModal(type) {
+      const modal = document.getElementById("d3TatRankingModal");
+      const title = document.getElementById("d3TatRankingTitleText");
+      const header = document.getElementById("d3TatRankingHeader");
+      const detailsBar = document.getElementById("d3TatRankingDetailsBar");
+      const tbody = document.getElementById("d3TatRankingTableBody");
+      const tatTh = document.getElementById("d3TatThHeader");
+
+      const activeAgents = [];
+      d3CurrentDataset.forEach(team => {
+        team.members.forEach(m => {
+          const tatNum = parseFloat(m.tat) || 0;
+          if (m.total > 0 && tatNum > 0) {
+            activeAgents.push({
+              name: m.name,
+              team: team.team,
+              shift: m.shift || "--",
+              total: m.total,
+              tat: tatNum
+            });
+          }
+        });
+      });
+
+      if (activeAgents.length === 0) {
+        alert("Please upload a file to evaluate TAT metrics.");
+        return;
+      }
+
+      let sorted = [];
+      const isLowest = type === 'LOWEST';
+
+      if (isLowest) {
+        sorted = [...activeAgents].sort((a, b) => a.tat - b.tat).slice(0, 5);
+        header.style.background = "linear-gradient(90deg, #064e3b 0%, #065f46 100%)";
+        header.style.borderBottom = "3px solid #10b981";
+        tatTh.style.backgroundColor = "#047857";
+        title.innerHTML = `★ TOP 5 LOWEST TAT (BEST EFFICIENCY)`;
+        detailsBar.innerHTML = `
+          <div class="d3-drill-info-chip">Category: <strong style="color:#6ee7b7;">Fastest Turnaround Time</strong></div>
+          <div class="d3-drill-info-chip">Qualified Agents: <strong>${activeAgents.length}</strong></div>
+          <div class="d3-drill-info-chip">Top Rank: <strong>${sorted[0].name} (${sorted[0].tat.toFixed(1)}m)</strong></div>
+        `;
+      } else {
+        sorted = [...activeAgents].sort((a, b) => b.tat - a.tat).slice(0, 5);
+        header.style.background = "linear-gradient(90deg, #881337 0%, #9f1239 100%)";
+        header.style.borderBottom = "3px solid #f43f5e";
+        tatTh.style.backgroundColor = "#9f1239";
+        title.innerHTML = `⚠ TOP 5 HIGHEST TAT (SLOWEST / NEEDS ATTENTION)`;
+        detailsBar.innerHTML = `
+          <div class="d3-drill-info-chip">Category: <strong style="color:#fda4af;">Highest Turnaround Time</strong></div>
+          <div class="d3-drill-info-chip">Qualified Agents: <strong>${activeAgents.length}</strong></div>
+          <div class="d3-drill-info-chip">Peak Slowest: <strong>${sorted[0].name} (${sorted[0].tat.toFixed(1)}m)</strong></div>
+        `;
+      }
+
+      tbody.innerHTML = "";
+      sorted.forEach((agent, idx) => {
+        const tr = document.createElement("tr");
+        const rankClass = isLowest ? "d3-rank-1" : "d3-rank-3";
+        const pillColor = isLowest ? "background:#dcfce7; color:#15803d; border:1px solid #86efac;" : "background:#ffe4e6; color:#b91c1c; border:1px solid #fca5a5;";
+
+        tr.innerHTML = `
+          <td style="text-align: center;"><span class="d3-rank-badge ${rankClass}">#${idx + 1}</span></td>
+          <td class="d3-col-agent-name" style="text-align: left; padding-left: 20px;" title="Click to view all cases for ${agent.name}" onclick="closeD3TatRankingModal(); openD3Drilldown('${agent.name.replace(/'/g, "\\'")}', 'ALL');">
+            ${agent.name}
+          </td>
+          <td style="font-weight: 800; color: #334155;">${agent.team}</td>
+          <td><span class="d3-shift-pill">${agent.shift}</span></td>
+          <td style="font-weight: 900; color: #0f172a;">${agent.total}</td>
+          <td><span style="${pillColor} padding:4px 14px; border-radius:6px; font-weight:900; font-size:17px;">${agent.tat.toFixed(1)} m</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeD3TatRankingModal() {
+      document.getElementById("d3TatRankingModal").classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    // MODAL 5: TEAM MULTI-FILTER MODAL
+    function openD3TeamFilterModal() {
+      const modal = document.getElementById("d3TeamFilterModal");
+      const container = document.getElementById("d3TeamFilterListContainer");
+      if (!modal || !container) return;
+
+      container.innerHTML = "";
+      D3_ROSTER.forEach(teamObj => {
+        const isChecked = d3SelectedBreakTeams.includes(teamObj.team);
+        const label = document.createElement("label");
+        label.style.cssText = `display:flex; align-items:center; justify-content:space-between; padding:14px 18px; border-radius:10px; border:1.5px solid #e2e8f0; background:${isChecked ? '#eff6ff' : '#f8fafc'}; cursor:pointer; font-weight:800; font-size:15.5px; color:#0f172a;`;
+        label.innerHTML = `
+          <span>${teamObj.team} (${teamObj.members.length} Agents)</span>
+          <input type="checkbox" value="${teamObj.team}" ${isChecked ? 'checked' : ''} style="width:20px; height:20px; accent-color:#2563eb; cursor:pointer;" onchange="this.parentElement.style.background = this.checked ? '#eff6ff' : '#f8fafc'">
+        `;
+        container.appendChild(label);
+      });
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeD3TeamFilterModal() {
+      document.getElementById("d3TeamFilterModal").classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+
+    function selectD3AllTeams(check) {
+      const cbs = document.querySelectorAll("#d3TeamFilterListContainer input[type='checkbox']");
+      cbs.forEach(cb => {
+        cb.checked = check;
+        cb.parentElement.style.background = check ? '#eff6ff' : '#f8fafc';
+      });
+    }
+
+    function applyD3TeamFilters() {
+      const cbs = document.querySelectorAll("#d3TeamFilterListContainer input[type='checkbox']");
+      const selected = [];
+      cbs.forEach(cb => {
+        if (cb.checked) selected.push(cb.value);
+      });
+
+      if (selected.length === 0) {
+        alert("Please select at least one team.");
+        return;
+      }
+
+      d3SelectedBreakTeams = selected;
+      closeD3TeamFilterModal();
+      renderD3AllBreakAgents();
+    }
+
+    function handleD3OverlayClick(e, modalId) {
+      if (e.target.id === modalId) {
+        if (modalId === 'd3DrilldownModal') closeD3Drilldown();
+        if (modalId === 'd3BreakModal') closeD3BreakDetail();
+        if (modalId === 'd3RegionModal') closeD3RegionModal();
+        if (modalId === 'd3TatRankingModal') closeD3TatRankingModal();
+        if (modalId === 'd3TeamFilterModal') closeD3TeamFilterModal();
+      }
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeD3Drilldown();
+        closeD3BreakDetail();
+        closeD3RegionModal();
+        closeD3TatRankingModal();
+        closeD3TeamFilterModal();
+      }
+    });
+
+    function formatD3DateTimeBold(str) {
+      if (!str || str === '-') return '-';
+      const parts = String(str).trim().split(' ');
+      if (parts.length >= 2) {
+        return `<div class="d3-time-container"><span class="d3-time-date-part">${parts[0]}</span><span class="d3-time-bold-part">${parts[1]}</span></div>`;
+      }
+      return `<span class="d3-time-bold-part">${str}</span>`;
+    }
+
+    function parseCSVLine(line) {
+      const arr = [];
+      let entry = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const c = line[i];
+        if (c === '"') inQuotes = !inQuotes;
+        else if (c === ',' && !inQuotes) {
+          arr.push(entry.trim());
+          entry = '';
+        } else entry += c;
+      }
+      arr.push(entry.trim());
+      return arr.map(s => s.replace(/^"|"$/g, ''));
+    }
+
+    document.getElementById("d3CsvUploader").addEventListener("change", function(e) {
+      if (e.target.files[0]) handleD3FileDirect(e.target.files[0]);
+    });
+
+    function handleD3FileDirect(file) {
+      const fileName = file.name.toLowerCase();
+      const isExcel = fileName.endsWith('.xlsx') || fileName.endsWith('.xls');
+      const reader = new FileReader();
+
+      if (isExcel) {
+        reader.onload = function(evt) {
+          try {
+            const data = new Uint8Array(evt.target.result);
+            const workbook = XLSX.read(data, { 
+              type: 'array', 
+              cellDates: true, 
+              dateNF: 'yyyy-mm-dd hh:mm:ss' 
+            });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+             
+            const rawRows = XLSX.utils.sheet_to_json(worksheet, { 
+              header: 1, 
+              raw: false, 
+              dateNF: 'yyyy-mm-dd hh:mm:ss', 
+              defval: "" 
+            });
+             
+            let headerIdx = -1;
+            for (let i = 0; i < Math.min(rawRows.length, 25); i++) {
+              const rowStr = rawRows[i].map(c => String(c).toLowerCase()).join(" ");
+              if (rowStr.includes("med agent") || rowStr.includes("appt time") || rowStr.includes("consult starttime")) {
+                headerIdx = i;
+                break;
+              }
+            }
+
+            if (headerIdx === -1) {
+              alert("Dashboard 3: Invalid Excel file. Required columns ('Med Agent', 'Appt Time') could not be found.");
+              return;
+            }
+
+            const headers = rawRows[headerIdx].map(h => String(h).trim());
+            const rows = [];
+
+            for (let i = headerIdx + 1; i < rawRows.length; i++) {
+              const rowData = rawRows[i];
+              if (!rowData || rowData.length === 0) continue;
+              const rowObj = {};
+              headers.forEach((h, idx) => {
+                if (h) rowObj[h] = rowData[idx] !== undefined ? String(rowData[idx]).trim() : "";
+              });
+              rows.push(rowObj);
+            }
+
+            processD3RawRows(rows);
+          } catch (err) {
+            console.error(err);
+            alert("Dashboard 3 Error reading Excel file: " + err.message);
+          }
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        reader.onload = function(evt) {
+          try {
+            const text = evt.target.result;
+            const lines = text.split(/\r\n|\n/).filter(l => l.trim().length > 0);
+
+            let headerIdx = -1;
+            for (let i = 0; i < Math.min(lines.length, 25); i++) {
+              const lower = lines[i].toLowerCase();
+              if (lower.includes("med agent") || lower.includes("appt time") || lower.includes("consult starttime")) {
+                headerIdx = i;
+                break;
+              }
+            }
+
+            if (headerIdx === -1) {
+              alert("Dashboard 3: Invalid CSV format. Required columns could not be found.");
+              return;
+            }
+
+            const headers = parseCSVLine(lines[headerIdx]);
+            const rows = [];
+
+            for (let i = headerIdx + 1; i < lines.length; i++) {
+              const cols = parseCSVLine(lines[i]);
+              if (cols.length < 3) continue;
+              const rowObj = {};
+              headers.forEach((h, idx) => {
+                rowObj[h] = cols[idx] !== undefined ? cols[idx] : "";
+              });
+              rows.push(rowObj);
+            }
+
+            processD3RawRows(rows);
+          } catch (err) {
+            console.error(err);
+            alert("Dashboard 3 Error reading CSV file: " + err.message);
+          }
+        };
+        reader.readAsText(file);
+      }
+    }
+
+    function processD3RawRows(rows) {
+      d3AgentCaseStore = {};
+      d3AgentRegionMapStore = {};
+
+      d3CurrentDataset = D3_ROSTER.map(team => ({
+        team: team.team,
+        members: team.members.map(agentObj => {
+          const hours = {};
+          D3_SLOTS.forEach(s => hours[s] = 0);
+          const regionMap = {};
+          let tatSum = 0;
+          let tatCount = 0;
+
+          if (!d3AgentCaseStore[agentObj.name]) {
+            d3AgentCaseStore[agentObj.name] = {};
+            D3_SLOTS.forEach(s => d3AgentCaseStore[agentObj.name][s] = []);
+          }
+
+          const matches = rows.filter(r => {
+            const medAgent = (r["Med Agent"] || r["Pharmacist"] || r["Agent Name"] || r["Agent"] || "").toLowerCase().trim();
+            const empCode = (r["Med Agent Emp Code"] || r["Emp Code"] || r["Agent Emp Code"] || "").toLowerCase().trim();
+
+            if (agentObj.name === "Kamni Sharma") {
+              return medAgent === "kamni" || medAgent.startsWith("kamni") || medAgent.includes("kamini");
+            }
+
+            return agentObj.match.some(m => {
+              const query = m.toLowerCase().trim();
+              return (empCode !== "" && empCode !== "na" && empCode === query) || 
+                     medAgent === query || 
+                     medAgent.includes(query);
+            });
+          });
+
+          matches.forEach(row => {
+            const status = (row["Status"] || "").trim().toUpperCase();
+            if (status !== "DONE" && status !== "COMPLETED") return;
+
+            const apptTime = row["Appt Time"] || row["Consult StartTime"] || "";
+            const slot = getD3HourSlot(apptTime);
+            if (!slot || hours[slot] === undefined) return;
+
+            hours[slot] += 1;
+
+            const reg = (row["Region Name"] || row["Clinic State"] || "").trim();
+            if (reg && reg.length > 0 && reg !== "-") {
+              regionMap[reg] = (regionMap[reg] || 0) + 1;
+            }
+
+            const fbEndTime = row["Immediate Feedback End Time"] || "";
+            const consultEndTime = row["Consult EndTime"] || row["Doc Consult EndTime"] || row["Consultation End Time"] || row["Immediate Feedback End Time"] || "";
+
+            const calculatedTatMins = parseD3DifferenceInMinutes(apptTime, fbEndTime);
+
+            if (calculatedTatMins !== null) {
+              tatSum += calculatedTatMins;
+              tatCount++;
+            }
+
+            let doctorName = (row["Doc Consult"] || row["Scheduled Doc"] || row["Docs"] || "").replace(/,/g, '').trim();
+
+            d3AgentCaseStore[agentObj.name][slot].push({
+              emr: row["EMR #"] || row["Member Id"] || "-",
+              doctor: doctorName || "-",
+              medAgent: row["Med Agent"] || agentObj.name,
+              region: reg || "-",
+              branch: row["Branch Name"] || "-",
+              type: row["Type"] || "-",
+              tat: calculatedTatMins !== null ? calculatedTatMins.toFixed(1) : "-",
+              apptTime: apptTime,
+              consultEndTime: consultEndTime,
+              feedbackEndTime: fbEndTime
+            });
+          });
+
+          d3AgentRegionMapStore[agentObj.name] = regionMap;
+
+          const totalOutput = Object.values(hours).reduce((a, b) => a + b, 0);
+          const sortedRegions = Object.keys(regionMap).sort((a, b) => regionMap[b] - regionMap[a]);
+          const displayRegion = sortedRegions.length > 0 ? sortedRegions.slice(0, 3).join(", ") : "";
+          const avgTat = tatCount > 0 ? (tatSum / tatCount).toFixed(1) : "";
+
+          return {
+            name: agentObj.name,
+            shift: agentObj.shift || "--",
+            region: displayRegion,
+            hours: hours,
+            total: totalOutput,
+            tat: avgTat,
+            tatSum: tatSum,
+            tatCount: tatCount
+          };
+        })
+      }));
+
+      closeD3Drilldown();
+      closeD3BreakDetail();
+      closeD3RegionModal();
+      closeD3TatRankingModal();
+      closeD3TeamFilterModal();
+      renderD3();
+    }
+
+    d3CurrentDataset = buildD3EmptyState();
+    renderD3();
+
+
+    /* =========================================================================
+        DASHBOARD 5 ENGINE (E-Clinic Daily Login Dashboard)
+        ======================================================================== */
+    let d5GlobalData = [];
+
+    document.getElementById('d5FileUpload').addEventListener('change', e => {
+      if (e.target.files[0]) handleD5FileDirect(e.target.files[0]);
+    });
+
+    function extractD5Prefix(str) {
+      if (!str) return 'OTHER';
+      const match = str.match(/(?:EC|ec)?(\d{2,3}:)/i);
+      return match ? match[1] : 'OTHER';
+    }
+
+    function handleD5FileDirect(file) {
+      document.getElementById('d5FileName').textContent = file.name;
+      document.getElementById('d5Loader').style.display = 'block';
+      document.getElementById('d5TableContainer').style.display = 'none';
+
+      const fileName = file.name.toLowerCase();
+      const isExcel = fileName.endsWith('.xlsx') || fileName.endsWith('.xls');
+      const reader = new FileReader();
+
+      if (isExcel) {
+        reader.onload = function(e) {
+          try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const json = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+            processD5Data(json);
+          } catch (err) {
+            console.error(err);
+            alert("Dashboard 5 Error reading Excel file: " + err.message);
+            document.getElementById('d5Loader').style.display = 'none';
+          }
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        reader.onload = function(e) {
+          try {
+            Papa.parse(e.target.result, {
+              complete: function(results) {
+                const rows = results.data.map(r => Array.isArray(r) ? r : Object.values(r));
+                processD5Data(rows);
+              },
+              error: function(err) {
+                console.error(err);
+                alert("Dashboard 5 Error reading CSV file: " + err.message);
+                document.getElementById('d5Loader').style.display = 'none';
+              }
+            });
+          } catch (err) {
+            console.error(err);
+            alert("Dashboard 5 Error reading CSV file: " + err.message);
+            document.getElementById('d5Loader').style.display = 'none';
+          }
+        };
+        reader.readAsText(file);
+      }
+    }
+
+    function processD5Data(rows) {
+      let headerRowIndex = -1;
+      for (let i = 0; i < rows.length; i++) {
+        if (rows[i] && rows[i].some(c => typeof c === 'string' && c.toLowerCase().includes('clinic name'))) {
+          headerRowIndex = i;
+          break;
+        }
+      }
+
+      if (headerRowIndex === -1) {
+        alert("Dashboard 5: Could not find 'Clinic Name' column.");
+        document.getElementById('d5Loader').style.display = 'none';
+        return;
+      }
+
+      const headers = rows[headerRowIndex].map(h => typeof h === 'string' ? h.toLowerCase().trim() : '');
+      const clinicIdx = headers.findIndex(h => h.includes('clinic name'));
+      const loginIdIdx = headers.findIndex(h => h.includes('login id'));
+      const loginTimeIdx = headers.findIndex(h => h.includes('login time'));
+      const logoutTimeIdx = headers.findIndex(h => h.includes('logout time'));
+      const ipIdx = headers.findIndex(h => h.includes('ip'));
+      const consultIdx = headers.findIndex(h => h.includes('consultation count'));
+      const policyIdx = headers.findIndex(h => h.includes('policy count'));
+
+      d5GlobalData = [];
+      const regionsSet = new Set();
+      const codesSet = new Set();
+      const seen = new Set();
+
+      for (let i = headerRowIndex + 1; i < rows.length; i++) {
+        const row = rows[i];
+        if (!row || !row[clinicIdx]) continue;
+        const clinicName = (row[clinicIdx] || '').toString().trim();
+        if (!clinicName) continue;
+
+        const unique = clinicName.toLowerCase();
+        if (seen.has(unique)) continue;
+        seen.add(unique);
+
+        const loginId = loginIdIdx !== -1 ? (row[loginIdIdx] || '-').toString().trim() : '-';
+        let codePrefix = extractD5Prefix(loginId);
+        if (codePrefix === 'OTHER') codePrefix = extractD5Prefix(clinicName);
+        if (codePrefix !== 'OTHER') codesSet.add(codePrefix);
+
+        const parts = clinicName.split(' ');
+        const region = parts.length > 1 ? parts[parts.length - 1].toUpperCase() : 'UNKNOWN';
+        regionsSet.add(region);
+
+        d5GlobalData.push({
+          clinicName, loginId,
+          loginTime: loginTimeIdx !== -1 ? (row[loginTimeIdx] || '-') : '-',
+          logoutTime: logoutTimeIdx !== -1 ? (row[logoutTimeIdx] || '-') : '-',
+          ip: ipIdx !== -1 ? (row[ipIdx] || '-') : '-',
+          consultCount: consultIdx !== -1 ? (row[consultIdx] || '0') : '0',
+          policyCount: policyIdx !== -1 ? (row[policyIdx] || '0') : '0',
+          codePrefix, region
+        });
+      }
+
+      const codeSelect = document.getElementById('d5CodeSelect');
+      codeSelect.innerHTML = '<option value="">-- Select Login Code --</option>';
+      Array.from(codesSet).sort((a,b) => parseInt(a) - parseInt(b)).forEach(c => {
+        codeSelect.innerHTML += `<option value="${c}">${c}</option>`;
+      });
+      codeSelect.disabled = false;
+
+      const regionSelect = document.getElementById('d5RegionSelect');
+      regionSelect.innerHTML = '<option value="">-- Select Region --</option>';
+      Array.from(regionsSet).sort().forEach(r => {
+        regionSelect.innerHTML += `<option value="${r}">${r}</option>`;
+      });
+      regionSelect.disabled = false;
+
+      codeSelect.onchange = function() {
+        const code = this.value;
+        document.getElementById('d5RegionSelect').value = '';
+        if (!code) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
+        renderD5Table(d5GlobalData.filter(item => item.codePrefix === code));
+      };
+
+      regionSelect.onchange = function() {
+        const reg = this.value;
+        document.getElementById('d5CodeSelect').value = '';
+        if (!reg) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
+        renderD5Table(d5GlobalData.filter(item => item.region === reg));
+      };
+
+      document.getElementById('d5Loader').style.display = 'none';
+      renderD5Table(d5GlobalData);
+    }
+
+    function renderD5Table(list) {
+      const tbody = document.getElementById('d5TableBody');
+      tbody.innerHTML = '';
+      if (!list || list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="padding:20px; text-align:center; color:#ef4444;">No matching records found.</td></tr>`;
+      } else {
+        list.forEach(item => {
+          tbody.innerHTML += `
+            <tr>
+              <td style="text-align:left; padding-left:16px; font-weight:900;">${item.clinicName}</td>
+              <td>${item.loginId}</td>
+              <td>${item.loginTime}</td>
+              <td>${item.logoutTime}</td>
+              <td style="font-family:'Courier New', monospace;">${item.ip}</td>
+              <td style="color:#0284c7; font-weight:900;">${item.consultCount}</td>
+              <td style="color:#0284c7; font-weight:900;">${item.policyCount}</td>
+            </tr>
+          `;
+        });
+      }
+      document.getElementById('d5TableContainer').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
