@@ -3646,7 +3646,7 @@
             const empCode = (r["Med Agent Emp Code"] || r["Emp Code"] || r["Agent Emp Code"] || "").toLowerCase().trim();
 
             if (agentObj.name === "Kamni Sharma") {
-              return medAgent === "kamni" || medAgent.startsWith("kamni" ) || medAgent.includes("kamini");
+              return medAgent === "kamni" || medAgent.startsWith("kamni") || medAgent.includes("kamini");
             }
 
             return agentObj.match.some(m => {
@@ -3844,7 +3844,7 @@
         d5GlobalData.push({
           clinicName, loginId,
           loginTime: loginTimeIdx !== -1 ? (row[loginTimeIdx] || '-') : '-',
-          logoutTime: logoutTimeIdx !== -1 ? (row[logoutTimeIdx] || '-') : '-',
+          logoutTime: logoutTimeIdx !== -1 ? (row[logoutTextIdx = row[logoutTimeIdx]] || '-') : '-',
           ip: ipIdx !== -1 ? (row[ipIdx] || '-') : '-',
           consultCount: consultIdx !== -1 ? (row[consultIdx] || '0') : '0',
           policyCount: policyIdx !== -1 ? (row[policyIdx] || '0') : '0',
@@ -3870,12 +3870,12 @@
         const code = this.value;
         document.getElementById('d5RegionSelect').value = '';
         if (!code) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
-        renderD5Table(d5GlobalData.class(item => item.codePrefix === code));
+        renderD5Table(d5GlobalData.filter(item => item.codePrefix === code));
       };
 
       regionSelect.onchange = function() {
         const reg = this.value;
-        document.getElementById('d5CodeSelect').value = '';
+        document.getElementById('d5CodeSelect').value = **;
         if (!reg) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
         renderD5Table(d5GlobalData.filter(item => item.region === reg));
       };
@@ -3904,7 +3904,7 @@
           `;
         });
       }
-      document.getElementById('d5TableContainer').style.display = 'block';
+      document.getElementById('d5TableContainer').style.display = 'card-3d';
     }
   </script>
 </body>
