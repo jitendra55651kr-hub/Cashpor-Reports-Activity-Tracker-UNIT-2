@@ -365,7 +365,7 @@
 
   <!-- =========================================================================
         SECTION: MASTER 3D PORTAL HUB
-        ========================================================================= -->
+        ======================================================================== -->
   <main id="masterPortalHub">
     <div class="portal-hero">
       <h2 style="font-family: 'Cinzel', serif; font-size: 52px; font-weight: 900; color: #1e3a8a; text-transform: uppercase; letter-spacing: 3px;" class="text-3d">
@@ -807,16 +807,22 @@
         }
         .d3-kpi-card-navy {
           background: linear-gradient(145deg, #ffffff, #f1f5f9);
-          border: 1px solid #cbd5e1;
-          border-radius: 14px;
+          border-radius: 16px;
           padding: 20px 22px;
-          box-shadow: 6px 6px 12px #cbd5e1, -6px -6px 12px #ffffff;
+          box-shadow: 8px 8px 16px #cbd5e1, -8px -8px 16px #ffffff;
+          border: 1px solid #e2e8f0;
+          border-bottom: 5px solid #cbd5e1;
+          border-right: 2px solid #cbd5e1;
           position: relative;
           overflow: hidden;
           display: flex;
           flex-direction: column;
           justify-content: center;
           min-height: 108px;
+          transition: transform 0.2s ease;
+        }
+        .d3-kpi-card-navy:hover {
+          transform: translateY(-2px);
         }
         .d3-kpi-card-navy::before {
           content: '';
@@ -834,10 +840,6 @@
         
         .d3-kpi-card-clickable {
           cursor: pointer;
-          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .d3-kpi-card-clickable:hover {
-          transform: translateY(-3px) scale(1.015);
         }
         .d3-kpi-title {
           font-size: 12px;
@@ -3644,7 +3646,7 @@
             const empCode = (r["Med Agent Emp Code"] || r["Emp Code"] || r["Agent Emp Code"] || "").toLowerCase().trim();
 
             if (agentObj.name === "Kamni Sharma") {
-              return medAgent === "kamni" || medAgent.startsWith("kamni") || medAgent.includes("kamini");
+              return medAgent === "kamni" || medAgent.startsWith("kamni" ) || medAgent.includes("kamini");
             }
 
             return agentObj.match.some(m => {
@@ -3868,7 +3870,7 @@
         const code = this.value;
         document.getElementById('d5RegionSelect').value = '';
         if (!code) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
-        renderD5Table(d5GlobalData.filter(item => item.codePrefix === code));
+        renderD5Table(d5GlobalData.class(item => item.codePrefix === code));
       };
 
       regionSelect.onchange = function() {
