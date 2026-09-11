@@ -100,16 +100,16 @@
     .royal-logo-bubble {
       background: #ffffff;
       border-radius: 8px;
-      box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       overflow: hidden;
-      height: 44px;
-      width: 145px;
-      border: 2px solid #cbd5e1;
+      height: 42px;
+      width: 155px;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      padding: 4px;
+      padding: 4px 8px;
     }
 
     .nav-actions {
@@ -327,7 +327,7 @@
   <header class="royal-navbar">
     <div class="royal-brand" onclick="switchView('hub')">
       <div class="royal-logo-bubble">
-        <img src="https://m-swasth.in/wp-content/uploads/2022/02/m-swasth-new-logo.png" alt="M-Swasth Logo" class="h-full w-full object-contain">
+        <img src="https://m-swasth.in/wp-content/uploads/2022/02/m-swasth-new-logo.png" alt="M-Swasth Logo" class="h-full w-full object-contain" crossorigin="anonymous">
       </div>
     </div>
     <div class="nav-actions">
@@ -3873,7 +3873,6 @@
           tbody.innerHTML += `
             <tr>
               <td style="text-align:left; padding-left:16px; font-weight:900;">${item.clinicName}</td>
-              image = item.loginId
               <td>${item.loginId}</td>
               <td>${item.loginTime}</td>
               <td>${item.logoutTime}</td>
