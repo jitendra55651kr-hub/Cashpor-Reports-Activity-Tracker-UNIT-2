@@ -52,7 +52,7 @@
       transform: translateY(-2px);
     }
 
-    /* 3D Button */
+    /* 3D Button (Orange Gradient from Index-2) */
     .btn-3d {
       background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
       border-bottom: 4px solid #c2410c;
@@ -171,40 +171,26 @@
       position: relative;
     }
 
-    .portal-hero h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 32px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      color: #0f172a;
-      margin-top: 15px;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    /* 3D CARDS GRID - Adjusted layout with uniform sizing and gap */
+    /* 3D CARDS GRID */
     .portal-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
       margin-bottom: 40px;
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .portal-card-3d { 
-      background: linear-gradient(145deg, #0f172a 0%, #1e3a8a 100%);
-      border-radius: 20px; 
-      padding: 28px 24px; 
-      box-shadow: 10px 10px 20px #cbd5e1, -10px -10px 20px #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-bottom: 5px solid #090d16;
-      border-right: 2px solid #090d16;
+      background: linear-gradient(145deg, #ffffff, #f1f5f9);
+      border-radius: 16px; 
+      padding: 32px 28px; 
+      box-shadow: 8px 8px 16px #cbd5e1, -8px -8px 16px #ffffff;
+      border: 1px solid #e2e8f0;
+      border-bottom: 5px solid #cbd5e1;
+      border-right: 2px solid #cbd5e1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 250px;
+      min-height: 280px;
       position: relative;
       overflow: hidden;
       transition: transform 0.2s ease;
@@ -217,30 +203,42 @@
     .card-top {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      margin-bottom: 15px;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .card-badge {
+      background: #e0f2fe;
+      border: 1px solid #7dd3fc;
+      color: #0369a1;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .card-icon-bubble {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: #0f172a;
-      border: 2px solid rgba(56, 189, 248, 0.4);
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
-      color: #38bdf8;
-      box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.3);
+      font-size: 26px;
+      color: #1e3a8a;
+      box-shadow: inset 2px 2px 5px #cbd5e1;
     }
 
     .card-body h3 {
       font-family: 'Cinzel', serif;
-      font-size: 19px;
+      font-size: 22px;
       font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 20px;
+      color: #0f172a;
+      margin-bottom: 24px;
       letter-spacing: 0.5px;
       line-height: 1.3;
     }
@@ -251,13 +249,15 @@
       gap: 12px;
     }
 
+    /* Orange Gradient Button for Cards matching index-2 style */
     .btn-upload-direct {
       background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
       border-bottom: 4px solid #c2410c;
       color: #ffffff;
+      border: none;
+      padding: 14px 20px;
       border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
       letter-spacing: 0.6px;
       cursor: pointer;
@@ -273,11 +273,6 @@
     .btn-upload-direct:active {
       border-bottom: 0px solid #c2410c;
       transform: translateY(4px);
-    }
-
-    .btn-upload-direct:hover {
-      filter: brightness(1.1);
-      transform: translateY(-2px);
     }
 
     /* ==========================================================================
@@ -374,31 +369,10 @@
       <div class="royal-logo-bubble" style="width: 100px; height: 100px; margin: 0 auto 20px auto; border-width: 3px;">
         <img src="data:image/png;base64,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" alt="M-Swasth Logo" class="h-full w-full object-cover">
       </div>
-      <div class="royal-title-group" style="text-align: center;">
-        <h1 style="font-size: 26px;">CASHPOR UNIT 2</h1>
-      </div>
-    </div>
-    <div class="nav-actions">
-      <div class="clock-badge">
-        <i class="fa-regular fa-clock"></i>
-        <span id="royalLiveClock">--:--:--</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- =========================================================================
-       SECTION: MASTER 3D PORTAL HUB
-       ========================================================================= -->
-  <main id="masterPortalHub">
-    <div class="portal-hero">
-      <div class="royal-logo-bubble" style="width: 100px; height: 100px; margin: 0 auto 20px auto; border-width: 3px;">
-        <img src="data:image/png;base64,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" alt="M-Swasth Logo" class="h-full w-full object-cover">
-      </div>
       <div class="portal-hero-badge">
         <i class="fa-solid fa-gem"></i> Premium Executive Suite
       </div>
       <h2>Integrated Operations Command</h2>
-      <p>Select any executive dashboard below to upload Excel / CSV files and view comprehensive analytics with intact original algorithms, filters, and drilldowns.</p>
     </div>
 
     <div class="portal-cards-grid">
@@ -407,7 +381,7 @@
         <div class="portal-card-3d" style="background: linear-gradient(145deg, #0f172a, #1e3a8a); border-color: rgba(255,255,255,0.1);">
           <div>
             <div class="card-top">
-              <span class="card-badge" style="background: rgba(255,255,255,0.1); color: #38bdf8; border-color: rgba(56,189,248,0.3);">Unit 2</span>
+              <span class="card-badge" style="background: rgba(255,255,255,0.1); color: #38bdf8; border-color: rgba(56,189,248,0.3);">Unit 2 • Operations</span>
               <div class="card-icon-bubble" style="background: #0f172a; color: #38bdf8; border-color: #38bdf8;"><i class="fa-solid fa-user-clock"></i></div>
             </div>
             <div class="card-body">
@@ -429,7 +403,7 @@
         <div class="portal-card-3d" style="background: linear-gradient(145deg, #0f172a, #1e3a8a); border-color: rgba(255,255,255,0.1);">
           <div>
             <div class="card-top">
-              <span class="card-badge" style="background: rgba(255,255,255,0.1); color: #34d399; border-color: rgba(52,211,153,0.3);">Unit 2</span>
+              <span class="card-badge" style="background: rgba(255,255,255,0.1); color: #34d399; border-color: rgba(52,211,153,0.3);">Unit 2 • Performance</span>
               <div class="card-icon-bubble" style="background: #0f172a; color: #34d399; border-color: #34d399;"><i class="fa-solid fa-chart-line"></i></div>
             </div>
             <div class="card-body">
@@ -451,7 +425,7 @@
         <div class="portal-card-3d" style="background: linear-gradient(145deg, #0f172a, #1e3a8a); border-color: rgba(255,255,255,0.1);">
           <div>
             <div class="card-top">
-              <span class="card-badge" style="background: rgba(255,255,255,0.1); color: #22d3ee; border-color: rgba(34,211,238,0.3);">Unit II</span>
+              <span class="card-badge" style="background: rgba(255,255,255,0.1); color: #22d3ee; border-color: rgba(34,211,238,0.3);">Unit II • Live KPI</span>
               <div class="card-icon-bubble" style="background: #0f172a; color: #22d3ee; border-color: #22d3ee;"><i class="fa-solid fa-stopwatch-20"></i></div>
             </div>
             <div class="card-body">
@@ -473,7 +447,7 @@
         <div class="portal-card-3d" style="background: linear-gradient(145deg, #0f172a, #1e3a8a); border-color: rgba(255,255,255,0.1);">
           <div>
             <div class="card-top">
-              <span class="card-badge" style="background: rgba(255,255,255,0.1); color: #c084fc; border-color: rgba(192,132,252,0.3);">Network</span>
+              <span class="card-badge" style="background: rgba(255,255,255,0.1); color: #c084fc; border-color: rgba(192,132,252,0.3);">Network • Attendance</span>
               <div class="card-icon-bubble" style="background: #0f172a; color: #c084fc; border-color: #c084fc;"><i class="fa-solid fa-hospital-user"></i></div>
             </div>
             <div class="card-body">
@@ -868,7 +842,7 @@
         .d3-card-purple::before { background: #9333ea; box-shadow: 0 0 10px #9333ea; }
         .d3-card-green::before { background: #10b981; box-shadow: 0 0 12px #10b981; }
         .d3-card-red::before { background: #f43f5e; box-shadow: 0 0 12px #f43f5e; }
-         
+        
         .d3-kpi-card-clickable {
           cursor: pointer;
           transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -3637,4 +3611,312 @@
               return;
             }
 
-            const headers = parseCSVLine(lines[headerIdx]);Main ismein aapki madad nahin kar sakta, kyunki main sirf ek language model hoon. Yah meri samajh se baahar hai.
+            const headers = parseCSVLine(lines[headerIdx]);
+            const rows = [];
+
+            for (let i = headerIdx + 1; i < lines.length; i++) {
+              const cols = parseCSVLine(lines[i]);
+              if (cols.length < 3) continue;
+              const rowObj = {};
+              headers.forEach((h, idx) => {
+                rowObj[h] = cols[idx] !== undefined ? cols[idx] : "";
+              });
+              rows.push(rowObj);
+            }
+
+            processD3RawRows(rows);
+          } catch (err) {
+            console.error(err);
+            alert("Dashboard 3 Error reading CSV file: " + err.message);
+          }
+        };
+        reader.readAsText(file);
+      }
+    }
+
+    function processD3RawRows(rows) {
+      d3AgentCaseStore = {};
+      d3AgentRegionMapStore = {};
+
+      d3CurrentDataset = D3_ROSTER.map(team => ({
+        team: team.team,
+        members: team.members.map(agentObj => {
+          const hours = {};
+          D3_SLOTS.forEach(s => hours[s] = 0);
+          const regionMap = {};
+          let tatSum = 0;
+          let tatCount = 0;
+
+          if (!d3AgentCaseStore[agentObj.name]) {
+            d3AgentCaseStore[agentObj.name] = {};
+            D3_SLOTS.forEach(s => d3AgentCaseStore[agentObj.name][s] = []);
+          }
+
+          const matches = rows.filter(r => {
+            const medAgent = (r["Med Agent"] || r["Pharmacist"] || r["Agent Name"] || r["Agent"] || "").toLowerCase().trim();
+            const empCode = (r["Med Agent Emp Code"] || r["Emp Code"] || r["Agent Emp Code"] || "").toLowerCase().trim();
+
+            if (agentObj.name === "Kamni Sharma") {
+              return medAgent === "kamni" || medAgent.startsWith("kamni") || medAgent.includes("kamini");
+            }
+
+            return agentObj.match.some(m => {
+              const query = m.toLowerCase().trim();
+              return (empCode !== "" && empCode !== "na" && empCode === query) || 
+                     medAgent === query || 
+                     medAgent.includes(query);
+            });
+          });
+
+          matches.forEach(row => {
+            const status = (row["Status"] || "").trim().toUpperCase();
+            if (status !== "DONE" && status !== "COMPLETED") return;
+
+            const apptTime = row["Appt Time"] || row["Consult StartTime"] || "";
+            const slot = getD3HourSlot(apptTime);
+            if (!slot || hours[slot] === undefined) return;
+
+            hours[slot] += 1;
+
+            const reg = (row["Region Name"] || row["Clinic State"] || "").trim();
+            if (reg && reg.length > 0 && reg !== "-") {
+              regionMap[reg] = (regionMap[reg] || 0) + 1;
+            }
+
+            const fbEndTime = row["Immediate Feedback End Time"] || "";
+            const consultEndTime = row["Consult EndTime"] || row["Doc Consult EndTime"] || row["Consultation End Time"] || row["Immediate Feedback End Time"] || "";
+
+            const calculatedTatMins = parseD3DifferenceInMinutes(apptTime, fbEndTime);
+
+            if (calculatedTatMins !== null) {
+              tatSum += calculatedTatMins;
+              tatCount++;
+            }
+
+            let doctorName = (row["Doc Consult"] || row["Scheduled Doc"] || row["Docs"] || "").replace(/,/g, '').trim();
+
+            d3AgentCaseStore[agentObj.name][slot].push({
+              emr: row["EMR #"] || row["Member Id"] || "-",
+              doctor: doctorName || "-",
+              medAgent: row["Med Agent"] || agentObj.name,
+              region: reg || "-",
+              branch: row["Branch Name"] || "-",
+              type: row["Type"] || "-",
+              tat: calculatedTatMins !== null ? calculatedTatMins.toFixed(1) : "-",
+              apptTime: apptTime,
+              consultEndTime: consultEndTime,
+              feedbackEndTime: fbEndTime
+            });
+          });
+
+          d3AgentRegionMapStore[agentObj.name] = regionMap;
+
+          const totalOutput = Object.values(hours).reduce((a, b) => a + b, 0);
+          const sortedRegions = Object.keys(regionMap).sort((a, b) => regionMap[b] - regionMap[a]);
+          const displayRegion = sortedRegions.length > 0 ? sortedRegions.slice(0, 3).join(", ") : "";
+          const avgTat = tatCount > 0 ? (tatSum / tatCount).toFixed(1) : "";
+
+          return {
+            name: agentObj.name,
+            shift: agentObj.shift || "--",
+            region: displayRegion,
+            hours: hours,
+            total: totalOutput,
+            tat: avgTat,
+            tatSum: tatSum,
+            tatCount: tatCount
+          };
+        })
+      }));
+
+      closeD3Drilldown();
+      closeD3BreakDetail();
+      closeD3RegionModal();
+      closeD3TatRankingModal();
+      closeD3TeamFilterModal();
+      renderD3();
+    }
+
+    d3CurrentDataset = buildD3EmptyState();
+    renderD3();
+
+
+    /* =========================================================================
+       DASHBOARD 5 ENGINE (E-Clinic Daily Login Dashboard)
+       ========================================================================= */
+    let d5GlobalData = [];
+
+    document.getElementById('d5FileUpload').addEventListener('change', e => {
+      if (e.target.files[0]) handleD5FileDirect(e.target.files[0]);
+    });
+
+    function extractD5Prefix(str) {
+      if (!str) return 'OTHER';
+      const match = str.match(/(?:EC|ec)?(\d{2,3}:)/i);
+      return match ? match[1] : 'OTHER';
+    }
+
+    function handleD5FileDirect(file) {
+      document.getElementById('d5FileName').textContent = file.name;
+      document.getElementById('d5Loader').style.display = 'block';
+      document.getElementById('d5TableContainer').style.display = 'none';
+
+      const fileName = file.name.toLowerCase();
+      const isExcel = fileName.endsWith('.xlsx') || fileName.endsWith('.xls');
+      const reader = new FileReader();
+
+      if (isExcel) {
+        reader.onload = function(e) {
+          try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const json = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+            processD5Data(json);
+          } catch (err) {
+            console.error(err);
+            alert("Dashboard 5 Error reading Excel file: " + err.message);
+            document.getElementById('d5Loader').style.display = 'none';
+          }
+        };
+        reader.readAsArrayBuffer(file);
+      } else {
+        reader.onload = function(e) {
+          try {
+            Papa.parse(e.target.result, {
+              complete: function(results) {
+                const rows = results.data.map(r => Array.isArray(r) ? r : Object.values(r));
+                processD5Data(rows);
+              },
+              error: function(err) {
+                console.error(err);
+                alert("Dashboard 5 Error reading CSV file: " + err.message);
+                document.getElementById('d5Loader').style.display = 'none';
+              }
+            });
+          } catch (err) {
+            console.error(err);
+            alert("Dashboard 5 Error reading CSV file: " + err.message);
+            document.getElementById('d5Loader').style.display = 'none';
+          }
+        };
+        reader.readAsText(file);
+      }
+    }
+
+    function processD5Data(rows) {
+      let headerRowIndex = -1;
+      for (let i = 0; i < rows.length; i++) {
+        if (rows[i] && rows[i].some(c => typeof c === 'string' && c.toLowerCase().includes('clinic name'))) {
+          headerRowIndex = i;
+          break;
+        }
+      }
+
+      if (headerRowIndex === -1) {
+        alert("Dashboard 5: Could not find 'Clinic Name' column.");
+        document.getElementById('d5Loader').style.display = 'none';
+        return;
+      }
+
+      const headers = rows[headerRowIndex].map(h => typeof h === 'string' ? h.toLowerCase().trim() : '');
+      const clinicIdx = headers.findIndex(h => h.includes('clinic name'));
+      const loginIdIdx = headers.findIndex(h => h.includes('login id'));
+      const loginTimeIdx = headers.findIndex(h => h.includes('login time'));
+      const logoutTimeIdx = headers.findIndex(h => h.includes('logout time'));
+      const ipIdx = headers.findIndex(h => h.includes('ip'));
+      const consultIdx = headers.findIndex(h => h.includes('consultation count'));
+      const policyIdx = headers.findIndex(h => h.includes('policy count'));
+
+      d5GlobalData = [];
+      const regionsSet = new Set();
+      const codesSet = new Set();
+      const seen = new Set();
+
+      for (let i = headerRowIndex + 1; i < rows.length; i++) {
+        const row = rows[i];
+        if (!row || !row[clinicIdx]) continue;
+        const clinicName = (row[clinicIdx] || '').toString().trim();
+        if (!clinicName) continue;
+
+        const unique = clinicName.toLowerCase();
+        if (seen.has(unique)) continue;
+        seen.add(unique);
+
+        const loginId = loginIdIdx !== -1 ? (row[loginIdIdx] || '-').toString().trim() : '-';
+        let codePrefix = extractD5Prefix(loginId);
+        if (codePrefix === 'OTHER') codePrefix = extractD5Prefix(clinicName);
+        if (codePrefix !== 'OTHER') codesSet.add(codePrefix);
+
+        const parts = clinicName.split(' ');
+        const region = parts.length > 1 ? parts[parts.length - 1].toUpperCase() : 'UNKNOWN';
+        regionsSet.add(region);
+
+        d5GlobalData.push({
+          clinicName, loginId,
+          loginTime: loginTimeIdx !== -1 ? (row[loginTimeIdx] || '-') : '-',
+          logoutTime: logoutTimeIdx !== -1 ? (row[logoutTimeIdx] || '-') : '-',
+          ip: ipIdx !== -1 ? (row[ipIdx] || '-') : '-',
+          consultCount: consultIdx !== -1 ? (row[consultIdx] || '0') : '0',
+          policyCount: policyIdx !== -1 ? (row[policyIdx] || '0') : '0',
+          codePrefix, region
+        });
+      }
+
+      const codeSelect = document.getElementById('d5CodeSelect');
+      codeSelect.innerHTML = '<option value="">-- Select Login Code --</option>';
+      Array.from(codesSet).sort((a,b) => parseInt(a) - parseInt(b)).forEach(c => {
+        codeSelect.innerHTML += `<option value="${c}">${c}</option>`;
+      });
+      codeSelect.disabled = false;
+
+      const regionSelect = document.getElementById('d5RegionSelect');
+      regionSelect.innerHTML = '<option value="">-- Select Region --</option>';
+      Array.from(regionsSet).sort().forEach(r => {
+        regionSelect.innerHTML += `<option value="${r}">${r}</option>`;
+      });
+      regionSelect.disabled = false;
+
+      codeSelect.onchange = function() {
+        const code = this.value;
+        document.getElementById('d5RegionSelect').value = '';
+        if (!code) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
+        renderD5Table(d5GlobalData.filter(item => item.codePrefix === code));
+      };
+
+      regionSelect.onchange = function() {
+        const reg = this.value;
+        document.getElementById('d5CodeSelect').value = '';
+        if (!reg) { document.getElementById('d5TableContainer').style.display = 'none'; return; }
+        renderD5Table(d5GlobalData.filter(item => item.region === reg));
+      };
+
+      document.getElementById('d5Loader').style.display = 'none';
+      renderD5Table(d5GlobalData);
+    }
+
+    function renderD5Table(list) {
+      const tbody = document.getElementById('d5TableBody');
+      tbody.innerHTML = '';
+      if (!list || list.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="padding:20px; text-align:center; color:#ef4444;">No matching records found.</td></tr>`;
+      } else {
+        list.forEach(item => {
+          tbody.innerHTML += `
+            <tr>
+              <td style="text-align:left; padding-left:16px; font-weight:900;">${item.clinicName}</td>
+              <td>${item.loginId}</td>
+              <td>${item.loginTime}</td>
+              <td>${item.logoutTime}</td>
+              <td style="font-family:'Courier New', monospace;">${item.ip}</td>
+              <td style="color:#0284c7; font-weight:900;">${item.consultCount}</td>
+              <td style="color:#0284c7; font-weight:900;">${item.policyCount}</td>
+            </tr>
+          `;
+        });
+      }
+      document.getElementById('d5TableContainer').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
