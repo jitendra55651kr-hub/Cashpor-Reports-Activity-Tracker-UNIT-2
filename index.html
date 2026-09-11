@@ -149,8 +149,76 @@
 
     .portal-hero {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       position: relative;
+    }
+
+    /* Custom Replicating Logo Header matching the exact color scheme and layout from reference image */
+    .custom-logo-container {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      padding: 22px 48px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.12), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+      border: 1px solid #cbd5e1;
+    }
+
+    .custom-logo-main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      color: #233876;
+      position: relative;
+      line-height: 1;
+    }
+
+    .custom-logo-heart-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      background: #f97316;
+      border-radius: 50%;
+      margin: 0 6px;
+      box-shadow: 0 6px 15px rgba(249, 115, 22, 0.35);
+      position: relative;
+      top: -4px;
+    }
+
+    .custom-logo-heart-badge i {
+      color: #ffffff;
+      font-size: 26px;
+    }
+
+    .custom-logo-sub {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+
+    .custom-logo-sub span {
+      display: inline-block;
+    }
+
+    .custom-logo-sub .sep {
+      color: #cbd5e1;
+      font-weight: 600;
     }
 
     /* 3D CARDS GRID */
@@ -347,12 +415,25 @@
         ========================================================================= -->
   <main id="masterPortalHub">
     <div class="portal-hero">
-      <div style="width: 320px; height: 110px; margin: 0 auto 12px auto; display: flex; align-items: center; justify-content: center;">
-        <img src="m-swasth-new-logo.png" alt="M-Swasth Logo" class="h-full w-full object-contain">
+      <div class="custom-logo-container" onclick="switchView('hub')" style="cursor: pointer;">
+        <div class="custom-logo-main">
+          <span>m-s</span>
+          <div class="custom-logo-heart-badge">
+            <i class="fa-solid fa-stethoscope"></i>
+          </div>
+          <span>asth</span>
+        </div>
+        <div class="custom-logo-sub">
+          <span>Sanrakshan</span>
+          <span class="sep">|</span>
+          <span>Swasthya</span>
+          <span class="sep">|</span>
+          <span>Suraksha</span>
+        </div>
       </div>
     </div>
 
-    <div class="portal-cards-grid" style="margin-top: 40px;">
+    <div class="portal-cards-grid" style="margin-top: 20px;">
       <!-- CARD 1 -->
       <div class="card-3d-wrapper">
         <div class="portal-card-3d" style="background: linear-gradient(145deg, #0f172a, #1e3a8a); border-color: rgba(255,255,255,0.1);">
@@ -1705,7 +1786,7 @@
 
   <!-- =========================================================================
         COMPLETE JAVASCRIPT ENGINE (All Logic Intact)
-        ========================================================================== -->
+        ========================================================================= -->
   <script>
     // Live Clock
     function updateRoyalClock() {
