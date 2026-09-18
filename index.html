@@ -952,6 +952,7 @@
 
         .d3-table-container {
           overflow-x: auto;
+          overflow-y: visible;
         }
         .d3-table {
           width: 100%;
@@ -1094,6 +1095,39 @@
           min-width: 145px;
           padding: 8px 12px;
           cursor: pointer;
+          position: relative;
+        }
+        .d3-type-popover {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          z-index: 1000;
+          background: #ffffff;
+          border: 2px solid #0f172a;
+          border-radius: 10px;
+          box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+          padding: 10px;
+          width: 180px;
+          text-align: left;
+          cursor: default;
+        }
+        .d3-type-popover.show {
+          display: block;
+        }
+        .d3-type-popover label {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 12.5px;
+          font-weight: 800;
+          color: #0f172a;
+          padding: 6px;
+          cursor: pointer;
+          border-radius: 6px;
+        }
+        .d3-type-popover label:hover {
+          background: #f1f5f9;
         }
         .d3-spark-wrap {
           display: flex;
@@ -1697,7 +1731,7 @@
   </section>
 
   <!-- =========================================================================
-        COMPLETE JAVASCRIPT ENGINE (All Logic Intact)
+        COMPLETE JAVASCRIPT ENGINE (All Logic Intact + CP/Clinic Type Filtering)
         ========================================================================== -->
   <script>
     // Live Clock
@@ -2391,7 +2425,7 @@
         const ids = mapIds[t];
         const res = teamSplitResults[t] || { agentAvg: "0%", pharmAvg: "0%" };
         document.getElementById(ids[0]).innerText = res.agentAvg;
-        document.getElementById(ids[1]).innerText = res.pharmAvg;
+        document.getElementById(ids).innerText = res.pharmAvg;
       });
     }
 
@@ -2399,7 +2433,7 @@
 
 
     /* =========================================================================
-        DASHBOARD 3 ENGINE (Hourly KPI Consultation Unit II)
+        DASHBOARD 3 ENGINE (Hourly KPI Consultation Unit II with CP/Clinic Filter)
         ======================================================================== */
     const D3_ROSTER = [
       {
@@ -2462,6 +2496,13 @@
     let d3AgentCaseStore = {};
     let d3AgentBreakStore = {};
     let d3AgentRegionMapStore = {};
+    let d3TeamTypeFilter = {
+      "TEAM JITENDRA": { cp: true, clinic: true },
+      "TEAM DEEPTI": { cp: true, clinic: true },
+      "TEAM RAVI": { cp: true, clinic: true },
+      "TEAM SHIVAM": { cp: true, clinic: true },
+      "TEAM ISHANT": { cp: true, clinic: true }
+    };
     
     let d3TeamSortState = {
       "TEAM JITENDRA": { column: "tat", order: "asc" },
@@ -2478,6 +2519,43 @@
     function toggleD3TeamBreakInline(teamName) {
       d3TeamInlineBreakOpen[teamName] = !d3TeamInlineBreakOpen[teamName];
       renderD3();
+    }
+
+    function toggleD3TypePopover(teamName, event) {
+      event.stopPropagation();
+      // Close any other open popovers
+      document.querySelectorAll('.d3-type-popover').forEach(el => {
+        if (el.id !== `popover-${cleanD1String(teamName)}`) el.classList.remove('show');
+      });
+      const popover = document.getElementById(`popover-${cleanD1String(teamName)}`);
+      if (popover) popover.classList.toggle('show');
+    }
+
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.d3-type-popover').forEach(el => el.classList.remove('show'));
+    });
+
+    function applyD3TypeFilter(teamName, event) {
+      event.stopPropagation();
+      const cpChecked = document.getElementById(`cb-cp-${cleanD1String(teamName)}`).checked;
+      const clinicChecked = document.getElementById(`cb-clinic-${cleanD1String(teamName)}`).checked;
+      d3TeamTypeFilter[teamName] = { cp: cpChecked, clinic: clinicChecked };
+      renderD3();
+    }
+
+    function isD3CaseTypeAllowed(teamName, caseTypeStr) {
+      const typeFilter = d3TeamTypeFilter[teamName] || { cp: true, clinic: true };
+      const raw = String(caseTypeStr || "").toLowerCase().trim();
+      const isCP = raw.includes("cp") || raw.includes("cashpor");
+      const isClinic = raw.includes("clinic") || raw.includes("tele");
+
+      if (isCP && typeFilter.cp) return true;
+      if (isClinic && typeFilter.clinic) return true;
+      if (!isCP && !isClinic) {
+        // default fallback if type is missing/unknown count as clinic/cp based on flags
+        return typeFilter.clinic || typeFilter.cp;
+      }
+      return false;
     }
 
     function toggleD3BreakSort() {
@@ -2517,7 +2595,7 @@
       try {
         const parts = str.split(' ');
         const datePart = parts[0];
-        const timePart = parts[1] || "00:00:00";
+        const timePart = parts || "00:00:00";
         
         const dParts = datePart.split(/[\/\-]/);
         const tParts = timePart.split(':');
@@ -2526,17 +2604,17 @@
           let y, m, day;
           if (dParts[0].length === 4) {
             y = parseInt(dParts[0], 10);
-            m = parseInt(dParts[1], 10);
+            m = parseInt(dParts, 10);
             day = parseInt(dParts[2], 10);
           } else {
             m = parseInt(dParts[0], 10);
-            day = parseInt(dParts[1], 10);
+            day = parseInt(dParts, 10);
             y = parseInt(dParts[2], 10);
             if (y < 100) y += 2000;
           }
 
           let hr = parseInt(tParts[0] || 0, 10);
-          const min = parseInt(tParts[1] || 0, 10);
+          const min = parseInt(tParts || 0, 10);
           const sec = parseInt(tParts[2] || 0, 10);
 
           if (str.toLowerCase().includes('pm') && hr < 12) hr += 12;
@@ -2553,10 +2631,10 @@
     function parseD3ShiftEndTime(datePrefix, shiftStr) {
       if (!shiftStr || !shiftStr.includes('-')) return null;
       try {
-        const endPart = shiftStr.split('-')[1].trim();
+        const endPart = shiftStr.split('-').trim();
         const match = endPart.match(/(\d+):(\d+)\s*(AM|PM)/i);
         if (!match) return null;
-        let hours = parseInt(match[1], 10);
+        let hours = parseInt(match, 10);
         const mins = parseInt(match[2], 10);
         const ampm = match[3].toUpperCase();
 
@@ -2586,7 +2664,7 @@
       const match = str.match(/(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)?/i);
       if (!match) return null;
 
-      let hour = parseInt(match[1], 10);
+      let hour = parseInt(match, 10);
       const ampm = match[3] ? match[3].toUpperCase() : null;
       if (ampm === "PM" && hour < 12) hour += 12;
       if (ampm === "AM" && hour === 12) hour = 0;
@@ -2748,16 +2826,61 @@
       let globalMinAgent = { name: "--", tat: 9999 };
       let globalMaxAgent = { name: "--", tat: -1 };
 
+      // Pass 1: find max individual total based on filtered type counts
       d3CurrentDataset.forEach(team => {
         team.members.forEach(member => {
-          if (member.total > maxIndividualTotal) maxIndividualTotal = member.total;
-          if (member.total > 0) activeAgentsCount++;
-          if (member.tatCount > 0) {
-            overallTatSum += member.tatSum;
-            overallTatCases += member.tatCount;
+          const store = d3AgentCaseStore[member.name];
+          let filteredTotal = 0;
+          if (store) {
+            D3_SLOTS.forEach(s => {
+              if (store[s]) {
+                store[s].forEach(c => {
+                  if (isD3CaseTypeAllowed(team.team, c.type)) filteredTotal++;
+                });
+              }
+            });
+          }
+          if (filteredTotal > maxIndividualTotal) maxIndividualTotal = filteredTotal;
+        });
+      });
+
+      d3CurrentDataset.forEach(team => {
+        team.members.forEach(member => {
+          const store = d3AgentCaseStore[member.name];
+          let filteredTotal = 0;
+          let filteredTatSum = 0;
+          let filteredTatCount = 0;
+
+          if (store) {
+            D3_SLOTS.forEach(s => {
+              if (store[s]) {
+                store[s].forEach(c => {
+                  if (isD3CaseTypeAllowed(team.team, c.type)) {
+                    filteredTotal++;
+                    const parsedTat = parseFloat(c.tat);
+                    if (!isNaN(parsedTat)) {
+                      filteredTatSum += parsedTat;
+                      filteredTatCount++;
+                    }
+                  }
+                });
+              }
+            });
           }
 
-          const tatNum = parseFloat(member.tat) || 0;
+          member.filteredTotal = filteredTotal;
+          member.total = filteredTotal;
+          member.tat = filteredTatCount > 0 ? (filteredTatSum / filteredTatCount).toFixed(1) : "";
+          member.tatSum = filteredTatSum;
+          member.tatCount = filteredTatCount;
+
+          if (filteredTotal > 0) activeAgentsCount++;
+          if (filteredTatCount > 0) {
+            overallTatSum += filteredTatSum;
+            overallTatCases += filteredTatCount;
+          }
+
+          const tatNum = filteredTatCount > 0 ? parseFloat(member.tat) : 0;
           if (tatNum > 0) {
             if (tatNum < globalMinAgent.tat) globalMinAgent = { name: member.name, tat: tatNum };
             if (tatNum > globalMaxAgent.tat) globalMaxAgent = { name: member.name, tat: tatNum };
@@ -2808,9 +2931,15 @@
           grandTotal += member.total;
 
           const slotCells = D3_SLOTS.map(s => {
-            const val = member.hours[s] || 0;
-            if (val > 0) {
-              return `<td class="d3-cell-val-active" title="Click to view cases in slot ${s}" onclick="openD3Drilldown('${member.name.replace(/'/g, "\\'")}', '${s}')">${val}</td>`;
+            const store = d3AgentCaseStore[member.name];
+            let filteredSlotVal = 0;
+            if (store && store[s]) {
+              store[s].forEach(c => {
+                if (isD3CaseTypeAllowed(team.team, c.type)) filteredSlotVal++;
+              });
+            }
+            if (filteredSlotVal > 0) {
+              return `<td class="d3-cell-val-active" title="Click to view cases in slot ${s}" onclick="openD3Drilldown('${member.name.replace(/'/g, "\\'")}', '${s}')">${filteredSlotVal}</td>`;
             } else {
               return `<td></td>`;
             }
@@ -2893,6 +3022,9 @@
           });
         }
 
+        const teamKeyClean = cleanD1String(team.team);
+        const currentTypeFilter = d3TeamTypeFilter[team.team] || { cp: true, clinic: true };
+
         teamBox.innerHTML = `
           <div class="d3-team-title-banner">
             <div class="d3-team-left-cluster">
@@ -2916,11 +3048,25 @@
                   <th style="min-width: 200px;">KEY REGIONS (TOP 3)</th>
                   <th>7-8</th><th>8-9</th><th>9-10</th><th>10-11</th><th>11-12</th><th>12-1</th>
                   <th>1-2</th><th>2-3</th><th>3-4</th><th>4-5</th><th>5-6</th>
-                  <th class="d3-th-sortable" style="background-color: #0f172a !important; min-width: 145px;">
-                    <button type="button" class="d3-btn-sort-filter ${isTotalActive ? 'active-sort' : ''}" onclick="toggleD3TeamSort('${team.team}', 'total')" title="Filter Total Cases">
-                      <span>TOTAL</span>
-                      <span class="d3-sort-icon-badge">${totalArrow}</span>
-                    </button>
+                  <th class="d3-th-sortable" style="background-color: #0f172a !important; min-width: 165px; position:relative;">
+                    <div style="display:flex; align-items:center; gap:4px; justify-content:center;">
+                      <button type="button" class="d3-btn-sort-filter ${isTotalActive ? 'active-sort' : ''}" onclick="toggleD3TeamSort('${team.team}', 'total')" title="Filter Total Cases">
+                        <span>TOTAL</span>
+                        <span class="d3-sort-icon-badge">${totalArrow}</span>
+                      </button>
+                      <button type="button" class="d3-btn-sort-filter" style="width:36px; padding:6px 0;" onclick="toggleD3TypePopover('${team.team}', event)" title="Filter by CP or Clinic">
+                        <i class="fa-solid fa-filter"></i>
+                      </button>
+                    </div>
+                    <div class="d3-type-popover" id="popover-${teamKeyClean}">
+                      <div style="font-weight:900; font-size:11px; color:#64748b; margin-bottom:6px; text-transform:uppercase;">Filter Type</div>
+                      <label onclick="event.stopPropagation()">
+                        <input type="checkbox" id="cb-cp-${teamKeyClean}" ${currentTypeFilter.cp ? 'checked' : ''} onchange="applyD3TypeFilter('${team.team}', event)"> CP
+                      </label>
+                      <label onclick="event.stopPropagation()">
+                        <input type="checkbox" id="cb-clinic-${teamKeyClean}" ${currentTypeFilter.clinic ? 'checked' : ''} onchange="applyD3TypeFilter('${team.team}', event)"> Clinic
+                      </label>
+                    </div>
                   </th>
                   <th class="d3-th-sortable" style="background-color: #0f172a !important; min-width: 145px;">
                     <button type="button" class="d3-btn-sort-filter ${isTatActive ? 'active-sort' : ''}" onclick="toggleD3TeamSort('${team.team}', 'tat')" title="Filter Avg TAT">
@@ -3144,9 +3290,13 @@
       }
 
       let agentShift = "--";
+      let agentTeam = "";
       D3_ROSTER.forEach(t => {
         const found = t.members.find(m => m.name === agentName);
-        if (found) agentShift = found.shift || "--";
+        if (found) {
+          agentShift = found.shift || "--";
+          agentTeam = t.team;
+        }
       });
 
       let casesToShow = [];
@@ -3162,10 +3312,13 @@
         titleText.innerText = `${agentName.toUpperCase()} — HOURLY SLOT [ ${slot} ]`;
       }
 
+      // Filter by CP/Clinic if applicable
+      const filteredCases = casesToShow.filter(c => isD3CaseTypeAllowed(agentTeam, c.type));
+
       const regionCounts = {};
       let tatSum = 0, tatCount = 0;
 
-      casesToShow.forEach(c => {
+      filteredCases.forEach(c => {
         if (c.region && c.region !== '-') {
           regionCounts[c.region] = (regionCounts[c.region] || 0) + 1;
         }
@@ -3178,23 +3331,23 @@
 
       const avgTat = tatCount > 0 ? (tatSum / tatCount).toFixed(1) + ' m' : '--';
       const sortedRegions = Object.entries(regionCounts)
-        .sort((a, b) => b[1] - a[1])
+        .sort((a, b) => b - a)
         .map(([reg, count]) => `${reg} (${count})`)
         .join(', ');
 
       detailsBar.innerHTML = `
         <div class="d3-drill-info-chip">Agent: <strong>${agentName}</strong></div>
         <div class="d3-drill-info-chip">Shift: <strong>${agentShift}</strong></div>
-        <div class="d3-drill-info-chip">Cases: <strong>${casesToShow.length}</strong></div>
+        <div class="d3-drill-info-chip">Cases: <strong>${filteredCases.length}</strong></div>
         <div class="d3-drill-info-chip">Average TAT: <strong>${avgTat}</strong></div>
         <div class="d3-drill-info-chip">Top Regions: <strong>${sortedRegions || 'None'}</strong></div>
       `;
 
       tbody.innerHTML = "";
-      if (casesToShow.length === 0) {
+      if (filteredCases.length === 0) {
         tbody.innerHTML = `<tr><td colspan="10" style="padding: 24px; color: #64748b; font-size: 16px; font-weight: 800;">No consult records found for this selection.</td></tr>`;
       } else {
-        casesToShow.forEach((c, idx) => {
+        filteredCases.forEach((c, idx) => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td style="color: #64748b; font-weight: 900;">${idx + 1}</td>
@@ -3280,8 +3433,8 @@
       const tbody = document.getElementById("d3RegionTableBody");
 
       const regMap = d3AgentRegionMapStore[agentName] || {};
-      const entries = Object.entries(regMap).sort((a, b) => b[1] - a[1]);
-      let totalCases = entries.reduce((sum, item) => sum + item[1], 0);
+      const entries = Object.entries(regMap).sort((a, b) => b - a);
+      let totalCases = entries.reduce((sum, item) => sum + item, 0);
 
       title.innerHTML = `${agentName.toUpperCase()} — REGIONS SUMMARY`;
       detailsBar.innerHTML = `
@@ -3475,7 +3628,7 @@
       if (!str || str === '-') return '-';
       const parts = String(str).trim().split(' ');
       if (parts.length >= 2) {
-        return `<div class="d3-time-container"><span class="d3-time-date-part">${parts[0]}</span><span class="d3-time-bold-part">${parts[1]}</span></div>`;
+        return `<div class="d3-time-container"><span class="d3-time-date-part">${parts[0]}</span><span class="d3-time-bold-part">${parts}</span></div>`;
       }
       return `<span class="d3-time-bold-part">${str}</span>`;
     }
@@ -3720,7 +3873,7 @@
     function extractD5Prefix(str) {
       if (!str) return 'OTHER';
       const match = str.match(/(?:EC|ec)?(\d{2,3}:)/i);
-      return match ? match[1] : 'OTHER';
+      return match ? match : 'OTHER';
     }
 
     function handleD5FileDirect(file) {
