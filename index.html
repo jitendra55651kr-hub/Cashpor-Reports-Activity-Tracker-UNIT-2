@@ -1086,6 +1086,13 @@
           background-color: #0284c7 !important;
           color: #ffffff !important;
         }
+        .d3-col-category-breakdown {
+          font-weight: 900;
+          font-size: 16px;
+          color: #0f172a;
+          min-width: 100px;
+          background-color: #fafaf9;
+        }
         .d3-col-total-summary {
           background-color: #eff6ff !important;
           font-weight: 900;
@@ -2400,6 +2407,7 @@
 
     /* =========================================================================
         DASHBOARD 3 ENGINE (Hourly KPI Consultation Unit II)
+        with CP & CLINIC columns added before TOTAL
         ======================================================================== */
     const D3_ROSTER = [
       {
@@ -2619,6 +2627,8 @@
             shift: m.shift || "--",
             region: "",
             hours: hours,
+            cpCount: 0,
+            clinicCount: 0,
             total: 0,
             tat: "0.0",
             tatSum: 0,
@@ -2846,6 +2856,8 @@
               <td class="d3-col-shift-tag"><span class="d3-shift-pill">${member.shift}</span></td>
               <td class="d3-col-region-tag">${displayRegion}</td>
               ${slotCells}
+              <td class="d3-col-category-breakdown">${member.cpCount || ''}</td>
+              <td class="d3-col-category-breakdown">${member.clinicCount || ''}</td>
               <td class="d3-col-total-summary" title="Click to view all ${member.total} cases" onclick="openD3Drilldown('${member.name.replace(/'/g, "\\'")}', 'ALL')">
                 <div class="d3-spark-wrap">
                   <span>${displayTotal}</span>
@@ -2916,6 +2928,8 @@
                   <th style="min-width: 200px;">KEY REGIONS (TOP 3)</th>
                   <th>7-8</th><th>8-9</th><th>9-10</th><th>10-11</th><th>11-12</th><th>12-1</th>
                   <th>1-2</th><th>2-3</th><th>3-4</th><th>4-5</th><th>5-6</th>
+                  <th style="min-width: 100px; background-color: #0f172a !important;">CP</th>
+                  <th style="min-width: 100px; background-color: #0f172a !important;">CLINIC</th>
                   <th class="d3-th-sortable" style="background-color: #0f172a !important; min-width: 145px;">
                     <button type="button" class="d3-btn-sort-filter ${isTotalActive ? 'active-sort' : ''}" onclick="toggleD3TeamSort('${team.team}', 'total')" title="Filter Total Cases">
                       <span>TOTAL</span>
@@ -3613,6 +3627,8 @@
           const regionMap = {};
           let tatSum = 0;
           let tatCount = 0;
+          let cpCount = 0;
+          let clinicCount = 0;
 
           if (!d3AgentCaseStore[agentObj.name]) {
             d3AgentCaseStore[agentObj.name] = {};
@@ -3644,6 +3660,14 @@
             if (!slot || hours[slot] === undefined) return;
 
             hours[slot] += 1;
+
+            // Safe categorical inspection for CP / CLINIC
+            const consultType = (row["Type"] || row["Consult Type"] || row["Category"] || "").trim().toUpperCase();
+            if (consultType.includes("CP")) {
+              cpCount++;
+            } else if (consultType.includes("CLINIC")) {
+              clinicCount++;
+            }
 
             const reg = (row["Region Name"] || row["Clinic State"] || "").trim();
             if (reg && reg.length > 0 && reg !== "-") {
@@ -3688,6 +3712,8 @@
             shift: agentObj.shift || "--",
             region: displayRegion,
             hours: hours,
+            cpCount: cpCount,
+            clinicCount: clinicCount,
             total: totalOutput,
             tat: avgTat,
             tatSum: tatSum,
@@ -3886,4 +3912,4 @@
     }
   </script>
 </body>
-</html
+</html>
