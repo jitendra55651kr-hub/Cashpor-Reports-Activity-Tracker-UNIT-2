@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
+
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -814,7 +814,7 @@
         .d3-card-purple::before { background: #9333ea; box-shadow: 0 0 10px #9333ea; }
         .d3-card-green::before { background: #10b981; box-shadow: 0 0 12px #10b981; }
         .d3-card-red::before { background: #f43f5e; box-shadow: 0 0 12px #f43f5e; }
-        
+
         .d3-kpi-card-clickable {
           cursor: pointer;
         }
@@ -2424,7 +2424,7 @@
         team: "TEAM DEEPTI",
         members: [
           { name: "Renu Rani", shift: "8:00 AM - 5:00 PM", match: ["renu rani", "ms00633"] },
-          { name: "Pooja Rathore", shift: "8:00 AM - 5:00 PM", match: ["pooja rathore", "ms00879"] },
+          { name: "Pooja Rathore", shift: "8:00 AM - 5:00 PM", match: ["pooja rathore", "ms01266"] },
           { name: "Roshni Prajapati", shift: "7:00 AM - 4:00 PM", match: ["roshni", "ms01386"] },
           { name: "Garvit Jha", shift: "7:00 AM - 4:00 PM", match: ["garvit", "ms01034"] },
           { name: "Rajni Saini", shift: "8:00 AM - 5:00 PM", match: ["rajni"] },
@@ -2470,7 +2470,7 @@
     let d3AgentCaseStore = {};
     let d3AgentBreakStore = {};
     let d3AgentRegionMapStore = {};
-    
+
     let d3TeamSortState = {
       "TEAM JITENDRA": { column: "tat", order: "asc" },
       "TEAM DEEPTI":   { column: "tat", order: "asc" },
@@ -2512,7 +2512,7 @@
     function parseD3SafeDate(val) {
       if (!val || val === '-' || val === 'NA' || val === 'NaN') return null;
       if (val instanceof Date) return isNaN(val.getTime()) ? null : val;
-      
+
       let str = String(val).trim();
       if (str.includes("2050") || str.length < 4) return null;
 
@@ -2526,7 +2526,7 @@
         const parts = str.split(' ');
         const datePart = parts[0];
         const timePart = parts[1] || "00:00:00";
-        
+
         const dParts = datePart.split(/[\/\-]/);
         const tParts = timePart.split(':');
 
@@ -2829,7 +2829,7 @@
           const percent = maxIndividualTotal > 0 ? Math.min(100, Math.round((member.total / maxIndividualTotal) * 100)) : 0;
           const displayTotal = member.total > 0 ? member.total : "";
           const memberTatVal = parseFloat(member.tat) || 0;
-           
+
           let arrowHtml = "";
           if (memberTatVal > 0) {
             if (memberTatVal === teamMin.tat) {
@@ -2983,7 +2983,7 @@
       document.getElementById("d3StatTotal").innerText = grandTotal.toLocaleString();
       document.getElementById("d3StatTat").innerText = `${overallAvgTat} m`;
       document.getElementById("d3StatAgents").innerText = `${activeAgentsCount} / ${D3_TOTAL_CAPACITY}`;
-       
+
       document.getElementById("d3StatLowestAgent").innerText = globalMinAgent.tat !== 9999 ? `${globalMinAgent.name} (${globalMinAgent.tat}m)` : "--";
       document.getElementById("d3StatHighestAgent").innerText = globalMaxAgent.tat !== -1 ? `${globalMaxAgent.name} (${globalMaxAgent.tat}m)` : "--";
 
@@ -3530,14 +3530,14 @@
             });
             const firstSheetName = workbook.SheetNames[0];
             const worksheet = workbook.Sheets[firstSheetName];
-             
+
             const rawRows = XLSX.utils.sheet_to_json(worksheet, { 
               header: 1, 
               raw: false, 
               dateNF: 'yyyy-mm-dd hh:mm:ss', 
               defval: "" 
             });
-             
+
             let headerIdx = -1;
             for (let i = 0; i < Math.min(rawRows.length, 25); i++) {
               const rowStr = rawRows[i].map(c => String(c).toLowerCase()).join(" ");
@@ -3661,7 +3661,6 @@
 
             hours[slot] += 1;
 
-            // Safe categorical inspection for CP / CLINIC
             const consultType = (row["Type"] || row["Consult Type"] || row["Category"] || "").trim().toUpperCase();
             if (consultType.includes("CP")) {
               cpCount++;
